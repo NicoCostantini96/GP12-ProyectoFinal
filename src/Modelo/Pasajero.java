@@ -68,7 +68,7 @@ public class Pasajero {
         this.telefono = telefono;
     }
 
-    public boolean GetEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

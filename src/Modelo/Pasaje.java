@@ -80,7 +80,7 @@ public class Pasaje {
         this.precio = precio;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

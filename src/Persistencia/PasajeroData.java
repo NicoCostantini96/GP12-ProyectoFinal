@@ -25,7 +25,7 @@ public class PasajeroData {
             ps.setString(3, obj.getApellido());
             ps.setString(4, obj.getCorreo());
             ps.setInt(5, obj.getTelefono());
-            ps.setBoolean(6, obj.GetEstado());
+            ps.setBoolean(6, obj.getEstado());
             
             int filas = ps.executeUpdate();
             if (filas>0) {
@@ -62,7 +62,7 @@ public class PasajeroData {
             ps.setString(3, obj.getApellido());
             ps.setString(4, obj.getCorreo());
             ps.setInt(5, obj.getTelefono());
-            ps.setBoolean(6, obj.GetEstado());
+            ps.setBoolean(6, obj.getEstado());
             
             int filas = ps.executeUpdate();
             if (filas>0) {

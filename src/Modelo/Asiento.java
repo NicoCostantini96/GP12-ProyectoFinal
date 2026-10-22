@@ -38,7 +38,7 @@ public class Asiento {
         this.numero_asiento = numero_asiento;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

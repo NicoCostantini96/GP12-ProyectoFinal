@@ -68,7 +68,7 @@ public class Colectivo {
         this.chofer = chofer;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

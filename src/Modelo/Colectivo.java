@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.Objects;
+
 public class Colectivo {
     
     private int id_colectivo;
@@ -74,5 +76,18 @@ public class Colectivo {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Colectivo colectivo = (Colectivo) o;
+        return id_colectivo == colectivo.id_colectivo;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_colectivo);
     }
 }

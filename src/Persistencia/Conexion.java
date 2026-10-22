@@ -1,4 +1,4 @@
-package persistencia;
+package Persistencia;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class Conexion {
         if (conexion==null) {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                conexion=DriverManager.getConnection("jdbc:mysql://localhost/","root",""); // Cambiar
+                conexion=DriverManager.getConnection("jdbc:mysql://localhost/gp12flechaflash","root","");
             }catch(SQLException|ClassNotFoundException ex) {
                 ex.printStackTrace();
             }

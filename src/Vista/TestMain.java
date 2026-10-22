@@ -1,4 +1,4 @@
-package vistas;
+package Vista;
 
 public class TestMain {
 

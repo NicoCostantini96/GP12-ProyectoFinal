@@ -1,6 +1,6 @@
 package Modelo;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalTime;
 
 public class Pasaje {
     
@@ -9,11 +9,11 @@ public class Pasaje {
     private int id_lugar;
     private int id_ruta;
     private LocalDate fecha_venta;
-    private Date hora_venta;
+    private LocalTime hora_venta;
     private double precio;
     private boolean estado;
 
-    public Pasaje(int id_pasaje, int id_pasajero, int id_lugar, int id_ruta, LocalDate fecha_venta, Date hora_venta, double precio, boolean estado) {
+    public Pasaje(int id_pasaje, int id_pasajero, int id_lugar, int id_ruta, LocalDate fecha_venta, LocalTime hora_venta, double precio, boolean estado) {
         this.id_pasaje = id_pasaje;
         this.id_pasajero = id_pasajero;
         this.id_lugar = id_lugar;
@@ -64,11 +64,11 @@ public class Pasaje {
         this.fecha_venta = fecha_venta;
     }
 
-    public Date getHora_venta() {
+    public LocalTime getHora_venta() {
         return hora_venta;
     }
 
-    public void setHora_venta(Date hora_venta) {
+    public void setHora_venta(LocalTime hora_venta) {
         this.hora_venta = hora_venta;
     }
 

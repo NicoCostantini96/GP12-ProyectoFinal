@@ -1,19 +1,18 @@
 package Modelo;
-
-import java.util.Date;
+import java.time.LocalTime;
 
 public class RutaViaje {
     
     private int id_ruta;
     private String origen;
     private String destino;
-    private Date hora_salida;
-    private Date hora_llegada;
+    private LocalTime hora_salida;
+    private LocalTime hora_llegada;
     private int id_colectivo;
     private double precio;
     private boolean estado;
 
-    public RutaViaje(int id_ruta, String origen, String destino, Date hora_salida, Date hora_llegada, int id_colectivo, double precio, boolean estado) {
+    public RutaViaje(int id_ruta, String origen, String destino, LocalTime hora_salida, LocalTime hora_llegada, int id_colectivo, double precio, boolean estado) {
         this.id_ruta = id_ruta;
         this.origen = origen;
         this.destino = destino;
@@ -48,19 +47,19 @@ public class RutaViaje {
         this.destino = destino;
     }
 
-    public Date getHora_salida() {
+    public LocalTime getHora_salida() {
         return hora_salida;
     }
 
-    public void setHora_salida(Date hora_salida) {
+    public void setHora_salida(LocalTime hora_salida) {
         this.hora_salida = hora_salida;
     }
 
-    public Date getHora_llegada() {
+    public LocalTime getHora_llegada() {
         return hora_llegada;
     }
 
-    public void setHora_llegada(Date hora_llegada) {
+    public void setHora_llegada(LocalTime hora_llegada) {
         this.hora_llegada = hora_llegada;
     }
 

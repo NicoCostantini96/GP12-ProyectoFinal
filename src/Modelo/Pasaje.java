@@ -5,15 +5,15 @@ import java.time.LocalTime;
 public class Pasaje {
     
     private int id_pasaje;
-    private int id_pasajero;
-    private int id_lugar;
-    private int id_ruta;
+    private Pasajero id_pasajero;
+    private Asiento id_lugar;
+    private RutaViaje id_ruta;
     private LocalDate fecha_venta;
     private LocalTime hora_venta;
     private double precio;
     private boolean estado;
 
-    public Pasaje(int id_pasaje, int id_pasajero, int id_lugar, int id_ruta, LocalDate fecha_venta, LocalTime hora_venta, double precio, boolean estado) {
+    public Pasaje(int id_pasaje, Pasajero id_pasajero, Asiento id_lugar, RutaViaje id_ruta, LocalDate fecha_venta, LocalTime hora_venta, double precio, boolean estado) {
         this.id_pasaje = id_pasaje;
         this.id_pasajero = id_pasajero;
         this.id_lugar = id_lugar;
@@ -32,27 +32,27 @@ public class Pasaje {
         this.id_pasaje = id_pasaje;
     }
 
-    public int getId_pasajero() {
+    public Pasajero getId_pasajero() {
         return id_pasajero;
     }
 
-    public void setId_pasajero(int id_pasajero) {
+    public void setId_pasajero(Pasajero id_pasajero) {
         this.id_pasajero = id_pasajero;
     }
 
-    public int getId_lugar() {
+    public Asiento getId_lugar() {
         return id_lugar;
     }
 
-    public void setId_lugar(int id_lugar) {
+    public void setId_lugar(Asiento id_lugar) {
         this.id_lugar = id_lugar;
     }
 
-    public int getId_ruta() {
+    public RutaViaje getId_ruta() {
         return id_ruta;
     }
 
-    public void setId_ruta(int id_ruta) {
+    public void setId_ruta(RutaViaje id_ruta) {
         this.id_ruta = id_ruta;
     }
 

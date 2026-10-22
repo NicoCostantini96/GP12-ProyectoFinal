@@ -1,5 +1,8 @@
 package Persistencia;
 import Modelo.Pasaje;
+import static Vista.TestMain.asientoData;
+import static Vista.TestMain.pasajeroData;
+import static Vista.TestMain.rutaData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,9 +23,9 @@ public class PasajeData {
         try {
             String sql = "insert into pasajes(id_pasajero, id_lugar, id_ruta, fecha_venta, hora_venta, precio, estado) values (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getId_pasajero());
-            ps.setInt(2, obj.getId_lugar());
-            ps.setInt(3, obj.getId_ruta());
+            ps.setInt(1, obj.getId_pasajero().getId_pasajero());
+            ps.setInt(2, obj.getId_lugar().getId_lugar());
+            ps.setInt(3, obj.getId_ruta().getId_ruta());
             ps.setDate(4, java.sql.Date.valueOf(obj.getFecha_venta()));
             ps.setTime(5, java.sql.Time.valueOf(obj.getHora_venta()));
             ps.setDouble(6, obj.getPrecio());
@@ -58,9 +61,9 @@ public class PasajeData {
         try {
             String sql = "update pasajes set id_pasajero = ?, id_lugar = ?, id_ruta = ?, fecha_venta = ?, hora_venta = ?, precio = ?, estado = ? where id_pasaje = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getId_pasajero());
-            ps.setInt(2, obj.getId_lugar());
-            ps.setInt(3, obj.getId_ruta());
+            ps.setInt(1, obj.getId_pasajero().getId_pasajero());
+            ps.setInt(2, obj.getId_lugar().getId_lugar());
+            ps.setInt(3, obj.getId_ruta().getId_ruta());
             ps.setDate(4, java.sql.Date.valueOf(obj.getFecha_venta()));
             ps.setTime(5, java.sql.Time.valueOf(obj.getHora_venta()));
             ps.setDouble(6, obj.getPrecio());
@@ -87,9 +90,9 @@ public class PasajeData {
             while(res.next()) {
                 obj = new Pasaje(
                     res.getInt("id_pasaje"),
-                    res.getInt("id_pasajero"),
-                    res.getInt("id_lugar"),
-                    res.getInt("id_ruta"),
+                    pasajeroData.getById(res.getInt("id_pasajero")),
+                    asientoData.getById(res.getInt("id_lugar")),
+                    rutaData.getById(res.getInt("id_ruta")),
                     res.getDate("fecha_venta").toLocalDate(),
                     res.getTime("hora_venta").toLocalTime(),
                     res.getDouble("precio"),
@@ -112,9 +115,9 @@ public class PasajeData {
             while (res.next()) {
                 Pasaje obj = new Pasaje(
                     res.getInt("id_pasaje"),
-                    res.getInt("id_pasajero"),
-                    res.getInt("id_lugar"),
-                    res.getInt("id_ruta"),
+                    pasajeroData.getById(res.getInt("id_pasajero")),
+                    asientoData.getById(res.getInt("id_lugar")),
+                    rutaData.getById(res.getInt("id_ruta")),
                     res.getDate("fecha_venta").toLocalDate(),
                     res.getTime("hora_venta").toLocalTime(),
                     res.getDouble("precio"),

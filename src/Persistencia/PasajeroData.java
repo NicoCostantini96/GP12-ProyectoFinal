@@ -63,6 +63,7 @@ public class PasajeroData {
             ps.setString(4, obj.getCorreo());
             ps.setInt(5, obj.getTelefono());
             ps.setBoolean(6, obj.getEstado());
+            ps.setInt(7, obj.getId_pasajero());
             
             int filas = ps.executeUpdate();
             if (filas>0) {
@@ -70,6 +71,7 @@ public class PasajeroData {
             }
         }catch(SQLException e) {
             System.err.println("ERROR: Datos del pasajero incompatibles!!\n");
+            System.out.println(e);
         }
     }
     

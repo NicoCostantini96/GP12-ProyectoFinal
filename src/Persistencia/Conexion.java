@@ -12,7 +12,7 @@ public class Conexion {
         if (conexion==null) {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                conexion=DriverManager.getConnection("jdbc:mysql://localhost/gp12flechaflash","root","");
+                conexion=DriverManager.getConnection("jdbc:mysql://localhost/gp12_flechaflash","root","");
             }catch(SQLException|ClassNotFoundException ex) {
                 ex.printStackTrace();
             }

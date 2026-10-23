@@ -66,6 +66,7 @@ public class ColectivoData {
             ps.setInt(4, obj.getCapacidad());
             ps.setString(5, obj.getChofer());
             ps.setBoolean(6, obj.getEstado());
+            ps.setInt(7, obj.getId_colectivo());
             
             int filas = ps.executeUpdate();
             if (filas>0) {

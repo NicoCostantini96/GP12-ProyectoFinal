@@ -39,26 +39,39 @@ public class comprar extends javax.swing.JInternalFrame {
         GrupoBotones = new javax.swing.ButtonGroup();
         jpBotones = new javax.swing.JPanel();
         lblAsientos = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jToggleButton7 = new javax.swing.JToggleButton();
-        jToggleButton8 = new javax.swing.JToggleButton();
-        jToggleButton9 = new javax.swing.JToggleButton();
-        jToggleButton10 = new javax.swing.JToggleButton();
-        jToggleButton11 = new javax.swing.JToggleButton();
-        jToggleButton12 = new javax.swing.JToggleButton();
-        jToggleButton13 = new javax.swing.JToggleButton();
-        jToggleButton14 = new javax.swing.JToggleButton();
-        jToggleButton15 = new javax.swing.JToggleButton();
-        jToggleButton16 = new javax.swing.JToggleButton();
-        jToggleButton17 = new javax.swing.JToggleButton();
-        jToggleButton18 = new javax.swing.JToggleButton();
-        jToggleButton19 = new javax.swing.JToggleButton();
-        jToggleButton20 = new javax.swing.JToggleButton();
+        jtbA1 = new javax.swing.JToggleButton();
+        jtbA2 = new javax.swing.JToggleButton();
+        jtbA4 = new javax.swing.JToggleButton();
+        jtbA3 = new javax.swing.JToggleButton();
+        jtbA5 = new javax.swing.JToggleButton();
+        jtbA6 = new javax.swing.JToggleButton();
+        jtbA7 = new javax.swing.JToggleButton();
+        jtbA8 = new javax.swing.JToggleButton();
+        jtbA9 = new javax.swing.JToggleButton();
+        jtbA10 = new javax.swing.JToggleButton();
+        jtbA11 = new javax.swing.JToggleButton();
+        jtbA12 = new javax.swing.JToggleButton();
+        jtbA13 = new javax.swing.JToggleButton();
+        jtbA14 = new javax.swing.JToggleButton();
+        jtbA15 = new javax.swing.JToggleButton();
+        jtbA16 = new javax.swing.JToggleButton();
+        jtbA17 = new javax.swing.JToggleButton();
+        jtbA18 = new javax.swing.JToggleButton();
+        jtbA19 = new javax.swing.JToggleButton();
+        jtbA20 = new javax.swing.JToggleButton();
+        jtbA21 = new javax.swing.JToggleButton();
+        jtbA22 = new javax.swing.JToggleButton();
+        jtbA24 = new javax.swing.JToggleButton();
+        jtbA23 = new javax.swing.JToggleButton();
+        jtbA25 = new javax.swing.JToggleButton();
+        jtbA26 = new javax.swing.JToggleButton();
+        jtbA27 = new javax.swing.JToggleButton();
+        jtbA28 = new javax.swing.JToggleButton();
+        jtbA29 = new javax.swing.JToggleButton();
+        jtbA30 = new javax.swing.JToggleButton();
+        jtbA31 = new javax.swing.JToggleButton();
+        jtbA32 = new javax.swing.JToggleButton();
+        jtbA33 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaHoras = new javax.swing.JList<>();
         jpSelecciones = new javax.swing.JPanel();
@@ -72,101 +85,181 @@ public class comprar extends javax.swing.JInternalFrame {
 
         lblAsientos.setText("Seleccione su asiento");
 
-        jToggleButton1.setText("as1");
-        jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
+        jtbA1.setText("a1");
+        jtbA1.addActionListener(this::jtbA1ActionPerformed);
 
-        jToggleButton2.setText("as2");
-        jToggleButton2.addActionListener(this::jToggleButton2ActionPerformed);
+        jtbA2.setText("a2");
+        jtbA2.addActionListener(this::jtbA2ActionPerformed);
 
-        jToggleButton3.setText("as4");
-        jToggleButton3.addActionListener(this::jToggleButton3ActionPerformed);
+        jtbA4.setText("a4");
+        jtbA4.addActionListener(this::jtbA4ActionPerformed);
 
-        jToggleButton4.setText("as3");
-        jToggleButton4.addActionListener(this::jToggleButton4ActionPerformed);
+        jtbA3.setText("a3");
+        jtbA3.addActionListener(this::jtbA3ActionPerformed);
 
-        jToggleButton5.setText("as5");
-        jToggleButton5.addActionListener(this::jToggleButton5ActionPerformed);
+        jtbA5.setText("a5");
+        jtbA5.addActionListener(this::jtbA5ActionPerformed);
 
-        jToggleButton6.setText("as6");
-        jToggleButton6.addActionListener(this::jToggleButton6ActionPerformed);
+        jtbA6.setText("a6");
+        jtbA6.addActionListener(this::jtbA6ActionPerformed);
 
-        jToggleButton7.setText("as7");
-        jToggleButton7.addActionListener(this::jToggleButton7ActionPerformed);
+        jtbA7.setText("a7");
+        jtbA7.addActionListener(this::jtbA7ActionPerformed);
 
-        jToggleButton8.setText("as8");
-        jToggleButton8.addActionListener(this::jToggleButton8ActionPerformed);
+        jtbA8.setText("a8");
+        jtbA8.addActionListener(this::jtbA8ActionPerformed);
 
-        jToggleButton9.setText("as9");
-        jToggleButton9.addActionListener(this::jToggleButton9ActionPerformed);
+        jtbA9.setText("a9");
+        jtbA9.addActionListener(this::jtbA9ActionPerformed);
 
-        jToggleButton10.setText("a10");
-        jToggleButton10.addActionListener(this::jToggleButton10ActionPerformed);
+        jtbA10.setText("a10");
+        jtbA10.addActionListener(this::jtbA10ActionPerformed);
 
-        jToggleButton11.setText("a11");
-        jToggleButton11.addActionListener(this::jToggleButton11ActionPerformed);
+        jtbA11.setText("a11");
+        jtbA11.addActionListener(this::jtbA11ActionPerformed);
 
-        jToggleButton12.setText("a12");
-        jToggleButton12.addActionListener(this::jToggleButton12ActionPerformed);
+        jtbA12.setText("a12");
+        jtbA12.addActionListener(this::jtbA12ActionPerformed);
 
-        jToggleButton13.setText("a13");
-        jToggleButton13.addActionListener(this::jToggleButton13ActionPerformed);
+        jtbA13.setText("a13");
+        jtbA13.addActionListener(this::jtbA13ActionPerformed);
 
-        jToggleButton14.setText("a14");
-        jToggleButton14.addActionListener(this::jToggleButton14ActionPerformed);
+        jtbA14.setText("a14");
+        jtbA14.addActionListener(this::jtbA14ActionPerformed);
 
-        jToggleButton15.setText("a15");
-        jToggleButton15.addActionListener(this::jToggleButton15ActionPerformed);
+        jtbA15.setText("a15");
+        jtbA15.addActionListener(this::jtbA15ActionPerformed);
 
-        jToggleButton16.setText("a16");
-        jToggleButton16.addActionListener(this::jToggleButton16ActionPerformed);
+        jtbA16.setText("a16");
+        jtbA16.addActionListener(this::jtbA16ActionPerformed);
 
-        jToggleButton17.setText("a17");
-        jToggleButton17.addActionListener(this::jToggleButton17ActionPerformed);
+        jtbA17.setText("a17");
+        jtbA17.addActionListener(this::jtbA17ActionPerformed);
 
-        jToggleButton18.setText("a18");
-        jToggleButton18.addActionListener(this::jToggleButton18ActionPerformed);
+        jtbA18.setText("a18");
+        jtbA18.addActionListener(this::jtbA18ActionPerformed);
 
-        jToggleButton19.setText("a19");
-        jToggleButton19.addActionListener(this::jToggleButton19ActionPerformed);
+        jtbA19.setText("a19");
+        jtbA19.addActionListener(this::jtbA19ActionPerformed);
 
-        jToggleButton20.setText("a20");
-        jToggleButton20.addActionListener(this::jToggleButton20ActionPerformed);
+        jtbA20.setText("a20");
+        jtbA20.addActionListener(this::jtbA20ActionPerformed);
+
+        jtbA21.setText("a21");
+        jtbA21.addActionListener(this::jtbA21ActionPerformed);
+
+        jtbA22.setText("a22");
+        jtbA22.addActionListener(this::jtbA22ActionPerformed);
+
+        jtbA24.setText("a24");
+        jtbA24.addActionListener(this::jtbA24ActionPerformed);
+
+        jtbA23.setText("a23");
+        jtbA23.addActionListener(this::jtbA23ActionPerformed);
+
+        jtbA25.setText("a25");
+        jtbA25.addActionListener(this::jtbA25ActionPerformed);
+
+        jtbA26.setText("a26");
+        jtbA26.addActionListener(this::jtbA26ActionPerformed);
+
+        jtbA27.setText("a27");
+        jtbA27.addActionListener(this::jtbA27ActionPerformed);
+
+        jtbA28.setText("a28");
+        jtbA28.addActionListener(this::jtbA28ActionPerformed);
+
+        jtbA29.setText("a29");
+        jtbA29.addActionListener(this::jtbA29ActionPerformed);
+
+        jtbA30.setText("a30");
+        jtbA30.addActionListener(this::jtbA30ActionPerformed);
+
+        jtbA31.setText("a31");
+        jtbA31.addActionListener(this::jtbA31ActionPerformed);
+
+        jtbA32.setText("a32");
+        jtbA32.addActionListener(this::jtbA32ActionPerformed);
+
+        jtbA33.setText("a33");
+        jtbA33.addActionListener(this::jtbA33ActionPerformed);
 
         javax.swing.GroupLayout jpBotonesLayout = new javax.swing.GroupLayout(jpBotones);
         jpBotones.setLayout(jpBotonesLayout);
         jpBotonesLayout.setHorizontalGroup(
             jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBotonesLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAsientos)
+                .addContainerGap()
+                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpBotonesLayout.createSequentialGroup()
-                        .addComponent(jToggleButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton2))
+                        .addComponent(lblAsientos)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jpBotonesLayout.createSequentialGroup()
                         .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jToggleButton5)
-                            .addComponent(jToggleButton4)
-                            .addComponent(jToggleButton7)
-                            .addComponent(jToggleButton9)
-                            .addComponent(jToggleButton11)
-                            .addComponent(jToggleButton13)
-                            .addComponent(jToggleButton15)
-                            .addComponent(jToggleButton17)
-                            .addComponent(jToggleButton19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton3)
-                            .addComponent(jToggleButton6)
-                            .addComponent(jToggleButton8)
-                            .addComponent(jToggleButton10)
-                            .addComponent(jToggleButton12)
-                            .addComponent(jToggleButton14)
-                            .addComponent(jToggleButton16)
-                            .addComponent(jToggleButton18)
-                            .addComponent(jToggleButton20))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA14))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA16))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jtbA7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtbA9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtbA11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtbA12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtbA10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtbA8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jpBotonesLayout.createSequentialGroup()
+                                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jtbA3, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                                    .addComponent(jtbA5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtbA1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtbA2, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                                    .addComponent(jtbA6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtbA4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA22))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA24))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA30))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpBotonesLayout.createSequentialGroup()
+                                .addComponent(jtbA31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtbA32))
+                            .addComponent(jtbA33, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jpBotonesLayout.setVerticalGroup(
             jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,45 +267,74 @@ public class comprar extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(lblAsientos)
                 .addGap(18, 18, 18)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton3)
-                    .addComponent(jToggleButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton5)
-                    .addComponent(jToggleButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton7)
-                    .addComponent(jToggleButton8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton9)
-                    .addComponent(jToggleButton10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton11)
-                    .addComponent(jToggleButton12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton13)
-                    .addComponent(jToggleButton14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton15)
-                    .addComponent(jToggleButton16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton17)
-                    .addComponent(jToggleButton18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton19)
-                    .addComponent(jToggleButton20))
+                .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpBotonesLayout.createSequentialGroup()
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jtbA2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtbA1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtbA3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtbA4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtbA6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtbA5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtbA7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtbA8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtbA10)
+                            .addComponent(jtbA9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA11)
+                            .addComponent(jtbA12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA13)
+                            .addComponent(jtbA14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA15)
+                            .addComponent(jtbA16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA17)
+                            .addComponent(jtbA18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA19)
+                            .addComponent(jtbA20)))
+                    .addGroup(jpBotonesLayout.createSequentialGroup()
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA21)
+                            .addComponent(jtbA22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA24)
+                            .addComponent(jtbA23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA25)
+                            .addComponent(jtbA26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA27)
+                            .addComponent(jtbA28))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA29)
+                            .addComponent(jtbA30))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtbA31)
+                            .addComponent(jtbA32))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtbA33)
+                        .addGap(99, 99, 99)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
@@ -287,7 +409,7 @@ public class comprar extends javax.swing.JInternalFrame {
                 .addComponent(jpSelecciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83))
                     .addGroup(layout.createSequentialGroup()
@@ -316,85 +438,137 @@ public class comprar extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jtbA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_jtbA1ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void jtbA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_jtbA2ActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void jtbA4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_jtbA4ActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+    private void jtbA3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    }//GEN-LAST:event_jtbA3ActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+    private void jtbA5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    }//GEN-LAST:event_jtbA5ActionPerformed
 
-    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+    private void jtbA6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton6ActionPerformed
+    }//GEN-LAST:event_jtbA6ActionPerformed
 
-    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
+    private void jtbA7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton7ActionPerformed
+    }//GEN-LAST:event_jtbA7ActionPerformed
 
-    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+    private void jtbA8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton8ActionPerformed
+    }//GEN-LAST:event_jtbA8ActionPerformed
 
-    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
+    private void jtbA9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton9ActionPerformed
+    }//GEN-LAST:event_jtbA9ActionPerformed
 
-    private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
+    private void jtbA10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA10ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton10ActionPerformed
+    }//GEN-LAST:event_jtbA10ActionPerformed
 
-    private void jToggleButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton11ActionPerformed
+    private void jtbA11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA11ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton11ActionPerformed
+    }//GEN-LAST:event_jtbA11ActionPerformed
 
-    private void jToggleButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton12ActionPerformed
+    private void jtbA12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA12ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton12ActionPerformed
+    }//GEN-LAST:event_jtbA12ActionPerformed
 
-    private void jToggleButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton13ActionPerformed
+    private void jtbA13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA13ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton13ActionPerformed
+    }//GEN-LAST:event_jtbA13ActionPerformed
 
-    private void jToggleButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton14ActionPerformed
+    private void jtbA14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA14ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton14ActionPerformed
+    }//GEN-LAST:event_jtbA14ActionPerformed
 
-    private void jToggleButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton15ActionPerformed
+    private void jtbA15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA15ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton15ActionPerformed
+    }//GEN-LAST:event_jtbA15ActionPerformed
 
-    private void jToggleButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton16ActionPerformed
+    private void jtbA16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA16ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton16ActionPerformed
+    }//GEN-LAST:event_jtbA16ActionPerformed
 
-    private void jToggleButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton17ActionPerformed
+    private void jtbA17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA17ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton17ActionPerformed
+    }//GEN-LAST:event_jtbA17ActionPerformed
 
-    private void jToggleButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton18ActionPerformed
+    private void jtbA18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA18ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton18ActionPerformed
+    }//GEN-LAST:event_jtbA18ActionPerformed
 
-    private void jToggleButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton19ActionPerformed
+    private void jtbA19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA19ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton19ActionPerformed
+    }//GEN-LAST:event_jtbA19ActionPerformed
 
-    private void jToggleButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton20ActionPerformed
+    private void jtbA20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA20ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton20ActionPerformed
+    }//GEN-LAST:event_jtbA20ActionPerformed
+
+    private void jtbA21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA21ActionPerformed
+
+    private void jtbA22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA22ActionPerformed
+
+    private void jtbA24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA24ActionPerformed
+
+    private void jtbA23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA23ActionPerformed
+
+    private void jtbA25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA25ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA25ActionPerformed
+
+    private void jtbA26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA26ActionPerformed
+
+    private void jtbA27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA27ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA27ActionPerformed
+
+    private void jtbA28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA28ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA28ActionPerformed
+
+    private void jtbA29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA29ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA29ActionPerformed
+
+    private void jtbA30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA30ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA30ActionPerformed
+
+    private void jtbA31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA31ActionPerformed
+
+    private void jtbA32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA32ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA32ActionPerformed
+
+    private void jtbA33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbA33ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbA33ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -403,28 +577,41 @@ public class comprar extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbOrigen;
     private com.toedter.calendar.JCalendar jCalendar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton10;
-    private javax.swing.JToggleButton jToggleButton11;
-    private javax.swing.JToggleButton jToggleButton12;
-    private javax.swing.JToggleButton jToggleButton13;
-    private javax.swing.JToggleButton jToggleButton14;
-    private javax.swing.JToggleButton jToggleButton15;
-    private javax.swing.JToggleButton jToggleButton16;
-    private javax.swing.JToggleButton jToggleButton17;
-    private javax.swing.JToggleButton jToggleButton18;
-    private javax.swing.JToggleButton jToggleButton19;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton20;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
-    private javax.swing.JToggleButton jToggleButton8;
-    private javax.swing.JToggleButton jToggleButton9;
     private javax.swing.JPanel jpBotones;
     private javax.swing.JPanel jpSelecciones;
+    private javax.swing.JToggleButton jtbA1;
+    private javax.swing.JToggleButton jtbA10;
+    private javax.swing.JToggleButton jtbA11;
+    private javax.swing.JToggleButton jtbA12;
+    private javax.swing.JToggleButton jtbA13;
+    private javax.swing.JToggleButton jtbA14;
+    private javax.swing.JToggleButton jtbA15;
+    private javax.swing.JToggleButton jtbA16;
+    private javax.swing.JToggleButton jtbA17;
+    private javax.swing.JToggleButton jtbA18;
+    private javax.swing.JToggleButton jtbA19;
+    private javax.swing.JToggleButton jtbA2;
+    private javax.swing.JToggleButton jtbA20;
+    private javax.swing.JToggleButton jtbA21;
+    private javax.swing.JToggleButton jtbA22;
+    private javax.swing.JToggleButton jtbA23;
+    private javax.swing.JToggleButton jtbA24;
+    private javax.swing.JToggleButton jtbA25;
+    private javax.swing.JToggleButton jtbA26;
+    private javax.swing.JToggleButton jtbA27;
+    private javax.swing.JToggleButton jtbA28;
+    private javax.swing.JToggleButton jtbA29;
+    private javax.swing.JToggleButton jtbA3;
+    private javax.swing.JToggleButton jtbA30;
+    private javax.swing.JToggleButton jtbA31;
+    private javax.swing.JToggleButton jtbA32;
+    private javax.swing.JToggleButton jtbA33;
+    private javax.swing.JToggleButton jtbA4;
+    private javax.swing.JToggleButton jtbA5;
+    private javax.swing.JToggleButton jtbA6;
+    private javax.swing.JToggleButton jtbA7;
+    private javax.swing.JToggleButton jtbA8;
+    private javax.swing.JToggleButton jtbA9;
     private javax.swing.JLabel lblAsientos;
     private javax.swing.JLabel lblDestino;
     private javax.swing.JLabel lblFecha;

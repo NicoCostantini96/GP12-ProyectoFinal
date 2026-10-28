@@ -326,11 +326,11 @@ public class TestMain {
     
     static public Pasajero createPasajero(Pasajero obj) {
         int id = 0;
-        int dni = 0;
+        String dni = "0";
         String nombre = "";
         String apellido = "";
         String correo = "";
-        int telefono = 0;
+        String telefono = "0";
         boolean estado = false;
 
         if (obj != null) {
@@ -347,16 +347,16 @@ public class TestMain {
             while (true) {
                 try {
                     System.out.print("Ingrese el DNI del pasajero: ");
-                    dni = scannerInt.nextInt();
+                    dni = scannerLine.nextLine();
                     if (String.valueOf(dni).length() == 8) {
                         break;
                     } else {
                         System.err.println("ERROR: Ingrese exactamente 8 numeros!!");
-                        scannerInt.nextLine();
+                        scannerLine.nextLine();
                     }
                 } catch (Exception e) {
                     System.err.println("ERROR: Ingrese un valor valido!!");
-                    scannerInt.nextLine();
+                    scannerLine.nextLine();
                 }
             }
         }
@@ -397,7 +397,7 @@ public class TestMain {
             while (true) {
                 try {
                     System.out.print("Ingrese el telefono del pasajero: ");
-                    telefono = scannerInt.nextInt();
+                    telefono = scannerLine.nextLine();
                     break;
                 } catch (Exception e) {
                     System.err.println("ERROR: Solo se permiten numeros!!");

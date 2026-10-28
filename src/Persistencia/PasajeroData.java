@@ -20,11 +20,11 @@ public class PasajeroData {
         try {
             String sql = "insert into pasajeros(dni, nombre, apellidos, correo, telefono, estado) values (?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getDni());
+            ps.setString(1, obj.getDni());
             ps.setString(2, obj.getNombre());
             ps.setString(3, obj.getApellido());
             ps.setString(4, obj.getCorreo());
-            ps.setInt(5, obj.getTelefono());
+            ps.setString(5, obj.getTelefono());
             ps.setBoolean(6, obj.getEstado());
             
             int filas = ps.executeUpdate();
@@ -57,11 +57,11 @@ public class PasajeroData {
         try {
             String sql = "update pasajeros set dni = ?, nombre = ?, apellidos = ?, correo = ?, telefono = ?, estado = ? where id_pasajero = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getDni());
+            ps.setString(1, obj.getDni());
             ps.setString(2, obj.getNombre());
             ps.setString(3, obj.getApellido());
             ps.setString(4, obj.getCorreo());
-            ps.setInt(5, obj.getTelefono());
+            ps.setString(5, obj.getTelefono());
             ps.setBoolean(6, obj.getEstado());
             ps.setInt(7, obj.getId_pasajero());
             
@@ -87,11 +87,11 @@ public class PasajeroData {
             while(res.next()) {
                 obj = new Pasajero(
                     res.getInt("id_pasajero"),
-                    res.getInt("dni"),
+                    res.getString("dni"),
                     res.getString("nombre"),
                     res.getString("apellidos"),
                     res.getString("correo"),
-                    res.getInt("telefono"),
+                    res.getString("telefono"),
                     res.getBoolean("estado")
                 );
             }
@@ -111,11 +111,11 @@ public class PasajeroData {
             while (res.next()) {
                 Pasajero obj = new Pasajero(
                     res.getInt("id_pasajero"),
-                    res.getInt("dni"),
+                    res.getString("dni"),
                     res.getString("nombre"),
                     res.getString("apellidos"),
                     res.getString("correo"),
-                    res.getInt("telefono"),
+                    res.getString("telefono"),
                     res.getBoolean("estado")
                 );
                 list.add(obj);

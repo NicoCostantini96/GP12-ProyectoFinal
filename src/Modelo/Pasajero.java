@@ -3,14 +3,14 @@ package Modelo;
 public class Pasajero {
     
     private int id_pasajero;
-    private int dni;
+    private String dni;
     private String nombre;
     private String apellido;
     private String correo;
-    private int telefono;
+    private String telefono;
     private boolean estado;
 
-    public Pasajero(int id_pasajero, int dni, String nombre, String apellido, String correo, int telefono, boolean estado) {
+    public Pasajero(int id_pasajero, String dni, String nombre, String apellido, String correo, String telefono, boolean estado) {
         this.id_pasajero = id_pasajero;
         this.dni = dni;
         this.nombre = nombre;
@@ -28,11 +28,11 @@ public class Pasajero {
         this.id_pasajero = id_pasajero;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -60,11 +60,11 @@ public class Pasajero {
         this.correo = correo;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

@@ -2,6 +2,7 @@ package Persistencia;
 
 import Modelo.Asiento;
 import Modelo.Pasajero;
+import static Vista.TestMain.colectivoData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,14 +20,14 @@ public class AsientoData {
     String cGreen = "\u001B[32m";
     String cReset = "\u001B[0m";
 
-    public void insert(Asiento a) {
+    public void insert(Asiento obj) {
         try {
             String sql = "insert into lugares(id_lugar,id_colectivo,numero_asiento,estado) values (?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, a.getId_lugar());
-            ps.setInt(2, a.getId_colectivo());
-            ps.setInt(3, a.getNumero_asiento());
-            ps.setBoolean(4, a.getEstado());
+            ps.setInt(1, obj.getId_lugar());
+            ps.setInt(2, obj.getId_colectivo().getId_colectivo());
+            ps.setInt(3, obj.getNumero_asiento());
+            ps.setBoolean(4, obj.getEstado());
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
@@ -59,7 +60,7 @@ public class AsientoData {
         try {
             String sql = "update lugares set id_colectivo = ?, numero_asiento = ?, estado = ? where id_lugar = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getId_colectivo());
+            ps.setInt(1, obj.getId_colectivo().getId_colectivo());
             ps.setInt(2, obj.getNumero_asiento());
             ps.setBoolean(3, obj.getEstado());
 
@@ -84,7 +85,7 @@ public class AsientoData {
             while (res.next()) {
                 obj = new Asiento(
                         res.getInt("id_lugar"),
-                        res.getInt("id_colectivo"),
+                        colectivoData.getById(res.getInt("id_colectivo")),
                         res.getInt("numero_asiento"),
                         res.getBoolean("estado")
                 );
@@ -105,7 +106,7 @@ public class AsientoData {
             while (res.next()) {
                 Asiento obj = new Asiento(
                         res.getInt("id_lugar"),
-                        res.getInt("id_colectivo"),
+                        colectivoData.getById(res.getInt("id_colectivo")),
                         res.getInt("numero_asiento"),
                         res.getBoolean("estado")
                 );

@@ -25,7 +25,7 @@ public class AsientoData {
             String sql = "insert into lugares(id_lugar,id_colectivo,numero_asiento,estado) values (?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, obj.getId_lugar());
-            ps.setInt(2, obj.getId_colectivo().getId_colectivo());
+            ps.setInt(2, obj.getColectivo().getId_colectivo());
             ps.setInt(3, obj.getNumero_asiento());
             ps.setBoolean(4, obj.getEstado());
 
@@ -60,7 +60,7 @@ public class AsientoData {
         try {
             String sql = "update lugares set id_colectivo = ?, numero_asiento = ?, estado = ? where id_lugar = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getId_colectivo().getId_colectivo());
+            ps.setInt(1, obj.getColectivo().getId_colectivo());
             ps.setInt(2, obj.getNumero_asiento());
             ps.setBoolean(3, obj.getEstado());
 

@@ -3,13 +3,13 @@ package Modelo;
 public class Asiento {
     
     private int id_lugar;
-    private Colectivo id_colectivo;
+    private Colectivo colectivo;
     private int numero_asiento;
     private boolean estado;
 
-    public Asiento(int id_lugar, Colectivo id_colectivo, int numero_asiento, boolean estado) {
+    public Asiento(int id_lugar, Colectivo colectivo, int numero_asiento, boolean estado) {
         this.id_lugar = id_lugar;
-        this.id_colectivo = id_colectivo;
+        this.colectivo = colectivo;
         this.numero_asiento = numero_asiento;
         this.estado = estado;
     }
@@ -22,12 +22,12 @@ public class Asiento {
         this.id_lugar = id_lugar;
     }
 
-    public Colectivo getId_colectivo() {
-        return id_colectivo;
+    public Colectivo getColectivo() {
+        return colectivo;
     }
 
-    public void setId_colectivo(Colectivo id_colectivo) {
-        this.id_colectivo = id_colectivo;
+    public void setColectivo(Colectivo id_colectivo) {
+        this.colectivo = id_colectivo;
     }
 
     public int getNumero_asiento() {

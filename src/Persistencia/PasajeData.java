@@ -23,9 +23,9 @@ public class PasajeData {
         try {
             String sql = "insert into pasajes(id_pasajero, id_lugar, id_ruta, fecha_venta, hora_venta, precio, estado) values (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getId_pasajero().getId_pasajero());
-            ps.setInt(2, obj.getId_lugar().getId_lugar());
-            ps.setInt(3, obj.getId_ruta().getId_ruta());
+            ps.setInt(1, obj.getPasajero().getId_pasajero());
+            ps.setInt(2, obj.getLugar().getId_lugar());
+            ps.setInt(3, obj.getRuta().getId_ruta());
             ps.setDate(4, java.sql.Date.valueOf(obj.getFecha_venta()));
             ps.setTime(5, java.sql.Time.valueOf(obj.getHora_venta()));
             ps.setDouble(6, obj.getPrecio());
@@ -61,9 +61,9 @@ public class PasajeData {
         try {
             String sql = "update pasajes set id_pasajero = ?, id_lugar = ?, id_ruta = ?, fecha_venta = ?, hora_venta = ?, precio = ?, estado = ? where id_pasaje = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getId_pasajero().getId_pasajero());
-            ps.setInt(2, obj.getId_lugar().getId_lugar());
-            ps.setInt(3, obj.getId_ruta().getId_ruta());
+            ps.setInt(1, obj.getPasajero().getId_pasajero());
+            ps.setInt(2, obj.getLugar().getId_lugar());
+            ps.setInt(3, obj.getRuta().getId_ruta());
             ps.setDate(4, java.sql.Date.valueOf(obj.getFecha_venta()));
             ps.setTime(5, java.sql.Time.valueOf(obj.getHora_venta()));
             ps.setDouble(6, obj.getPrecio());

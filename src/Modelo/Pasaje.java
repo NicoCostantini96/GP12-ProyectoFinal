@@ -5,19 +5,19 @@ import java.time.LocalTime;
 public class Pasaje {
     
     private int id_pasaje;
-    private Pasajero id_pasajero;
-    private Asiento id_lugar;
-    private RutaViaje id_ruta;
+    private Pasajero pasajero;
+    private Asiento lugar;
+    private RutaViaje ruta;
     private LocalDate fecha_venta;
     private LocalTime hora_venta;
     private double precio;
     private boolean estado;
 
-    public Pasaje(int id_pasaje, Pasajero id_pasajero, Asiento id_lugar, RutaViaje id_ruta, LocalDate fecha_venta, LocalTime hora_venta, double precio, boolean estado) {
+    public Pasaje(int id_pasaje, Pasajero pasajero, Asiento lugar, RutaViaje ruta, LocalDate fecha_venta, LocalTime hora_venta, double precio, boolean estado) {
         this.id_pasaje = id_pasaje;
-        this.id_pasajero = id_pasajero;
-        this.id_lugar = id_lugar;
-        this.id_ruta = id_ruta;
+        this.pasajero = pasajero;
+        this.lugar = lugar;
+        this.ruta = ruta;
         this.fecha_venta = fecha_venta;
         this.hora_venta = hora_venta;
         this.precio = precio;
@@ -32,28 +32,28 @@ public class Pasaje {
         this.id_pasaje = id_pasaje;
     }
 
-    public Pasajero getId_pasajero() {
-        return id_pasajero;
+    public Pasajero getPasajero() {
+        return pasajero;
     }
 
-    public void setId_pasajero(Pasajero id_pasajero) {
-        this.id_pasajero = id_pasajero;
+    public void setPasajero(Pasajero pasajero) {
+        this.pasajero = pasajero;
     }
 
-    public Asiento getId_lugar() {
-        return id_lugar;
+    public Asiento getLugar() {
+        return lugar;
     }
 
-    public void setId_lugar(Asiento id_lugar) {
-        this.id_lugar = id_lugar;
+    public void setLugar(Asiento lugar) {
+        this.lugar = lugar;
     }
 
-    public RutaViaje getId_ruta() {
-        return id_ruta;
+    public RutaViaje getRuta() {
+        return ruta;
     }
 
-    public void setId_ruta(RutaViaje id_ruta) {
-        this.id_ruta = id_ruta;
+    public void setRuta(RutaViaje ruta) {
+        this.ruta = ruta;
     }
 
     public LocalDate getFecha_venta() {

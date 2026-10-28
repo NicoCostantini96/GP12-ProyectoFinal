@@ -2,6 +2,7 @@ package Vista;
 
 import Modelo.Asiento;
 import Modelo.Colectivo;
+import Modelo.Pasaje;
 import Modelo.Pasajero;
 import Modelo.RutaViaje;
 import Persistencia.AsientoData;
@@ -34,7 +35,15 @@ public class TestMain {
             int optionSelected = 0;
 
             try {
-                System.out.println("QUE DESEA TESTEAR:\n1 - Pasajero\n2 - Colectivo\n3 - Asiento\n4 - RutaViaje\n5 - Salir");
+                System.out.println(
+                        "QUE DESEA TESTEAR:\n"
+                        + "1 - Pasajero\n"
+                        + "2 - Colectivo\n"
+                        + "3 - Asiento\n"
+                        + "4 - RutaViaje\n"
+                        + "5 - Pasaje\n"
+                        + "6 - Salir"
+                );
                 System.out.print("\nIngrese el numero de su opcion: ");
                 optionSelected = scannerInt.nextInt();
             } catch (Exception e) {
@@ -274,11 +283,69 @@ public class TestMain {
                 }
             }
             
-            if (optionSelected == 5) {
+            while (optionSelected == 5) {
+                listPasaje();
+                System.out.println(
+                        "OPCIONES:\n"
+                        + "1 - Agregar un Pasaje\n"
+                        + "2 - Eliminar un Pasaje\n"
+                        + "3 - Editar un Pasaje\n"
+                        + "4 - Salir"
+                );
+                finishOptions = false;
+                while (!finishOptions) {
+                    try {
+                        System.out.print("\nIngrese el numero de su opcion: ");
+                        int optionResult = scannerInt.nextInt();
+                        switch (optionResult) {
+                            case 1: {
+                                Pasaje obj = createPasaje(null);
+                                if (obj != null) {
+                                    pasajeData.insert(obj);
+                                }
+                                finishOptions = true;
+                                break;
+                            }
+                            case 2: {
+                                Pasaje select = findPasaje();
+                                if (select != null) {
+                                    pasajeData.remove(select.getId_pasaje());
+                                }
+                                finishOptions = true;
+                                break;
+                            }
+                            case 3: {
+                                Pasaje select = findPasaje();
+                                if (select != null) {
+                                    Pasaje updatedObj = createPasaje(select);
+                                    if (updatedObj != null) {
+                                        pasajeData.update(updatedObj);
+                                    }
+                                }
+                                finishOptions = true;
+                                break;
+                            }
+                            case 4: {
+                                finishOptions = true;
+                                optionSelected = 0;
+                                break;
+                            }
+                            default: {
+                                System.err.println("ERROR: Ingrese un valor disponible!!");
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.err.println("ERROR: Ingrese un valor valido!!");
+                        scannerInt.nextLine();
+                    }
+                }
+            }
+            
+            if (optionSelected == 6) {
                 break;
             }
 
-            if ((optionSelected > 5 || optionSelected < 1) && !finishOptions) {
+            if ((optionSelected > 6 || optionSelected < 1) && !finishOptions) {
                 System.err.println("ERROR: Ingrese un valor disponible!!\n");
             }
 
@@ -580,14 +647,14 @@ public class TestMain {
         String formatList = "%-3s %-11s %-3s %s%n";
         System.out.printf(formatList, "ID LUGAR:", "| ID COLECTIVO:", "| NUMERO ASIENTO:", "| ESTADO:");
         for (Asiento i : list) {
-            System.out.printf(formatList, i.getId_lugar(), "| " + i.getId_colectivo().getId_colectivo(), "| " + i.getNumero_asiento(), "| " + i.getEstado());
+            System.out.printf(formatList, i.getId_lugar(), "| " + i.getColectivo().getId_colectivo(), "| " + i.getNumero_asiento(), "| " + i.getEstado());
         }
         System.out.println("");
     }
 
     static public Asiento findAsiento() {
         System.out.println("");
-        listColectivo();
+        listAsiento();
         Asiento find = null;
         while (true) {
             try {
@@ -620,7 +687,7 @@ public class TestMain {
 
         if (obj != null) {
             id = obj.getId_lugar();
-            colectivo = obj.getId_colectivo();
+            colectivo = obj.getColectivo();
             num = obj.getNumero_asiento();
             estado = obj.getEstado();
         }
@@ -670,17 +737,17 @@ public class TestMain {
     static public void listRuta() {
         System.out.println("Lista de las rutas:");
         ArrayList<RutaViaje> list = rutaData.getList();
-        String formatList = "%-3s %-8s %-8s %-8s %-3s %-3s %-3s %-3s %s%n";
-        System.out.printf(formatList, "ID:", "| ORIGEN:", "| DESTINO:", "| FECHA VIAJE:", "| SALIDA:", "| LLEGADA:", "| ID COLECTIVO:", "| PRECIO:", "| ESTADO:");
+        String formatList = "%-3s %-8s %-8s %-3s %-3s %-3s %-3s %s%n";
+        System.out.printf(formatList, "ID:", "| ORIGEN:", "| DESTINO:", "| SALIDA:", "| LLEGADA:", "| ID COLECTIVO:", "| PRECIO:", "| ESTADO:");
         for (RutaViaje i : list) {
-            System.out.printf(formatList, i.getId_ruta(), "| " + i.getOrigen(), "| " + i.getDestino(), "| " + i.getFecha_viaje(), "| " + i.getHora_salida(), "| " + i.getHora_llegada(), "| " + i.getColectivo().getId_colectivo(), "| " + i.getPrecio(), "| " + i.getEstado());
+            System.out.printf(formatList, i.getId_ruta(), "| " + i.getOrigen(), "| " + i.getDestino(), "| " + i.getHora_salida(), "| " + i.getHora_llegada(), "| " + i.getColectivo().getId_colectivo(), "| " + i.getPrecio(), "| " + i.getEstado());
         }
         System.out.println("");
     }
 
     static public RutaViaje findRuta() {
         System.out.println("");
-        listColectivo();
+        listRuta();
         RutaViaje find = null;
         while (true) {
             try {
@@ -709,7 +776,6 @@ public class TestMain {
         int id = 0;
         String origen = "";
         String destino = "";
-        Vector<Integer> fViaje = new Vector<>(Arrays.asList(1, 1, 1));
         Vector<Integer> hSalida = new Vector<>(Arrays.asList(1, 1, 1));
         Vector<Integer> hLlegada = new Vector<>(Arrays.asList(1, 1, 1));
         Colectivo colectivo = null;
@@ -720,9 +786,6 @@ public class TestMain {
             id = obj.getId_ruta();
             origen = obj.getOrigen();
             destino = obj.getDestino();
-            fViaje.set(0,obj.getFecha_viaje().getDayOfMonth());
-            fViaje.set(1,obj.getFecha_viaje().getMonthValue());
-            fViaje.set(2,obj.getFecha_viaje().getYear());
             hSalida.set(0,obj.getHora_salida().getHour());
             hSalida.set(1,obj.getHora_salida().getMinute());
             hSalida.set(2,obj.getHora_salida().getSecond());
@@ -744,50 +807,7 @@ public class TestMain {
             destino = scannerLine.nextLine();
         }
         
-        if (verifyChange(obj, "Desea modificar la fecha del viaje? (s/n): ")) {
-            System.out.println("Ingrese la fecha del viaje:");
-            var d = 1;
-            var m = 1;
-            var a = 1;
-            while (true) {
-                try {
-                    System.out.print("Ingrese el anio: ");
-                    a = scannerInt.nextInt();
-                    LocalDate aa = LocalDate.of(a,m,d);
-                    fViaje.set(0,a);
-                    break;
-                } catch (Exception e) {
-                    System.err.println("ERROR: Ingrese un mes válido!!");
-                    scannerInt.nextLine();
-                }
-            }
-            while (true) {
-                try {
-                    System.out.print("Ingrese el mes: ");
-                    m = scannerInt.nextInt();
-                    LocalDate mm = LocalDate.of(a,m,d);
-                    fViaje.set(1,m);
-                    break;
-                } catch (Exception e) {
-                    System.err.println("ERROR: Ingrese un mes válido!!");
-                    scannerInt.nextLine();
-                }
-            }
-            while (true) {
-                try {
-                    System.out.print("Ingrese el dia: ");
-                    d = scannerInt.nextInt();
-                    LocalDate dd = LocalDate.of(a,m,d);
-                    fViaje.set(2,d);
-                    break;
-                } catch (Exception e) {
-                    System.err.println("ERROR: Ingrese un dia valido!!");
-                    scannerInt.nextLine();
-                }
-            }
-        }
-        
-        if (verifyChange(obj, "Desea modificar la hora de salida? (s/n): ")) {
+        if (verifyChange(obj, "\nDesea modificar la hora de salida? (s/n): ")) {
             System.out.println("Ingrese los datos de la hora de salida:");
             var h = 1;
             var m = 1;
@@ -830,7 +850,7 @@ public class TestMain {
             }
         }
 
-        if (verifyChange(obj, "Desea modificar la hora de llegada? (s/n): ")) {
+        if (verifyChange(obj, "\nDesea modificar la hora de llegada? (s/n): ")) {
             System.out.println("Ingrese los datos de la hora de llegada:");
             var h = 1;
             var m = 1;
@@ -908,7 +928,203 @@ public class TestMain {
             }
         }
         
-        return new RutaViaje(id,origen,destino,LocalDate.of(fViaje.get(0),fViaje.get(1),fViaje.get(2)),LocalTime.of(hSalida.get(0),hSalida.get(1),hSalida.get(2)),LocalTime.of(hLlegada.get(0),hLlegada.get(1),hLlegada.get(2)),colectivo,precio,estado);
+        return new RutaViaje(id,origen,destino,LocalTime.of(hSalida.get(0),hSalida.get(1),hSalida.get(2)),LocalTime.of(hLlegada.get(0),hLlegada.get(1),hLlegada.get(2)),colectivo,precio,estado);
+    }
+    
+    // MÉTODOS DEL PASAJE
+    static public void listPasaje() {
+        System.out.println("Lista de los pasajes:");
+        ArrayList<Pasaje> list = pasajeData.getList();
+        String formatList = "%-3s %-3s %-3s %-3s %-8s %-3s %-3s %s%n";
+        System.out.printf(formatList, "ID:", "| PASAJERO:", "| LUGAR:", "| RUTA:", "| FECHA VENTA:", "| HORA VENTA:", "| PRECIO:", "| ESTADO:");
+        for (Pasaje i : list) {
+            System.out.printf(formatList, i.getId_pasaje(), "| " + i.getPasajero().getId_pasajero(), "| " + i.getLugar().getId_lugar(), "| " + i.getRuta().getId_ruta(), "| " + i.getFecha_venta(), "| " + i.getHora_venta(), "| " + i.getPrecio(), "| " + i.getEstado());
+        }
+        System.out.println("");
+    }
+
+    static public Pasaje findPasaje() {
+        System.out.println("");
+        listPasaje();
+        Pasaje find = null;
+        while (true) {
+            try {
+                System.out.print("Ingrese 0 para volver!!\nIngrese la ID del pasaje que desea tomar: ");
+                int id = scannerInt.nextInt();
+                if (id == 0) {
+                    System.out.println("Regresando al menu anterior\n");
+                    scannerInt.nextLine();
+                    break;
+                }
+                find = pasajeData.getById(id);
+                if (find != null) {
+                    break;
+                } else {
+                    System.err.println("ERROR: No se encontro el pasaje!!");
+                }
+            } catch (Exception e) {
+                System.err.println("ERROR: Solo se permiten valores numericos!!");
+                scannerInt.nextLine();
+            }
+        }
+        return find;
+    }
+
+    static public Pasaje createPasaje(Pasaje obj) {
+        int id = 0;
+        Pasajero pasajero = null;
+        Asiento lugar = null;
+        RutaViaje ruta = null;
+        Vector<Integer> fVenta = new Vector<>(Arrays.asList(1, 1, 1));
+        Vector<Integer> hVenta = new Vector<>(Arrays.asList(1, 1, 1));
+        double precio = 0;
+        boolean estado = false;
+
+        if (obj != null) {
+            id = obj.getId_pasaje();
+            pasajero = obj.getPasajero();
+            lugar = obj.getLugar();
+            ruta = obj.getRuta();
+            fVenta.set(0,obj.getFecha_venta().getYear());
+            fVenta.set(1,obj.getFecha_venta().getMonthValue());
+            fVenta.set(2,obj.getFecha_venta().getDayOfMonth());
+            hVenta.set(0,obj.getHora_venta().getHour());
+            hVenta.set(1,obj.getHora_venta().getMinute());
+            hVenta.set(2,obj.getHora_venta().getSecond());
+            precio = obj.getPrecio();
+            estado = obj.getEstado();
+        }
+        
+        if (verifyChange(obj, "Desea modificar el pasajero? (s/n): ")) {
+            pasajero = findPasajero();
+        }
+        
+        if (verifyChange(obj, "Desea modificar el lugar? (s/n): ")) {
+            lugar = findAsiento();
+        }
+        
+        if (verifyChange(obj, "Desea modificar la ruta? (s/n): ")) {
+            ruta = findRuta();
+        }
+        
+        if (verifyChange(obj, "\nDesea modificar la fecha de la venta? (s/n): ")) {
+            System.out.println("Ingrese la fecha de la venta:");
+            var d = 1;
+            var m = 1;
+            var a = 1;
+            while (true) {
+                try {
+                    System.out.print("Ingrese el anio: ");
+                    a = scannerInt.nextInt();
+                    LocalDate aa = LocalDate.of(a,m,d);
+                    fVenta.set(0,a);
+                    break;
+                } catch (Exception e) {
+                    System.err.println("ERROR: Ingrese un mes válido!!");
+                    scannerInt.nextLine();
+                }
+            }
+            while (true) {
+                try {
+                    System.out.print("Ingrese el mes: ");
+                    m = scannerInt.nextInt();
+                    LocalDate mm = LocalDate.of(a,m,d);
+                    fVenta.set(1,m);
+                    break;
+                } catch (Exception e) {
+                    System.err.println("ERROR: Ingrese un mes válido!!");
+                    scannerInt.nextLine();
+                }
+            }
+            while (true) {
+                try {
+                    System.out.print("Ingrese el dia: ");
+                    d = scannerInt.nextInt();
+                    LocalDate dd = LocalDate.of(a,m,d);
+                    fVenta.set(2,d);
+                    break;
+                } catch (Exception e) {
+                    System.err.println("ERROR: Ingrese un dia valido!!");
+                    scannerInt.nextLine();
+                }
+            }
+        }
+        
+        if (verifyChange(obj, "\nDesea modificar la hora de venta? (s/n): ")) {
+            System.out.println("Ingrese los datos de la hora de venta:");
+            var h = 1;
+            var m = 1;
+            var s = 1;
+            while (true) {
+                try {
+                    System.out.print("Ingrese la hora: ");
+                    h = scannerInt.nextInt();
+                    LocalTime hh = LocalTime.of(h,m,s);
+                    hVenta.set(0,h);
+                    break;
+                } catch (Exception e) {
+                    System.err.println("ERROR: Ingrese una hora valida!!");
+                    scannerInt.nextLine();
+                }
+            }
+            while (true) {
+                try {
+                    System.out.print("Ingrese los minutos: ");
+                    m = scannerInt.nextInt();
+                    LocalTime mm = LocalTime.of(h,m,s);
+                    hVenta.set(1,m);
+                    break;
+                } catch (Exception e) {
+                    System.err.println("ERROR: Ingrese un minuto válido!!");
+                    scannerInt.nextLine();
+                }
+            }
+            while (true) {
+                try {
+                    System.out.print("Ingrese los segundos: ");
+                    s = scannerInt.nextInt();
+                    LocalTime ss = LocalTime.of(h,m,s);
+                    hVenta.set(2,s);
+                    break;
+                } catch (Exception e) {
+                    System.err.println("ERROR: Ingrese un segundo válido!!");
+                    scannerInt.nextLine();
+                }
+            }
+        }
+        
+        if (verifyChange(obj, "Desea modificar el precio? (s/n): ")) {
+            while (true) {
+                try {
+                    System.out.print("Ingrese el precio del viaje: ");
+                    precio = scannerInt.nextInt();
+                    if (precio < 0) {
+                        System.err.println("ERROR: Ingrese un precio válido!!");
+                    } else {
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.err.println("ERROR: Ingrese un precio válido!!");
+                    scannerInt.nextLine();
+                }
+            }
+        }
+
+        if (verifyChange(obj, "Desea modificar el estado? (s/n): ")) {
+            while (true) {
+                System.out.print("Ingrese si el asiento esta activo (s/n): ");
+                String sactive = scannerLine.nextLine();
+                if (sactive.toLowerCase().contains("s")) {
+                    estado = true;
+                    break;
+                } else if (sactive.toLowerCase().contains("n")) {
+                    estado = false;
+                    break;
+                }
+            }
+        }
+        
+        return new Pasaje(id,pasajero,lugar,ruta,LocalDate.of(fVenta.get(0),fVenta.get(1),fVenta.get(2)),LocalTime.of(hVenta.get(0),hVenta.get(1),hVenta.get(2)),precio,estado);
     }
 
     // OTROS MÉTODOS

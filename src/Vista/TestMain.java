@@ -413,12 +413,11 @@ public class TestMain {
                 if (sactive.toLowerCase().contains("s")) {
                     estado = true;
                     break;
-                } else {
-                    if (sactive.toLowerCase().contains("n")) {
-                        break;
-                    }
-                    System.err.println("ERROR: solo se permite ingresar s o n!!");
+                } else if (sactive.toLowerCase().contains("n")) {
+                    estado = false;
+                    break;
                 }
+                System.err.println("ERROR: solo se permite ingresar s o n!!");
             }
         }
 
@@ -564,11 +563,9 @@ public class TestMain {
                 if (sactive.toLowerCase().contains("s")) {
                     estado = true;
                     break;
-                } else {
-                    if (sactive.toLowerCase().contains("n")) {
-                        break;
-                    }
-                    System.err.println("ERROR: solo se permite ingresar s o n!!");
+                } else if (sactive.toLowerCase().contains("n")) {
+                    estado = false;
+                    break;
                 }
             }
         }
@@ -659,11 +656,9 @@ public class TestMain {
                 if (sactive.toLowerCase().contains("s")) {
                     estado = true;
                     break;
-                } else {
-                    if (sactive.toLowerCase().contains("n")) {
-                        break;
-                    }
-                    System.err.println("ERROR: solo se permite ingresar s o n!!");
+                } else if (sactive.toLowerCase().contains("n")) {
+                    estado = false;
+                    break;
                 }
             }
         }
@@ -906,11 +901,9 @@ public class TestMain {
                 if (sactive.toLowerCase().contains("s")) {
                     estado = true;
                     break;
-                } else {
-                    if (sactive.toLowerCase().contains("n")) {
-                        break;
-                    }
-                    System.err.println("ERROR: solo se permite ingresar s o n!!");
+                } else if (sactive.toLowerCase().contains("n")) {
+                    estado = false;
+                    break;
                 }
             }
         }

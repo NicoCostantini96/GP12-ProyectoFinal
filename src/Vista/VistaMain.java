@@ -39,60 +39,60 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btnA5 = new javax.swing.JToggleButton();
-        btnA6 = new javax.swing.JToggleButton();
+        btnA4 = new javax.swing.JToggleButton();
+        btnA3 = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        btnA7 = new javax.swing.JToggleButton();
         btnA8 = new javax.swing.JToggleButton();
+        btnA7 = new javax.swing.JToggleButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        btnA3 = new javax.swing.JToggleButton();
-        btnA4 = new javax.swing.JToggleButton();
+        btnA6 = new javax.swing.JToggleButton();
+        btnA5 = new javax.swing.JToggleButton();
         jLabel14 = new javax.swing.JLabel();
+        btnA11 = new javax.swing.JToggleButton();
         btnA9 = new javax.swing.JToggleButton();
-        btnA10 = new javax.swing.JToggleButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        btnA11 = new javax.swing.JToggleButton();
         btnA12 = new javax.swing.JToggleButton();
+        btnA10 = new javax.swing.JToggleButton();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        btnA13 = new javax.swing.JToggleButton();
         btnA14 = new javax.swing.JToggleButton();
+        btnA13 = new javax.swing.JToggleButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         btnA15 = new javax.swing.JToggleButton();
         btnA16 = new javax.swing.JToggleButton();
         jLabel23 = new javax.swing.JLabel();
-        btnA17 = new javax.swing.JToggleButton();
         btnA18 = new javax.swing.JToggleButton();
+        btnA17 = new javax.swing.JToggleButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         btnA19 = new javax.swing.JToggleButton();
         btnA20 = new javax.swing.JToggleButton();
         jLabel27 = new javax.swing.JLabel();
-        btnA21 = new javax.swing.JToggleButton();
         btnA22 = new javax.swing.JToggleButton();
+        btnA21 = new javax.swing.JToggleButton();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         btnA23 = new javax.swing.JToggleButton();
         btnA24 = new javax.swing.JToggleButton();
         jLabel31 = new javax.swing.JLabel();
-        btnA25 = new javax.swing.JToggleButton();
         btnA26 = new javax.swing.JToggleButton();
+        btnA25 = new javax.swing.JToggleButton();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         btnA27 = new javax.swing.JToggleButton();
         btnA28 = new javax.swing.JToggleButton();
         jLabel35 = new javax.swing.JLabel();
-        btnA29 = new javax.swing.JToggleButton();
         btnA30 = new javax.swing.JToggleButton();
+        btnA29 = new javax.swing.JToggleButton();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -107,7 +107,6 @@ public class VistaMain extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(706, 521));
         setResizable(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -159,8 +158,6 @@ public class VistaMain extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(2, 2));
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -179,11 +176,11 @@ public class VistaMain extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -203,11 +200,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("4");
 
-        btnA5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA5.addActionListener(this::btnA5ActionPerformed);
+        btnA4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA4.addActionListener(this::btnA4ActionPerformed);
 
-        btnA6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA6.addActionListener(this::btnA6ActionPerformed);
+        btnA3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA3.addActionListener(this::btnA3ActionPerformed);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("3");
@@ -215,11 +212,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("8");
 
-        btnA7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA7.addActionListener(this::btnA7ActionPerformed);
-
         btnA8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA8.addActionListener(this::btnA8ActionPerformed);
+
+        btnA7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA7.addActionListener(this::btnA7ActionPerformed);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("7");
@@ -227,20 +224,20 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("6");
 
-        btnA3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA3.addActionListener(this::btnA3ActionPerformed);
+        btnA6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA6.addActionListener(this::btnA6ActionPerformed);
 
-        btnA4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA4.addActionListener(this::btnA4ActionPerformed);
+        btnA5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA5.addActionListener(this::btnA5ActionPerformed);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("5");
 
+        btnA11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA11.addActionListener(this::btnA11ActionPerformed);
+
         btnA9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA9.addActionListener(this::btnA9ActionPerformed);
-
-        btnA10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA10.addActionListener(this::btnA10ActionPerformed);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("12");
@@ -251,11 +248,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("11");
 
-        btnA11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA11.addActionListener(this::btnA11ActionPerformed);
-
         btnA12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA12.addActionListener(this::btnA12ActionPerformed);
+
+        btnA10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA10.addActionListener(this::btnA10ActionPerformed);
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("10");
@@ -263,11 +260,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("16");
 
-        btnA13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA13.addActionListener(this::btnA13ActionPerformed);
-
         btnA14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA14.addActionListener(this::btnA14ActionPerformed);
+
+        btnA13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA13.addActionListener(this::btnA13ActionPerformed);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("15");
@@ -287,11 +284,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("20");
 
-        btnA17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA17.addActionListener(this::btnA17ActionPerformed);
-
         btnA18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA18.addActionListener(this::btnA18ActionPerformed);
+
+        btnA17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA17.addActionListener(this::btnA17ActionPerformed);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("19");
@@ -311,11 +308,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("24");
 
-        btnA21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA21.addActionListener(this::btnA21ActionPerformed);
-
         btnA22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA22.addActionListener(this::btnA22ActionPerformed);
+
+        btnA21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA21.addActionListener(this::btnA21ActionPerformed);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("23");
@@ -335,11 +332,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("28");
 
-        btnA25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA25.addActionListener(this::btnA25ActionPerformed);
-
         btnA26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA26.addActionListener(this::btnA26ActionPerformed);
+
+        btnA25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA25.addActionListener(this::btnA25ActionPerformed);
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("27");
@@ -359,11 +356,11 @@ public class VistaMain extends javax.swing.JFrame {
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("32");
 
-        btnA29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
-        btnA29.addActionListener(this::btnA29ActionPerformed);
-
         btnA30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
         btnA30.addActionListener(this::btnA30ActionPerformed);
+
+        btnA29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/acientov.png"))); // NOI18N
+        btnA29.addActionListener(this::btnA29ActionPerformed);
 
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel36.setText("31");
@@ -391,9 +388,9 @@ public class VistaMain extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA26, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
                             .addComponent(btnA25, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(btnA26, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
@@ -407,9 +404,9 @@ public class VistaMain extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA22, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
                             .addComponent(btnA21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(btnA22, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
@@ -423,9 +420,9 @@ public class VistaMain extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA18, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
                             .addComponent(btnA17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(btnA18, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
@@ -439,9 +436,9 @@ public class VistaMain extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
                             .addComponent(btnA13, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(btnA14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
@@ -455,33 +452,33 @@ public class VistaMain extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnA9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(5, 5, 5)
-                            .addComponent(btnA12, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnA10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
                             .addComponent(btnA11, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(btnA12, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnA5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(5, 5, 5)
-                            .addComponent(btnA3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnA6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(15, 15, 15)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
                             .addComponent(btnA7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(btnA8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
@@ -495,21 +492,22 @@ public class VistaMain extends javax.swing.JFrame {
                             .addGap(15, 15, 15)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(btnA6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnA3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(5, 5, 5)
-                            .addComponent(btnA5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnA4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(btnA30, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
                         .addComponent(btnA29, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(btnA30, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
                         .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(btnA31, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(btnA32, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -522,8 +520,8 @@ public class VistaMain extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -534,25 +532,25 @@ public class VistaMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -563,8 +561,8 @@ public class VistaMain extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -575,8 +573,8 @@ public class VistaMain extends javax.swing.JFrame {
                         .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -587,8 +585,8 @@ public class VistaMain extends javax.swing.JFrame {
                         .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -599,8 +597,8 @@ public class VistaMain extends javax.swing.JFrame {
                         .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -611,8 +609,8 @@ public class VistaMain extends javax.swing.JFrame {
                         .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnA30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnA29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnA30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
@@ -643,7 +641,7 @@ public class VistaMain extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -688,11 +686,11 @@ public class VistaMain extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -738,53 +736,53 @@ public class VistaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA2ActionPerformed
 
-    private void btnA5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA5ActionPerformed
+    private void btnA4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnA5ActionPerformed
-
-    private void btnA6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnA6ActionPerformed
-
-    private void btnA7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnA7ActionPerformed
-
-    private void btnA8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnA8ActionPerformed
+    }//GEN-LAST:event_btnA4ActionPerformed
 
     private void btnA3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA3ActionPerformed
 
-    private void btnA4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA4ActionPerformed
+    private void btnA8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnA4ActionPerformed
+    }//GEN-LAST:event_btnA8ActionPerformed
 
-    private void btnA9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA9ActionPerformed
+    private void btnA7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnA9ActionPerformed
+    }//GEN-LAST:event_btnA7ActionPerformed
 
-    private void btnA10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA10ActionPerformed
+    private void btnA6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnA10ActionPerformed
+    }//GEN-LAST:event_btnA6ActionPerformed
+
+    private void btnA5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnA5ActionPerformed
 
     private void btnA11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA11ActionPerformed
 
+    private void btnA9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnA9ActionPerformed
+
     private void btnA12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA12ActionPerformed
 
-    private void btnA13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA13ActionPerformed
+    private void btnA10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA10ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnA13ActionPerformed
+    }//GEN-LAST:event_btnA10ActionPerformed
 
     private void btnA14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA14ActionPerformed
+
+    private void btnA13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnA13ActionPerformed
 
     private void btnA15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA15ActionPerformed
         // TODO add your handling code here:
@@ -794,13 +792,13 @@ public class VistaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA16ActionPerformed
 
-    private void btnA17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnA17ActionPerformed
-
     private void btnA18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA18ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA18ActionPerformed
+
+    private void btnA17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnA17ActionPerformed
 
     private void btnA19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA19ActionPerformed
         // TODO add your handling code here:
@@ -810,13 +808,13 @@ public class VistaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA20ActionPerformed
 
-    private void btnA21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnA21ActionPerformed
-
     private void btnA22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA22ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA22ActionPerformed
+
+    private void btnA21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnA21ActionPerformed
 
     private void btnA23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA23ActionPerformed
         // TODO add your handling code here:
@@ -826,13 +824,13 @@ public class VistaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA24ActionPerformed
 
-    private void btnA25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnA25ActionPerformed
-
     private void btnA26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA26ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA26ActionPerformed
+
+    private void btnA25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA25ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnA25ActionPerformed
 
     private void btnA27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA27ActionPerformed
         // TODO add your handling code here:
@@ -842,13 +840,13 @@ public class VistaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA28ActionPerformed
 
-    private void btnA29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA29ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnA29ActionPerformed
-
     private void btnA30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA30ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA30ActionPerformed
+
+    private void btnA29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA29ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnA29ActionPerformed
 
     private void btnA31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA31ActionPerformed
         // TODO add your handling code here:

@@ -136,4 +136,31 @@ public class RutaViajeData {
         }
         return list;
     }
+    
+    public ArrayList<RutaViaje> SQL(String sql) {
+        ArrayList<RutaViaje> lista = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet res = ps.executeQuery();
+
+            while (res.next()) {
+                lista.add(new RutaViaje(
+                    res.getInt("id_ruta"),
+                    res.getString("origen"),
+                    res.getString("destino"),
+                    res.getTime("hora_salida").toLocalTime(),
+                    res.getTime("hora_llegada").toLocalTime(),
+                    colectivoData.getById(res.getInt("id_colectivo")),
+                    res.getBigDecimal("precio").doubleValue(),
+                    res.getBoolean("estado")
+                ));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("ERROR SQL: " + e);
+        }
+
+        return lista;
+    }
 }

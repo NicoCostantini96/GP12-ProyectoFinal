@@ -61,8 +61,6 @@ public class VistaVentaPasaje extends javax.swing.JInternalFrame {
         jtbA31 = new javax.swing.JToggleButton();
         jtbA32 = new javax.swing.JToggleButton();
         jtbA33 = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaHoras = new javax.swing.JList<>();
         jpSelecciones = new javax.swing.JPanel();
         lblFecha = new javax.swing.JLabel();
         cbDestino = new javax.swing.JComboBox<>();
@@ -334,13 +332,6 @@ public class VistaVentaPasaje extends javax.swing.JInternalFrame {
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        listaHoras.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listaHoras);
-
         jpSelecciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblFecha.setText("Seleccione la fecha de salida");
@@ -405,15 +396,9 @@ public class VistaVentaPasaje extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jpSelecciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(lblViajes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(143, 143, 143)
+                .addComponent(lblViajes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(jpBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -422,8 +407,6 @@ public class VistaVentaPasaje extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(lblViajes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -574,7 +557,6 @@ public class VistaVentaPasaje extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbDestino;
     private javax.swing.JComboBox<String> cbOrigen;
     private com.toedter.calendar.JCalendar jCalendar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBotones;
     private javax.swing.JPanel jpSelecciones;
     private javax.swing.JToggleButton jtbA1;
@@ -615,6 +597,5 @@ public class VistaVentaPasaje extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblOrigen;
     private javax.swing.JLabel lblViajes;
-    private javax.swing.JList<String> listaHoras;
     // End of variables declaration//GEN-END:variables
 }

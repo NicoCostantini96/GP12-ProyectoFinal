@@ -49,7 +49,7 @@ public class PasajeroData {
             }else
                 System.err.println("ERROR: No se ha encontrado el pasajero!!\n");
         }catch(SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el pasajero!!\n");
+            System.err.println("ERROR: No se ha encontrado el pasajero!!\n" + e);
         }
     }
     
@@ -124,5 +124,31 @@ public class PasajeroData {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public ArrayList<Pasajero> SQL(String sql) {
+        ArrayList<Pasajero> lista = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet res = ps.executeQuery();
+
+            while (res.next()) {
+                lista.add(new Pasajero(
+                    res.getInt("id_pasajero"),
+                    res.getString("dni"),
+                    res.getString("nombre"),
+                    res.getString("apellidos"),
+                    res.getString("correo"),
+                    res.getString("telefono"),
+                    res.getBoolean("estado")
+                ));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("ERROR SQL: " + e);
+        }
+
+        return lista;
     }
 }

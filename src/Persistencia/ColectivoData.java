@@ -53,6 +53,7 @@ public class ColectivoData {
                 System.err.println("ERROR: No se ha encontrado el colectivo!!\n");
         }catch(SQLException e) {
             System.err.println("ERROR: No se ha encontrado el colectivo!!\n");
+            System.out.println(e);
         }
     }
     

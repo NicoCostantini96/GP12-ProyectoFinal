@@ -12,8 +12,8 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
 
     javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
     
-    public ArrayList<Pasajero> PasajeroElements = new ArrayList<>();
-    public int PasajeroSelected = -1;
+    public ArrayList<Pasajero> tableList = new ArrayList<>();
+    public int tableIndex = -1;
     
     public VistaPasajero() {
         initComponents();
@@ -29,7 +29,7 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
                 public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                     if (!evt.getValueIsAdjusting()) {
                         int selection = tblPasajero.getSelectedRow();
-                        if (selection != -1) {PasajeroSelected = selection; updateIndex();}
+                        if (selection != -1) {tableIndex = selection; updateIndex();}
                     }
                 }
             }
@@ -38,8 +38,8 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
     
     public void updateIndex() {
         boolean type = false;
-        if (PasajeroSelected != -1) {
-            tblPasajero.setRowSelectionInterval(PasajeroSelected, PasajeroSelected);
+        if (tableIndex != -1) {
+            tblPasajero.setRowSelectionInterval(tableIndex, tableIndex);
             type = true;
         }
         btnModificar.setEnabled(type);
@@ -79,9 +79,9 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
         tblPasajero.getColumnModel().getColumn(5).setPreferredWidth(5);
         tblPasajero.getColumnModel().getColumn(5).setCellRenderer(renderer);
         
-        PasajeroElements = pasajeroData.getList();
+        tableList = pasajeroData.getList();
         
-        for (Pasajero p : PasajeroElements) {
+        for (Pasajero p : tableList) {
             String estado = "Inactivo";
             if (p.getEstado()) {estado = "Activo";}
             table.addRow(new Object[]{p.getDni(), p.getNombre(), p.getApellido(), p.getCorreo(), p.getTelefono(), estado});
@@ -188,7 +188,7 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
             this.getX() + ((this.getWidth() - vistaPasajeroM.getWidth()) / 2),
             this.getY() + ((this.getHeight() - vistaPasajeroM.getHeight()) / 2)
         );
-        vistaPasajeroM.pasajero = PasajeroElements.get(PasajeroSelected);
+        vistaPasajeroM.pasajero = tableList.get(tableIndex);
         vistaPasajeroM.start(2);
         vistaPasajeroM.show();
         desktopMain.moveToFront(vistaPasajeroM);
@@ -199,27 +199,26 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
             this.getX() + ((this.getWidth() - vistaPasajeroM.getWidth()) / 2),
             this.getY() + ((this.getHeight() - vistaPasajeroM.getHeight()) / 2)
         );
-        vistaPasajeroM.pasajero = PasajeroElements.get(PasajeroSelected);
         vistaPasajeroM.start(1);
         vistaPasajeroM.show();
         desktopMain.moveToFront(vistaPasajeroM);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int id = PasajeroElements.get(PasajeroSelected).getId_pasajero();
-        if ((PasajeroSelected+1) == PasajeroElements.size()) {PasajeroSelected--;}
+        int id = tableList.get(tableIndex).getId_pasajero();
+        if ((tableIndex+1) == tableList.size()) {tableIndex--;}
         vistaMain.pasajero("REMOVE",id);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
-        Pasajero p = PasajeroElements.get(PasajeroSelected);
+        Pasajero p = tableList.get(tableIndex);
         p.setEstado(true);
         pasajeroData.update(p);
         updateAll();
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
-        Pasajero p = PasajeroElements.get(PasajeroSelected);
+        Pasajero p = tableList.get(tableIndex);
         p.setEstado(false);
         pasajeroData.update(p);
         updateAll();

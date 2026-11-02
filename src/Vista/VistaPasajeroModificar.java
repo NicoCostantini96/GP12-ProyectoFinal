@@ -1,7 +1,7 @@
 package Vista;
 
 import Modelo.Pasajero;
-import static Vista.VistaMain.pasajetoData;
+import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.vistaMain;
 
 public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
@@ -455,7 +455,7 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
             lblCorreo.getText().length() < 1 &&
             lblTelefono.getText().length() < 1
         ) {
-            int id = pasajero.getId_pasajero();
+            int id = (pasajero != null) ? pasajero.getId_pasajero() : 0;
             String dni = txtDni.getText();
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
@@ -464,12 +464,11 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
             
             Pasajero p = new Pasajero(id,dni,nombre,apellido,correo,telefono,true);
             
-            if (lblTitulo.getText().contains("AGREGAR")) {
-                pasajetoData.insert(p);
+            if (estate == 1) {
+                pasajeroData.insert(p);
                 vistaMain.pasajero("INSERT",0);
-            }
-            if (lblTitulo.getText().contains("MODIFICAR")) {
-                pasajetoData.update(p);
+            } else {
+                pasajeroData.update(p);
                 vistaMain.pasajero("MODIFY",pasajero.getId_pasajero());
             }
         }
@@ -492,7 +491,7 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblNombre.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+")) {
-                lblNombre.setText("No se permiten letras!!");
+                lblNombre.setText("Solo se permiten letras!!");
             }else if (txt.length() > 33) {
                 lblNombre.setText("Solo se permiten 33 caracteres!!");
             }
@@ -504,7 +503,7 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblApellido.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+")) {
-                lblApellido.setText("No se permiten letras!!");
+                lblApellido.setText("Solo se permiten letras!!");
             }else if (txt.length() > 33) {
                 lblApellido.setText("Solo se permiten 33 caracteres!!");
             }

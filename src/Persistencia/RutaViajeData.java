@@ -38,7 +38,7 @@ public class RutaViajeData {
                 System.out.println(cGreen + "Se registró la ruta con éxito.\n" + cReset);
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: Los datos de la ruta son incompatibles.\n");
+            System.err.println("ERROR: Los datos de la ruta son incompatibles.\n" + e);
         }
     }
 
@@ -56,13 +56,13 @@ public class RutaViajeData {
                 System.err.println("ERROR: No se ha encontrado la ruta indicada.\n");
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: No se ha encontrado la ruta indicada.\n");
+            System.err.println("ERROR: No se ha encontrado la ruta indicada.\n" + e);
         }
     }
 
     public void update(RutaViaje obj) {
         try {
-            String sql = "update rutas set origen = ?, destino = ?, hora_salida = ?, hora_llegada = ?, id_colectivo = ?, precio = ?, estado = ? where id_rutas = ?";
+            String sql = "update rutas set origen = ?, destino = ?, hora_salida = ?, hora_llegada = ?, id_colectivo = ?, precio = ?, estado = ? where id_ruta = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getOrigen());
             ps.setString(2, obj.getDestino());
@@ -78,7 +78,7 @@ public class RutaViajeData {
                 System.out.println(cGreen + "Se ha editado la ruta con éxito.\n" + cReset);
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: Los datos de la ruta son incompatibles.\n");
+            System.err.println("ERROR: Los datos de la ruta son incompatibles.\n" + e);
         }
     }
 

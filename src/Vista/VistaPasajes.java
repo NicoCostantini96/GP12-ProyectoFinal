@@ -2,7 +2,7 @@ package Vista;
 
 import Modelo.Pasajero;
 import Modelo.RutaViaje;
-import static Vista.VistaMain.pasajetoData;
+import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.viajeData;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -49,7 +49,7 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
 
     public void updateCMBPasajero() {
         cmbPasajero.removeAllItems();
-        for (Pasajero p: pasajetoData.getList()) {
+        for (Pasajero p: pasajeroData.getList()) {
             cmbPasajeroElements.add(p);
             cmbPasajero.addItem(p.getId_pasajero()+" - "+p.getNombre()+" "+p.getApellido());
         }

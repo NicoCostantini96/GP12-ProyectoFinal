@@ -15,9 +15,14 @@ import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class VistaMain extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaMain.class.getName());
 
     public static PasajeroData pasajeroData = new PasajeroData();
@@ -25,7 +30,7 @@ public class VistaMain extends javax.swing.JFrame {
     public static AsientoData asientoData = new AsientoData();
     public static RutaViajeData viajeData = new RutaViajeData();
     public static PasajeData pasajeData = new PasajeData();
-    
+
     public static VistaMain vistaMain;
     public static VistaPasajero vistaPasajero = new VistaPasajero();
     public static VistaPasajeroModificar vistaPasajeroM = new VistaPasajeroModificar();
@@ -34,34 +39,49 @@ public class VistaMain extends javax.swing.JFrame {
     public static VistaViaje vistaViaje = new VistaViaje();
     public static VistaViajeModificar vistaViajeM = new VistaViajeModificar();
     public static VistaPasajes vistaPasajes = new VistaPasajes();
-    
+
     public static JDesktopPane desktopMain;
-    
+
     public VistaMain() {
         initComponents();
         vistaMain = this;
-        desktopMain = jDesktopPane1; 
-        desktopMain.add(vistaPasajero); desktopMain.add(vistaPasajeroM);
-        desktopMain.add(vistaColectivo); desktopMain.add(vistaColectivoM);
-        desktopMain.add(vistaViaje); desktopMain.add(vistaViajeM);
+        desktopMain = jDesktopPane1;
+        desktopMain.add(vistaPasajero);
+        desktopMain.add(vistaPasajeroM);
+        desktopMain.add(vistaColectivo);
+        desktopMain.add(vistaColectivoM);
+        desktopMain.add(vistaViaje);
+        desktopMain.add(vistaViajeM);
         desktopMain.add(vistaPasajes);
+        img();
     }
-    
+
+    public void img() {
+        ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/IMG/flechaflash.jpg"));
+        int ancho = 594;
+        int alto = 470;
+        // Escala la imagen con alta calidad (Image.SCALE_SMOOTH)
+        Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        jLabel1.setIcon(new ImageIcon(imagenEscalada));
+    }
+
     public void pasajero(String type, int id) {
         if (type.equals("INSERT")) {
             vistaPasajero.tableIndex = vistaPasajero.tableList.size();
             vistaPasajeroM.hide();
         }
         if (type.equals("REMOVE")) {
-            for (Pasaje p: pasajeData.SQL("select * from pasajes where id_pasajero = "+id)) {
-                pasajeData.remove(p.getId_pasaje()); 
+            for (Pasaje p : pasajeData.SQL("select * from pasajes where id_pasajero = " + id)) {
+                pasajeData.remove(p.getId_pasaje());
             }
-            if (vistaPasajeroM.pasajero != null && vistaPasajeroM.pasajero.getId_pasajero() == id && vistaPasajeroM.estate == 2) {vistaPasajeroM.hide();}
+            if (vistaPasajeroM.pasajero != null && vistaPasajeroM.pasajero.getId_pasajero() == id && vistaPasajeroM.estate == 2) {
+                vistaPasajeroM.hide();
+            }
             pasajeroData.remove(id);
         }
         if (type.equals("MODIFY")) {
             int index = -1;
-            for (Pasajero p: pasajeroData.getList()) {
+            for (Pasajero p : pasajeroData.getList()) {
                 index++;
                 if (p.getId_pasajero() == id) {
                     break;
@@ -72,46 +92,48 @@ public class VistaMain extends javax.swing.JFrame {
         }
         vistaPasajero.updateAll();
     }
-    
+
     public void colectivo(String type, int id) {
         if (type.equals("INSERT")) {
             vistaColectivo.tableIndex = vistaColectivo.tableList.size();
             vistaColectivoM.hide();
         }
         if (type.equals("REMOVE")) {
-            for (Pasaje p: pasajeData.SQL(
-                    "select * from pasajes\n" +
-                    "join rutas on rutas.id_ruta = pasajes.id_ruta\n" +
-                    "join lugares on lugares.id_lugar = pasajes.id_lugar\n" +
-                    "join colectivos c1 on c1.id_colectivo = rutas.id_colectivo\n" +
-                    "join colectivos c2 on c2.id_colectivo = lugares.id_colectivo\n" +
-                    "where c1.id_colectivo = "+id+" or c2.id_colectivo = "+id
-                )) {
-                pasajeData.remove(p.getId_pasaje()); 
-            }
-            
-            for (Asiento a: asientoData.SQL(
-                    "select * from lugares\n" +
-                    "join colectivos on colectivos.id_colectivo = lugares.id_colectivo\n" +
-                    "where colectivos.id_colectivo = "+id
-                )) {
-                asientoData.remove(a.getId_lugar()); 
-            }
-            
-            for (RutaViaje r: viajeData.SQL(
-                    "select * from rutas\n" +
-                    "join colectivos on colectivos.id_colectivo = rutas.id_colectivo\n" +
-                    "where colectivos.id_colectivo = "+id
-                )) {
-                ruta("REMOVE",r.getId_ruta());
+            for (Pasaje p : pasajeData.SQL(
+                    "select * from pasajes\n"
+                    + "join rutas on rutas.id_ruta = pasajes.id_ruta\n"
+                    + "join lugares on lugares.id_lugar = pasajes.id_lugar\n"
+                    + "join colectivos c1 on c1.id_colectivo = rutas.id_colectivo\n"
+                    + "join colectivos c2 on c2.id_colectivo = lugares.id_colectivo\n"
+                    + "where c1.id_colectivo = " + id + " or c2.id_colectivo = " + id
+            )) {
+                pasajeData.remove(p.getId_pasaje());
             }
 
-            if (vistaColectivoM.colectivo != null && vistaColectivoM.colectivo.getId_colectivo() == id && vistaColectivoM.estate == 2) {vistaColectivoM.hide();}
+            for (Asiento a : asientoData.SQL(
+                    "select * from lugares\n"
+                    + "join colectivos on colectivos.id_colectivo = lugares.id_colectivo\n"
+                    + "where colectivos.id_colectivo = " + id
+            )) {
+                asientoData.remove(a.getId_lugar());
+            }
+
+            for (RutaViaje r : viajeData.SQL(
+                    "select * from rutas\n"
+                    + "join colectivos on colectivos.id_colectivo = rutas.id_colectivo\n"
+                    + "where colectivos.id_colectivo = " + id
+            )) {
+                ruta("REMOVE", r.getId_ruta());
+            }
+
+            if (vistaColectivoM.colectivo != null && vistaColectivoM.colectivo.getId_colectivo() == id && vistaColectivoM.estate == 2) {
+                vistaColectivoM.hide();
+            }
             colectivoData.remove(id);
         }
         if (type.equals("MODIFY")) {
             int index = -1;
-            for (Colectivo c: colectivoData.getList()) {
+            for (Colectivo c : colectivoData.getList()) {
                 index++;
                 if (c.getId_colectivo() == id) {
                     break;
@@ -129,15 +151,17 @@ public class VistaMain extends javax.swing.JFrame {
             vistaViajeM.hide();
         }
         if (type.equals("REMOVE")) {
-            for (Pasaje p: pasajeData.SQL("select * from pasajes where id_ruta = "+id)) {
-                pasajeData.remove(p.getId_pasaje()); 
+            for (Pasaje p : pasajeData.SQL("select * from pasajes where id_ruta = " + id)) {
+                pasajeData.remove(p.getId_pasaje());
             }
-            if (vistaViajeM.ruta != null && vistaViajeM.ruta.getId_ruta() == id && vistaViajeM.estate == 2) {vistaViajeM.hide();}
+            if (vistaViajeM.ruta != null && vistaViajeM.ruta.getId_ruta() == id && vistaViajeM.estate == 2) {
+                vistaViajeM.hide();
+            }
             viajeData.remove(id);
         }
         if (type.equals("MODIFY")) {
             int index = -1;
-            for (RutaViaje v: viajeData.getList()) {
+            for (RutaViaje v : viajeData.getList()) {
                 index++;
                 if (v.getId_ruta() == id) {
                     break;
@@ -148,13 +172,14 @@ public class VistaMain extends javax.swing.JFrame {
         }
         vistaViaje.updateAll();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jMenu3 = new javax.swing.JMenu();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -171,20 +196,29 @@ public class VistaMain extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(56, 36));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(600, 600));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(600, 600));
+
+        jLabel1.setAutoscrolls(true);
+
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Archivo");
@@ -256,31 +290,38 @@ public class VistaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        vistaPasajero.setLocation(menuPasajero.getX(), 0); vistaPasajero.show();
+        vistaPasajero.setLocation(menuPasajero.getX(), 0);
+        vistaPasajero.show();
         desktopMain.moveToFront(vistaPasajero);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        vistaPasajes.setLocation(menuPasajes.getX(),0); vistaPasajes.show();
+        vistaPasajes.setLocation(menuPasajes.getX(), 0);
+        vistaPasajes.show();
         desktopMain.moveToFront(vistaPasajes);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        vistaColectivo.setLocation(menuColectivo.getX(), 0); vistaColectivo.show();
+        vistaColectivo.setLocation(menuColectivo.getX(), 0);
+        vistaColectivo.show();
         desktopMain.moveToFront(vistaColectivo);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        vistaViaje.setLocation(menuRuta.getX(), 0); vistaViaje.show();
+        vistaViaje.setLocation(menuRuta.getX(), 0);
+        vistaViaje.show();
         desktopMain.moveToFront(vistaViaje);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new VistaMain().setVisible(true));
+
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;

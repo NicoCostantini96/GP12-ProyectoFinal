@@ -117,4 +117,27 @@ public class AsientoData {
         }
         return list;
     }
+    
+    public ArrayList<Asiento> SQL(String sql) {
+        ArrayList<Asiento> lista = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet res = ps.executeQuery();
+
+            while (res.next()) {
+                lista.add(new Asiento(
+                        res.getInt("id_lugar"),
+                        colectivoData.getById(res.getInt("id_colectivo")),
+                        res.getInt("numero_asiento"),
+                        res.getBoolean("estado")
+                ));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("ERROR SQL: " + e);
+        }
+
+        return lista;
+    }
 }

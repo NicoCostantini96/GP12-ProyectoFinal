@@ -130,4 +130,31 @@ public class PasajeData {
         }
         return list;
     }
+    
+    public ArrayList<Pasaje> SQL(String sql) {
+        ArrayList<Pasaje> lista = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet res = ps.executeQuery();
+
+            while (res.next()) {
+                lista.add(new Pasaje(
+                    res.getInt("id_pasaje"),
+                    pasajeroData.getById(res.getInt("id_pasajero")),
+                    asientoData.getById(res.getInt("id_lugar")),
+                    rutaData.getById(res.getInt("id_ruta")),
+                    res.getDate("fecha_venta").toLocalDate(),
+                    res.getTime("hora_venta").toLocalTime(),
+                    res.getDouble("precio"),
+                    res.getBoolean("estado")
+                ));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("ERROR SQL: " + e);
+        }
+
+        return lista;
+    }
 }

@@ -53,10 +53,8 @@ public class VistaMain extends javax.swing.JFrame {
             vistaPasajeroM.hide();
         }
         if (type.equals("REMOVE")) {
-            for (Pasaje p: pasajeData.getList()) {
-                if (p.getPasajero().getId_pasajero() == id) {
-                    pasajeData.remove(p.getId_pasaje()); break;
-                }
+            for (Pasaje p: pasajeData.SQL("select * from pasajes where id_pasajero = "+id)) {
+                pasajeData.remove(p.getId_pasaje()); 
             }
             if (vistaPasajeroM.pasajero != null && vistaPasajeroM.pasajero.getId_pasajero() == id && vistaPasajeroM.estate == 2) {vistaPasajeroM.hide();}
             pasajeroData.remove(id);
@@ -81,36 +79,33 @@ public class VistaMain extends javax.swing.JFrame {
             vistaColectivoM.hide();
         }
         if (type.equals("REMOVE")) {
-            for (Pasaje p : new ArrayList<>(pasajeData.getList())) {
-                boolean pertenece = false;
-                for (Asiento a : asientoData.getList()) {
-                    if (a.getId_lugar() == p.getLugar().getId_lugar()
-                        && a.getColectivo().getId_colectivo() == id) {
-                        pertenece = true;
-                        break;
-                    }
-                }
-                for (RutaViaje r : viajeData.getList()) {
-                    if (p.getRuta().getId_ruta() == r.getId_ruta()
-                        && r.getColectivo().getId_colectivo() == id) {
-                        pertenece = true;
-                        break;
-                    }
-                }
-                if (pertenece) {
-                    pasajeData.remove(p.getId_pasaje());
-                }
+            for (Pasaje p: pasajeData.SQL(
+                    "select * from pasajes\n" +
+                    "join rutas on rutas.id_ruta = pasajes.id_ruta\n" +
+                    "join lugares on lugares.id_lugar = pasajes.id_lugar\n" +
+                    "join colectivos c1 on c1.id_colectivo = rutas.id_colectivo\n" +
+                    "join colectivos c2 on c2.id_colectivo = lugares.id_colectivo\n" +
+                    "where c1.id_colectivo = "+id+" or c2.id_colectivo = "+id
+                )) {
+                pasajeData.remove(p.getId_pasaje()); 
             }
-            for (Asiento a : new ArrayList<>(asientoData.getList())) {
-                if (a.getColectivo().getId_colectivo() == id) {
-                    asientoData.remove(a.getId_lugar());
-                }
+            
+            for (Asiento a: asientoData.SQL(
+                    "select * from lugares\n" +
+                    "join colectivos on colectivos.id_colectivo = lugares.id_colectivo\n" +
+                    "where colectivos.id_colectivo = "+id
+                )) {
+                asientoData.remove(a.getId_lugar()); 
             }
-            for (RutaViaje r : new ArrayList<>(viajeData.getList())) {
-                if (r.getColectivo().getId_colectivo() == id) {
-                    ruta("REMOVE",r.getId_ruta());
-                }
+            
+            for (RutaViaje r: viajeData.SQL(
+                    "select * from rutas\n" +
+                    "join colectivos on colectivos.id_colectivo = rutas.id_colectivo\n" +
+                    "where colectivos.id_colectivo = "+id
+                )) {
+                ruta("REMOVE",r.getId_ruta());
             }
+
             if (vistaColectivoM.colectivo != null && vistaColectivoM.colectivo.getId_colectivo() == id && vistaColectivoM.estate == 2) {vistaColectivoM.hide();}
             colectivoData.remove(id);
         }
@@ -134,10 +129,8 @@ public class VistaMain extends javax.swing.JFrame {
             vistaViajeM.hide();
         }
         if (type.equals("REMOVE")) {
-            for (Pasaje p: pasajeData.getList()) {
-                if (p.getRuta().getId_ruta() == id) {
-                    pasajeData.remove(p.getId_pasaje()); break;
-                }
+            for (Pasaje p: pasajeData.SQL("select * from pasajes where id_ruta = "+id)) {
+                pasajeData.remove(p.getId_pasaje()); 
             }
             if (vistaViajeM.ruta != null && vistaViajeM.ruta.getId_ruta() == id && vistaViajeM.estate == 2) {vistaViajeM.hide();}
             viajeData.remove(id);
@@ -255,7 +248,11 @@ public class VistaMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Está seguro que desea salir?", "Confirmación de salida", javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -269,7 +266,7 @@ public class VistaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        vistaColectivo.setLocation(menuPasajero.getX(), 0); vistaColectivo.show();
+        vistaColectivo.setLocation(menuColectivo.getX(), 0); vistaColectivo.show();
         desktopMain.moveToFront(vistaColectivo);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 

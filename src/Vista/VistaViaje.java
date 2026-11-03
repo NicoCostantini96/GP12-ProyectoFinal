@@ -70,17 +70,17 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         tblRuta.setModel(table);
         
         renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
-        tblRuta.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tblRuta.getColumnModel().getColumn(0).setPreferredWidth(40);
         tblRuta.getColumnModel().getColumn(0).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(1).setPreferredWidth(30);
+        tblRuta.getColumnModel().getColumn(1).setPreferredWidth(40);
         tblRuta.getColumnModel().getColumn(1).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(2).setPreferredWidth(5);
+        tblRuta.getColumnModel().getColumn(2).setPreferredWidth(30);
         tblRuta.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(3).setPreferredWidth(5);
+        tblRuta.getColumnModel().getColumn(3).setPreferredWidth(30);
         tblRuta.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(4).setPreferredWidth(30);
+        tblRuta.getColumnModel().getColumn(4).setPreferredWidth(40);
         tblRuta.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(5).setPreferredWidth(5);
+        tblRuta.getColumnModel().getColumn(5).setPreferredWidth(20);
         tblRuta.getColumnModel().getColumn(5).setCellRenderer(renderer);
         tblRuta.getColumnModel().getColumn(6).setPreferredWidth(5);
         tblRuta.getColumnModel().getColumn(6).setCellRenderer(renderer);

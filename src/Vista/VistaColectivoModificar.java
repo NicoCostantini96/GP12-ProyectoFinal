@@ -513,7 +513,7 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         if (txt.length() > 0) {
             if (!txt.matches("\\d+")) {
                 lblCapacidad.setText("Solo se permiten números!!");
-            }else if (txt.length() > 100) {
+            } else if (Integer.parseInt(txt) > 100) {
                 lblCapacidad.setText("Solo se permiten máximo 100 asientos!!");
             }
         }

@@ -10,16 +10,9 @@ import Persistencia.ColectivoData;
 import Persistencia.PasajeData;
 import Persistencia.PasajeroData;
 import Persistencia.RutaViajeData;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import javax.swing.AbstractButton;
 import javax.swing.JDesktopPane;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class VistaMain extends javax.swing.JFrame {
 

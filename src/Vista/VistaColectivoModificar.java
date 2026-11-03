@@ -467,7 +467,7 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 colectivoData.insert(c);
-                vistaMain.pasajero("INSERT",0);
+                vistaMain.colectivo("INSERT",0);
             } else {
                 colectivoData.update(c);
                 vistaMain.colectivo("MODIFY",colectivo.getId_colectivo());

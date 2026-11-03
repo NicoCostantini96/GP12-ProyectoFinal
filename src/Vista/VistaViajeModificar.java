@@ -541,7 +541,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 viajeData.insert(r);
-                vistaMain.ruta("INSERT",0);
+                vistaMain.ruta("INSERT",id);
             } else {
                 viajeData.update(r);
                 vistaMain.ruta("MODIFY",ruta.getId_ruta());

@@ -466,7 +466,7 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 pasajeroData.insert(p);
-                vistaMain.pasajero("INSERT",0);
+                vistaMain.pasajero("INSERT",id);
             } else {
                 pasajeroData.update(p);
                 vistaMain.pasajero("MODIFY",pasajero.getId_pasajero());

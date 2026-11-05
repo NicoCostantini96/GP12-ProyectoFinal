@@ -14,12 +14,14 @@ import javax.swing.table.DefaultTableModel;
 public class VistaColectivo extends javax.swing.JInternalFrame {
 
     javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableModel table;
     
     public ArrayList<Colectivo> tableList = new ArrayList<>();
     public int tableIndex = -1;
     
     public VistaColectivo() {
         initComponents();
+        armarTabla();
         updateAll();
         
         tblColectivo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -32,7 +34,10 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
                 public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                     if (!evt.getValueIsAdjusting()) {
                         int selection = tblColectivo.getSelectedRow();
-                        if (selection != -1) {tableIndex = selection; updateIndex();}
+                        if (selection != -1) {
+                            tableIndex = selection;
+                            updateIndex();
+                        }
                     }
                 }
             }
@@ -40,32 +45,42 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
     }
     
     public void updateIndex() {
-        boolean type = false;
-        if (tableIndex != -1) {
-            tblColectivo.setRowSelectionInterval(tableIndex, tableIndex);
-            type = true;
-        }
-        btnModificar.setEnabled(type);
-        btnEliminar.setEnabled(type);
-        btnAlta.setEnabled(type);
-        btnBaja.setEnabled(type);
+            if (tableIndex != -1) {
+                tblColectivo.setRowSelectionInterval(tableIndex, tableIndex);
+
+                btnModificar.setEnabled(true);
+                btnEliminar.setEnabled(true);
+                
+                boolean estado = String.valueOf(tblColectivo.getValueAt(tblColectivo.getSelectedRow(), 5)).equalsIgnoreCase("Activo");
+
+                if (estado) {
+                    btnAlta.setEnabled(false);
+                    btnBaja.setEnabled(true);
+                    
+                } else {
+                    btnAlta.setEnabled(true);
+                    btnBaja.setEnabled(false);
+                }
+
+            } else {
+                btnModificar.setEnabled(false);
+                btnEliminar.setEnabled(false);
+                btnAlta.setEnabled(false);
+                btnBaja.setEnabled(false);
+            }
+
     }
     
-    public void updateAll() {
+    public void armarTabla() {
+        String[] titulos = {"Matrícula", "Marca", "Modelo", "Capacidad,", "Chofer", "Estado"};
         
-        DefaultTableModel table = new DefaultTableModel() {
+        table = new DefaultTableModel(null, titulos) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
         
-        table.addColumn("Matrícula");
-        table.addColumn("Marca");
-        table.addColumn("Modelo");
-        table.addColumn("Capacidad");
-        table.addColumn("Chofer");
-        table.addColumn("Estado");
         tblColectivo.setModel(table);
         
         renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
@@ -82,6 +97,10 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
         tblColectivo.getColumnModel().getColumn(5).setPreferredWidth(5);
         tblColectivo.getColumnModel().getColumn(5).setCellRenderer(renderer);
         
+    }
+    
+    public void updateAll() {
+        table.setRowCount(0);
         tableList = colectivoData.getList();
         
         for (Colectivo c : tableList) {
@@ -90,8 +109,6 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
             table.addRow(new Object[]{c.getMatricula(), c.getMarca(), c.getModelo(), c.getCapacidad(), c.getChofer(), estado});
         }
 
-        tblColectivo.setModel(table);
-        
         updateIndex();
     }
 
@@ -208,9 +225,12 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int id = tableList.get(tableIndex).getId_colectivo();
-        if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-        vistaMain.colectivo("REMOVE",id);
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "Esta acción eliminará permanentemente al colectivo de la base de datos\n¿Desea continuar?", "Advertencia: borrado permanente", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            int id = tableList.get(tableIndex).getId_colectivo();
+            if ((tableIndex+1) == tableList.size()) {tableIndex--;}
+            vistaMain.colectivo("REMOVE",id);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed

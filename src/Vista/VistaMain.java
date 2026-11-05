@@ -49,17 +49,34 @@ public class VistaMain extends javax.swing.JFrame {
         desktopMain.add(vistaPasajes);
         desktopMain.add(vistaVenta);
         img();
+        configurarListenersDeRedimensionamiento();
     }
 
-    public void img() {
+public void img() {
         ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/IMG/flechaflash.jpg"));
-        int ancho = 594;
-        int alto = 470;
+        
+        // Obtenemos el ancho y alto actual del contenedor (dtpEscritorio) 
+        // en lugar de usar valores fijos (594x470). Si recién inicia, usamos un tamaño por defecto.
+        int ancho = dtpEscritorio.getWidth() > 0 ? dtpEscritorio.getWidth() : 594;
+        int alto = dtpEscritorio.getHeight() > 0 ? dtpEscritorio.getHeight() : 470;
+        
         // Escala la imagen con alta calidad (Image.SCALE_SMOOTH)
         Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         jLabel1.setIcon(new ImageIcon(imagenEscalada));
+        
+        // Aseguramos que el JLabel ocupe todo el JDesktopPane
+        jLabel1.setBounds(0, 0, ancho, alto);
     }
 
+    // NUEVO MÉTODO: Escucha cuando cambia el tamaño de la ventana/escritorio
+    private void configurarListenersDeRedimensionamiento() {
+        dtpEscritorio.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                img(); // Vuelve a escalar la imagen con las nuevas dimensiones
+            }
+        });
+    }
     public void pasajero(String type, int id) {
         if (type.equals("INSERT")) {
             vistaPasajero.tableIndex = vistaPasajero.tableList.size();

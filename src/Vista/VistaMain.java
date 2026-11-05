@@ -38,7 +38,7 @@ public class VistaMain extends javax.swing.JFrame {
     public VistaMain() {
         initComponents();
         vistaMain = this;
-        desktopMain = jDesktopPane1;
+        desktopMain = dtpEscritorio;
         desktopMain.add(vistaPasajero);
         desktopMain.add(vistaPasajeroM);
         desktopMain.add(vistaColectivo);
@@ -170,141 +170,138 @@ public class VistaMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu3 = new javax.swing.JMenu();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        dtpEscritorio = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        menuPasajero = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        menuColectivo = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        menuRuta = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        menuPasajes = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-
-        jMenu3.setText("jMenu3");
+        mnbNavegador = new javax.swing.JMenuBar();
+        mnuArchivo = new javax.swing.JMenu();
+        mitSalir = new javax.swing.JMenuItem();
+        mnuPasajero = new javax.swing.JMenu();
+        mitPasajero = new javax.swing.JMenuItem();
+        mnuColectivo = new javax.swing.JMenu();
+        mitColectivo = new javax.swing.JMenuItem();
+        mnuRuta = new javax.swing.JMenu();
+        mitRuta = new javax.swing.JMenuItem();
+        mnuPasajes = new javax.swing.JMenu();
+        mitPasajes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(56, 36));
 
-        jDesktopPane1.setMaximumSize(new java.awt.Dimension(600, 600));
-        jDesktopPane1.setMinimumSize(new java.awt.Dimension(600, 600));
+        dtpEscritorio.setMaximumSize(new java.awt.Dimension(600, 600));
+        dtpEscritorio.setMinimumSize(new java.awt.Dimension(600, 600));
 
         jLabel1.setAutoscrolls(true);
 
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dtpEscritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+        javax.swing.GroupLayout dtpEscritorioLayout = new javax.swing.GroupLayout(dtpEscritorio);
+        dtpEscritorio.setLayout(dtpEscritorioLayout);
+        dtpEscritorioLayout.setHorizontalGroup(
+            dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dtpEscritorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        dtpEscritorioLayout.setVerticalGroup(
+            dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dtpEscritorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Archivo");
+        mnuArchivo.setText("Archivo");
 
-        jMenuItem1.setText("Salir");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        jMenu1.add(jMenuItem1);
+        mitSalir.setText("Salir");
+        mitSalir.addActionListener(this::mitSalirActionPerformed);
+        mnuArchivo.add(mitSalir);
 
-        jMenuBar1.add(jMenu1);
+        mnbNavegador.add(mnuArchivo);
 
-        menuPasajero.setText("Pasajero");
+        mnuPasajero.setText("Pasajero");
 
-        jMenuItem2.setText("Pasajero");
-        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
-        menuPasajero.add(jMenuItem2);
+        mitPasajero.setText("Pasajero");
+        mitPasajero.addActionListener(this::mitPasajeroActionPerformed);
+        mnuPasajero.add(mitPasajero);
 
-        jMenuBar1.add(menuPasajero);
+        mnbNavegador.add(mnuPasajero);
 
-        menuColectivo.setText("Colectivo");
+        mnuColectivo.setText("Colectivo");
 
-        jMenuItem4.setText("Colectivo");
-        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
-        menuColectivo.add(jMenuItem4);
+        mitColectivo.setText("Colectivo");
+        mitColectivo.addActionListener(this::mitColectivoActionPerformed);
+        mnuColectivo.add(mitColectivo);
 
-        jMenuBar1.add(menuColectivo);
+        mnbNavegador.add(mnuColectivo);
 
-        menuRuta.setText("Ruta");
+        mnuRuta.setText("Ruta");
 
-        jMenuItem5.setText("Ruta");
-        jMenuItem5.addActionListener(this::jMenuItem5ActionPerformed);
-        menuRuta.add(jMenuItem5);
+        mitRuta.setText("Ruta");
+        mitRuta.addActionListener(this::mitRutaActionPerformed);
+        mnuRuta.add(mitRuta);
 
-        jMenuBar1.add(menuRuta);
+        mnbNavegador.add(mnuRuta);
 
-        menuPasajes.setText("Pasajes");
+        mnuPasajes.setText("Pasajes");
 
-        jMenuItem3.setText("Pasajes");
-        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
-        menuPasajes.add(jMenuItem3);
+        mitPasajes.setText("Pasajes");
+        mitPasajes.addActionListener(this::mitPasajesActionPerformed);
+        mnuPasajes.add(mitPasajes);
 
-        jMenuBar1.add(menuPasajes);
+        mnbNavegador.add(mnuPasajes);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mnbNavegador);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dtpEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
+                .addComponent(dtpEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mitSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitSalirActionPerformed
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Está seguro que desea salir?", "Confirmación de salida", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mitSalirActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        vistaPasajero.setLocation(menuPasajero.getX(), 0);
+    private void mitPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitPasajeroActionPerformed
+        vistaPasajero.setLocation(mnuPasajero.getX(), 0);
         vistaPasajero.show();
         desktopMain.moveToFront(vistaPasajero);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_mitPasajeroActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        vistaPasajes.setLocation(menuPasajes.getX(), 0);
+    private void mitPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitPasajesActionPerformed
+        vistaPasajes.setLocation(mnuPasajes.getX(), 0);
         vistaPasajes.show();
         desktopMain.moveToFront(vistaPasajes);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_mitPasajesActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        vistaColectivo.setLocation(menuColectivo.getX(), 0);
+    private void mitColectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitColectivoActionPerformed
+        vistaColectivo.setLocation(mnuColectivo.getX(), 0);
         vistaColectivo.show();
         desktopMain.moveToFront(vistaColectivo);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_mitColectivoActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        vistaViaje.setLocation(menuRuta.getX(), 0);
+    private void mitRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRutaActionPerformed
+        vistaViaje.setLocation(mnuRuta.getX(), 0);
         vistaViaje.show();
         desktopMain.moveToFront(vistaViaje);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_mitRutaActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new VistaMain().setVisible(true));
@@ -313,19 +310,18 @@ public class VistaMain extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane dtpEscritorio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenu menuColectivo;
-    private javax.swing.JMenu menuPasajero;
-    private javax.swing.JMenu menuPasajes;
-    private javax.swing.JMenu menuRuta;
+    private javax.swing.JMenuItem mitColectivo;
+    private javax.swing.JMenuItem mitPasajero;
+    private javax.swing.JMenuItem mitPasajes;
+    private javax.swing.JMenuItem mitRuta;
+    private javax.swing.JMenuItem mitSalir;
+    private javax.swing.JMenuBar mnbNavegador;
+    private javax.swing.JMenu mnuArchivo;
+    private javax.swing.JMenu mnuColectivo;
+    private javax.swing.JMenu mnuPasajero;
+    private javax.swing.JMenu mnuPasajes;
+    private javax.swing.JMenu mnuRuta;
     // End of variables declaration//GEN-END:variables
 }

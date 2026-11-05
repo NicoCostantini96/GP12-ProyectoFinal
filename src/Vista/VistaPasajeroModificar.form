@@ -34,12 +34,12 @@
                   <Group type="102" attributes="0">
                       <EmptySpace pref="9" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlNombre" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDni" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="pnlTitulo" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlTelefono" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlCorreo" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlApellido" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -53,15 +53,15 @@
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="pnlTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlDni" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlNombre" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlApellido" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlCorreo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlTelefono" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -109,29 +109,21 @@
               <Font name="Segoe UI" size="36" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="TITULO"/>
+            <Property name="text" type="java.lang.String" value="T&#xcd;TULO"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnCancelar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
-      </Events>
-    </Component>
-    <Container class="javax.swing.JPanel" name="jPanel3">
+    <Container class="javax.swing.JPanel" name="pnlDni">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDni2" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlDniInput" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblDni" min="-2" pref="244" max="-2" attributes="0"/>
+                  <Component id="lblMsjDni" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -140,16 +132,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlDni2" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlDniInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="lblDni" min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="lblMsjDni" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlDni2">
+        <Container class="javax.swing.JPanel" name="pnlDniInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -163,7 +155,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblDni2" pref="181" max="32767" attributes="0"/>
+                      <Component id="lblDni" pref="181" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="txtDni" min="-2" pref="247" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -174,7 +166,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtDni" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDni2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDni" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -188,7 +180,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDniKeyReleased"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblDni2">
+            <Component class="javax.swing.JLabel" name="lblDni">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -199,7 +191,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblDni">
+        <Component class="javax.swing.JLabel" name="lblMsjDni">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -212,15 +204,15 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel5">
+    <Container class="javax.swing.JPanel" name="pnlNombre">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDni4" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlNombreInput" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblNombre" min="-2" pref="244" max="-2" attributes="0"/>
+                  <Component id="lblMsjNombre" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -229,16 +221,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlDni4" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlNombreInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="lblNombre" min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="lblMsjNombre" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlDni4">
+        <Container class="javax.swing.JPanel" name="pnlNombreInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -252,7 +244,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblDni4" pref="181" max="32767" attributes="0"/>
+                      <Component id="lblNombre" pref="181" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="txtNombre" min="-2" pref="247" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -263,7 +255,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDni4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -277,7 +269,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyReleased"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblDni4">
+            <Component class="javax.swing.JLabel" name="lblNombre">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -288,7 +280,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblNombre">
+        <Component class="javax.swing.JLabel" name="lblMsjNombre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -301,15 +293,15 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel6">
+    <Container class="javax.swing.JPanel" name="pnlApellido">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDni5" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlApellidoInput" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblApellido" min="-2" pref="244" max="-2" attributes="0"/>
+                  <Component id="lblMsjApellido" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -318,16 +310,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlDni5" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlApellidoInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="lblApellido" min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="lblMsjApellido" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlDni5">
+        <Container class="javax.swing.JPanel" name="pnlApellidoInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -341,7 +333,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblDni5" pref="181" max="32767" attributes="0"/>
+                      <Component id="lblApellido" pref="181" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="txtApellido" min="-2" pref="247" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -352,7 +344,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtApellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDni5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -366,7 +358,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtApellidoKeyReleased"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblDni5">
+            <Component class="javax.swing.JLabel" name="lblApellido">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -377,7 +369,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblApellido">
+        <Component class="javax.swing.JLabel" name="lblMsjApellido">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -390,15 +382,15 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel8">
+    <Container class="javax.swing.JPanel" name="pnlCorreo">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDni7" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlCorreoInput" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblCorreo" min="-2" pref="244" max="-2" attributes="0"/>
+                  <Component id="lblMsjCorreo" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -407,16 +399,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlDni7" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlCorreoInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="lblCorreo" min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="lblMsjCorreo" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlDni7">
+        <Container class="javax.swing.JPanel" name="pnlCorreoInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -430,7 +422,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblDni7" pref="181" max="32767" attributes="0"/>
+                      <Component id="lblCorreo" pref="181" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="txtCorreo" min="-2" pref="247" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -441,7 +433,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDni7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -455,7 +447,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCorreoKeyReleased"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblDni7">
+            <Component class="javax.swing.JLabel" name="lblCorreo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -466,7 +458,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblCorreo">
+        <Component class="javax.swing.JLabel" name="lblMsjCorreo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -479,15 +471,15 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel9">
+    <Container class="javax.swing.JPanel" name="pnlTelefono">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDni8" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlTelefonoInput" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblTelefono" min="-2" pref="244" max="-2" attributes="0"/>
+                  <Component id="lblMsjTelefono" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -496,16 +488,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlDni8" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlTelefonoInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="lblTelefono" min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="lblMsjTelefono" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlDni8">
+        <Container class="javax.swing.JPanel" name="pnlTelefonoInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -519,7 +511,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblDni8" pref="181" max="32767" attributes="0"/>
+                      <Component id="lblTelefono" pref="181" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="txtTelefono" min="-2" pref="247" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -530,7 +522,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDni8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -544,18 +536,18 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelefonoKeyReleased"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblDni8">
+            <Component class="javax.swing.JLabel" name="lblTelefono">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="TELEFONO:"/>
+                <Property name="text" type="java.lang.String" value="TEL&#xc9;FONO:"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblTelefono">
+        <Component class="javax.swing.JLabel" name="lblMsjTelefono">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -568,6 +560,14 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnConfirmar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirmar"/>

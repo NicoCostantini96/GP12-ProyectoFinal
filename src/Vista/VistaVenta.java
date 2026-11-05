@@ -4,11 +4,17 @@
  */
 package Vista;
 
+import Modelo.Asiento;
+import Modelo.Pasaje;
 import Modelo.Pasajero;
 import Modelo.RutaViaje;
-import static Vista.TestMain.pasajeroData;
+import static Vista.VistaMain.asientoData;
+import static Vista.VistaMain.pasajeData;
+import static Vista.VistaMain.pasajeroData;
+
 import java.awt.Color;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -24,13 +30,15 @@ public class VistaVenta extends javax.swing.JInternalFrame {
     private RutaViaje rutaSelected;
     private LocalDate fechaViaje;
     private int salida;
+    private boolean yaExiste = false;
+    private VistaPasajes ventanaPasajes;
 
     /**
      * Creates new form VistaVenta
      */
     public VistaVenta() {
         initComponents();
-        
+
     }
 
     /**
@@ -59,6 +67,11 @@ public class VistaVenta extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        lblDNIerror = new javax.swing.JLabel();
+        lblNombreError = new javax.swing.JLabel();
+        lblApellidoError = new javax.swing.JLabel();
+        lblCorreoError = new javax.swing.JLabel();
+        lblTelefonoError = new javax.swing.JLabel();
         panelDatosViaje = new javax.swing.JPanel();
         lblOrigen = new javax.swing.JLabel();
         lblAsiento = new javax.swing.JLabel();
@@ -68,6 +81,8 @@ public class VistaVenta extends javax.swing.JInternalFrame {
         lblHoraLlegada = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
+
+        setClosable(true);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
@@ -89,7 +104,6 @@ public class VistaVenta extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Apellidos");
 
-        txtCorreo.addActionListener(this::txtCorreoActionPerformed);
         txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCorreoKeyReleased(evt);
@@ -99,6 +113,12 @@ public class VistaVenta extends javax.swing.JInternalFrame {
         txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDNIKeyReleased(evt);
+            }
+        });
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyReleased(evt);
             }
         });
 
@@ -136,22 +156,35 @@ public class VistaVenta extends javax.swing.JInternalFrame {
                 .addGroup(panelPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPasajeroLayout.createSequentialGroup()
                         .addGroup(panelPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
                             .addComponent(txtApellidos)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPasajeroLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lblApellidoError, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPasajeroLayout.createSequentialGroup()
+                                .addGroup(panelPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCorreoError, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblTelefonoError, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))
                     .addGroup(panelPasajeroLayout.createSequentialGroup()
                         .addGroup(panelPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPasajeroLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(53, 53, 53)
+                                .addComponent(lblDNIerror, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtDNI)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNombreError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelPasajeroLayout.setVerticalGroup(
@@ -161,26 +194,36 @@ public class VistaVenta extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDNIerror, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(2, 2, 2)
+                .addComponent(lblNombreError, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPasajeroLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblApellidoError, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCorreoError, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTelefonoError, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelDatosViaje.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de viaje"));
@@ -281,7 +324,7 @@ public class VistaVenta extends javax.swing.JInternalFrame {
         dniText = dniText.replaceAll("\\D", "");
         txtDNI.setBackground(new Color(255, 255, 255));
         txtDNI.setText(dniText);
-        
+
         buscarDNI();
 
         /* validacion
@@ -312,36 +355,166 @@ public class VistaVenta extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtCorreoKeyReleased
 
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       txtDNI.setText("");
-       txtNombre.setText("");
-       txtApellidos.setText("");
-       txtCorreo.setText("");
-       txtTelefono.setText("");
-       this.hide();
+        txtDNI.setText("");
+        txtDNI.setBackground(new Color(255, 255, 255));
+        txtNombre.setText("");
+        txtNombre.setBackground(new Color(255, 255, 255));
+        txtApellidos.setText("");
+        txtApellidos.setBackground(new Color(255, 255, 255));
+        txtCorreo.setText("");
+        txtCorreo.setBackground(new Color(255, 255, 255));
+        txtTelefono.setText("");
+        txtTelefono.setBackground(new Color(255, 255, 255));
+
+        lblDNIerror.setText("");
+        lblNombreError.setText("");
+        lblApellidoError.setText("");
+        lblCorreoError.setText("");
+        lblTelefonoError.setText("");
+
+        this.hide();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        
-//        if (txtDNI.getText().length() < 1) {
-//            lblDni.setText("Ingrese un Dni!!");
-//        } else if (txtDNI.getText().length() != 8) {
-//            lblDni.setText("Debe contener exactamente 8 dígitos!!");
-//        }
-            
-        
+        Color errorColor = new Color(255, 185, 185);
+
+        lblDNIerror.setText("");
+        lblNombreError.setText("");
+        lblApellidoError.setText("");
+        lblCorreoError.setText("");
+        lblTelefonoError.setText("");
+        //verificamos dni
+        if (txtDNI.getText().isEmpty()) {
+            lblDNIerror.setText("Ingrese un Dni!!");
+        } else if (txtDNI.getText().length() != 8) {
+            lblDNIerror.setText("Debe contener exactamente 8 dígitos!!");
+        }
+
+        //verificamos nombre
+        if (txtNombre.getText().isEmpty()) {
+            lblNombreError.setText("Ingrese un Nombre!!");
+        } else if (txtNombre.getText().length() > 30) {
+            lblNombreError.setText("Debe contener menos de 30 caracteres!!");
+        } else if (txtNombre.getText().length() < 4) {
+            lblNombreError.setText("Debe contener más de 3 caracteres!!");
+        }
+
+        //verificamos appellido
+        if (txtApellidos.getText().isEmpty()) {
+            lblApellidoError.setText("Ingrese un Apellido!!");
+        } else if (txtApellidos.getText().length() > 30) {
+            lblApellidoError.setText("Debe contener menos de 30 caracteres!!");
+        } else if (txtApellidos.getText().length() < 4) {
+            lblApellidoError.setText("Debe contener más de 3 caracteres!!");
+        }
+
+        //verificamos correo
+        if (txtCorreo.getText().isEmpty()) {
+            lblCorreoError.setText("Ingrese un correo electrónico!!");
+        } else if (txtCorreo.getText().length() > 100) {
+            lblCorreoError.setText("El correo es demasiado largo!!");
+        } else if (!txtCorreo.getText().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+            lblCorreoError.setText("Ingrese un correo válido!!");
+        }
+
+        //verificamos telefono
+        if (txtTelefono.getText().isEmpty()) {
+            lblTelefonoError.setText("Ingrese un teléfono!!");
+        } else if (!txtTelefono.getText().matches("[0-9]+")) {
+            lblTelefonoError.setText("Ingrese solamente números!!");
+        } else if (txtTelefono.getText().length() < 8) {
+            lblTelefonoError.setText("El teléfono debe tener al menos 8 dígitos!!");
+        } else if (txtTelefono.getText().length() > 15) {
+            lblTelefonoError.setText("El teléfono no puede superar los 15 dígitos!!");
+        }
+
+        boolean problem = false;
+
+        if (lblDNIerror.getText().length() > 0) {
+            txtDNI.setBackground(errorColor);
+            problem = true;
+        }
+        if (lblNombreError.getText().length() > 0) {
+            txtNombre.setBackground(errorColor);
+            problem = true;
+        }
+        if (lblApellidoError.getText().length() > 0) {
+            txtApellidos.setBackground(errorColor);
+            problem = true;
+        }
+        if (lblCorreoError.getText().length() > 0) {
+            txtCorreo.setBackground(errorColor);
+            problem = true;
+        }
+        if (lblTelefonoError.getText().length() > 0) {
+            txtTelefono.setBackground(errorColor);
+            problem = true;
+        }
+
+        if (!problem) {
+            String pDni = txtDNI.getText();
+            String pNombre = txtNombre.getText();
+            String pApellido = txtApellidos.getText();
+            String pCorreo = txtCorreo.getText();
+            String pTelefono = txtTelefono.getText();
+            if (!yaExiste) {
+                //si no existe se crea el pasajero
+                pasajeroData.insert(new Pasajero(0, pDni, pNombre, pApellido, pCorreo, pTelefono, true));
+            } else {
+                System.out.println("No se crea pasajero, ya existe");
+            }
+
+            //recuperamos el pasajero recien insertado para enviarlo a pasaje
+            Pasajero nuevoPasajero = buscarPorDNI();
+
+            //creamos el pasaje para el pasajero
+            if (nuevoPasajero != null) {
+                int idPasajero = nuevoPasajero.getId_pasajero();
+                LocalDate fechaVenta = LocalDate.now();
+                LocalTime horaVenta = LocalTime.now();
+                double precio = 20000.0;
+                //creamos asiento:
+                Asiento nuevoAsiento = new Asiento(
+                        0,
+                        rutaSelected.getColectivo(),
+                        asientoSelected,
+                        false //para verificar en el armado que si es false no se puede vender
+                );
+                asientoData.insert(nuevoAsiento);
+
+                System.out.println("ID Pasajero: "
+                        + nuevoPasajero.getId_pasajero());
+
+                System.out.println("ID Asiento: "
+                        + nuevoAsiento.getId_lugar());
+
+                System.out.println("ID Ruta: "
+                        + rutaSelected.getId_ruta());
+
+                System.out.println("Fecha: " + fechaVenta);
+                System.out.println("Hora: " + horaVenta);
+                pasajeData.insert(new Pasaje(0, nuevoPasajero, nuevoAsiento, rutaSelected, fechaVenta, horaVenta, precio, true));
+                //una vez vendido se deshabilita el asiento.
+                ventanaPasajes.deshabilitarAsiento(asientoSelected);
+
+            }
+            this.hide();
+        }
     }//GEN-LAST:event_btnVenderActionPerformed
 
+    private void txtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyReleased
+        String telefono = txtTelefono.getText();
+        txtTelefono.setBackground(new Color(255, 255, 255));
+        txtTelefono.setText(telefono);    }//GEN-LAST:event_txtTelefonoKeyReleased
+
     //Metodo receptor
-    public void setDatosVenta(RutaViaje tblRutaSelected, LocalDate fechaViaje, int asiento) {
+    public void setDatosVenta(RutaViaje tblRutaSelected, LocalDate fechaViaje, int asiento, VistaPasajes ventanaPasajes) {
         this.rutaSelected = tblRutaSelected;
         this.fechaViaje = fechaViaje;
         this.asientoSelected = asiento;
-        
+        this.ventanaPasajes = ventanaPasajes;
+
         setDatosLbl();
     }
 
@@ -356,32 +529,47 @@ public class VistaVenta extends javax.swing.JInternalFrame {
         DateTimeFormatter formatoHora
                 = DateTimeFormatter.ofPattern("HH:mm");
         String horaSalida = rutaSelected.getHora_salida().format(formatoHora);
-        
+
         String horaLlegada = rutaSelected.getHora_llegada().format(formatoHora);
-        
-        String asiento = "asientoSelected";
-        
+
+        int asiento = asientoSelected;
+
         lblOrigen.setText("Origen: " + origen);
         lblDestino.setText("Destino: " + destino);
         lblFecha.setText("Fecha: " + fecha);
         lblHoraSalida.setText("Hora salida: " + horaSalida);
         lblHoraLlegada.setText("Hora llegada: " + horaLlegada);
-        lblAsiento.setText("Asiento: " + asientoSelected);
-        
+        lblAsiento.setText("Asiento: " + asiento);
+
     }
-    
-    public void buscarDNI(){
+
+    public void buscarDNI() {
         ArrayList<Pasajero> xPasajero = pasajeroData.getList();
-            for (Pasajero pasaj : xPasajero) {
-                String match = pasaj.getDni();
-                if (txtDNI.getText().matches(match)) {
-                    txtDNI.setText(pasaj.getDni());
-                    txtNombre.setText(pasaj.getNombre());
-                    txtApellidos.setText(pasaj.getApellido());
-                    txtCorreo.setText(pasaj.getCorreo());
-                    txtTelefono.setText(pasaj.getTelefono());
-                }
+        for (Pasajero pasaj : xPasajero) {
+            String match = pasaj.getDni();
+            if (txtDNI.getText().matches(match)) {
+                txtDNI.setText(pasaj.getDni());
+                txtNombre.setText(pasaj.getNombre());
+                txtApellidos.setText(pasaj.getApellido());
+                txtCorreo.setText(pasaj.getCorreo());
+                txtTelefono.setText(pasaj.getTelefono());
+                yaExiste = true;
             }
+        }
+    }
+
+    public Pasajero buscarPorDNI() {
+        ArrayList<Pasajero> xPasajero = pasajeroData.getList();
+
+        for (Pasajero pasaj : xPasajero) {
+            String match = pasaj.getDni();
+
+            if (txtDNI.getText().equals(match)) {
+                return pasaj;
+            }
+        }
+
+        return null;
     }
 
 
@@ -397,12 +585,17 @@ public class VistaVenta extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblApellidoError;
     private javax.swing.JLabel lblAsiento;
+    private javax.swing.JLabel lblCorreoError;
+    private javax.swing.JLabel lblDNIerror;
     private javax.swing.JLabel lblDestino;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHoraLlegada;
     private javax.swing.JLabel lblHoraSalida;
+    private javax.swing.JLabel lblNombreError;
     private javax.swing.JLabel lblOrigen;
+    private javax.swing.JLabel lblTelefonoError;
     private javax.swing.JPanel panelDatosViaje;
     private javax.swing.JPanel panelPasajero;
     private javax.swing.JTextField txtApellidos;

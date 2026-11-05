@@ -125,6 +125,19 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
 
         tblRuta.setModel(table);
     }
+    
+    public void deshabilitarAsiento(int numeroAsiento) {
+    Enumeration<AbstractButton> botones = btnGroup.getElements();
+
+    while (botones.hasMoreElements()) {
+        AbstractButton btn = botones.nextElement();
+
+        if (btn.getActionCommand().equals(String.valueOf(numeroAsiento))) {
+            btn.setEnabled(false);
+            break;
+        }
+    }
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -1026,6 +1039,7 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
                     "Seleccione una fecha de viaje.");
             return;
         }
+        
 
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = formato.format(date);
@@ -1049,7 +1063,8 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         vistaVenta.setDatosVenta(
                 tblRutaSelected,
                 fechaViaje,
-                asiento
+                asiento,
+                this
         );
 
         vistaVenta.setLocation(btnVender.getX(), 0);

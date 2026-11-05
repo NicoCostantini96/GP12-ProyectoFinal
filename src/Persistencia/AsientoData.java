@@ -5,9 +5,10 @@ import Modelo.Pasajero;
 import static Vista.TestMain.colectivoData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 public class AsientoData {
 
@@ -23,7 +24,7 @@ public class AsientoData {
     public void insert(Asiento obj) {
         try {
             String sql = "insert into lugares(id_lugar,id_colectivo,numero_asiento,estado) values (?, ?, ?, ?);";
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, obj.getId_lugar());
             ps.setInt(2, obj.getColectivo().getId_colectivo());
             ps.setInt(3, obj.getNumero_asiento());
@@ -31,6 +32,11 @@ public class AsientoData {
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
+                ResultSet rs = ps.getGeneratedKeys();
+
+                if (rs.next()) {
+                    obj.setId_lugar(rs.getInt(1));
+                }
                 System.out.println(cGreen + "Asiento registrado con exito!!\n" + cReset);
             }
         } catch (SQLException e) {
@@ -117,7 +123,7 @@ public class AsientoData {
         }
         return list;
     }
-    
+
     public ArrayList<Asiento> SQL(String sql) {
         ArrayList<Asiento> lista = new ArrayList<>();
 

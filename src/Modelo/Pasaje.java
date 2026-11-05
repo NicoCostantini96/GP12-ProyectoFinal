@@ -16,7 +16,7 @@ public class Pasaje {
     public Pasaje(int id_pasaje, Pasajero pasajero, Asiento lugar, RutaViaje ruta, LocalDate fecha_venta, LocalTime hora_venta, double precio, boolean estado) {
         this.id_pasaje = id_pasaje;
         this.pasajero = pasajero;
-        this.lugar = lugar;
+        this.lugar = lugar; //asiento
         this.ruta = ruta;
         this.fecha_venta = fecha_venta;
         this.hora_venta = hora_venta;

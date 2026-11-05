@@ -8,6 +8,9 @@
       </Properties>
     </Component>
   </NonVisualComponents>
+  <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -131,12 +134,25 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtApellidos" max="32767" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                                  <Component id="txtCorreo" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                                  <Component id="txtTelefono" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="lblApellidoError" min="-2" pref="173" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblCorreoError" min="-2" pref="173" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                                              <Component id="txtCorreo" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
+                                              <Component id="jLabel7" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                                              <Component id="txtTelefono" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="lblTelefonoError" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="308" max="-2" attributes="0"/>
@@ -144,12 +160,17 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <Component id="lblDNIerror" min="-2" pref="173" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtDNI" max="32767" attributes="0"/>
                                       <Component id="jLabel1" min="-2" pref="129" max="-2" attributes="0"/>
                                       <Component id="txtNombre" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="lblNombreError" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -164,28 +185,38 @@
                       <Component id="jLabel1" min="-2" pref="16" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtDNI" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblDNIerror" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtNombre" min="-2" pref="35" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Component id="lblNombreError" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel5" min="-2" pref="16" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtApellidos" min="-2" pref="36" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblApellidoError" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtCorreo" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="117" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblCorreoError" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" pref="16" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtTelefono" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblTelefonoError" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -208,7 +239,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtCorreo">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCorreoActionPerformed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCorreoKeyReleased"/>
               </Events>
             </Component>
@@ -218,6 +248,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTelefono">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelefonoKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -260,6 +293,16 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="lblDNIerror">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNombreError">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblApellidoError">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCorreoError">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTelefonoError">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelDatosViaje">

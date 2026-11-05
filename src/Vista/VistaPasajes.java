@@ -3,58 +3,93 @@ package Vista;
 import Modelo.Pasajero;
 import Modelo.RutaViaje;
 import static Vista.TestMain.pasajeroData;
+import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.viajeData;
+import static Vista.VistaMain.vistaColectivoM;
+import static Vista.VistaMain.vistaViaje;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaPasajes extends javax.swing.JInternalFrame {
 
     javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
-    
+    public static VistaVenta vistaVenta = new VistaVenta();
+
     private ArrayList<Pasajero> cmbPasajeroElements = new ArrayList<>();
     private Pasajero cmbPasajeroSelected = null;
-    
+
     private ArrayList<RutaViaje> tblRutaElements = new ArrayList<>();
     private RutaViaje tblRutaSelected = null;
-    
+
     public VistaPasajes() {
         initComponents();
-        updateCMBPasajero();
         updateTBLRuta();
-        
+
         Enumeration<AbstractButton> botones = btnGroup.getElements();
         while (botones.hasMoreElements()) {
             AbstractButton btn = botones.nextElement();
             btn.setBorderPainted(false);
         }
-        
+
+        btnA1.setActionCommand("1");
+        btnA2.setActionCommand("2");
+        btnA3.setActionCommand("3");
+        btnA4.setActionCommand("4");
+        btnA5.setActionCommand("5");
+        btnA6.setActionCommand("6");
+        btnA7.setActionCommand("7");
+        btnA8.setActionCommand("8");
+        btnA9.setActionCommand("9");
+        btnA10.setActionCommand("10");
+        btnA11.setActionCommand("11");
+        btnA12.setActionCommand("12");
+        btnA13.setActionCommand("13");
+        btnA14.setActionCommand("14");
+        btnA15.setActionCommand("15");
+        btnA16.setActionCommand("16");
+        btnA17.setActionCommand("17");
+        btnA18.setActionCommand("18");
+        btnA19.setActionCommand("19");
+        btnA20.setActionCommand("20");
+        btnA21.setActionCommand("21");
+        btnA22.setActionCommand("22");
+        btnA23.setActionCommand("23");
+        btnA24.setActionCommand("24");
+        btnA25.setActionCommand("25");
+        btnA26.setActionCommand("26");
+        btnA27.setActionCommand("27");
+        btnA28.setActionCommand("28");
+        btnA29.setActionCommand("29");
+        btnA30.setActionCommand("30");
+        btnA31.setActionCommand("31");
+        btnA32.setActionCommand("32");
+
         tblRuta.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblRuta.setShowHorizontalLines(true);
         tblRuta.setShowVerticalLines(true);
         tblRuta.putClientProperty("JTable.showInactiveSelection", true);
         tblRuta.getSelectionModel().addListSelectionListener(
-            new javax.swing.event.ListSelectionListener() {
-                @Override
-                public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                    if (!evt.getValueIsAdjusting()) {
-                        int selection = tblRuta.getSelectedRow();
-                        if (selection != -1) {tblRutaSelected = tblRutaElements.get(selection);}
+                new javax.swing.event.ListSelectionListener() {
+            @Override
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                if (!evt.getValueIsAdjusting()) {
+                    int selection = tblRuta.getSelectedRow();
+                    if (selection != -1) {
+                        tblRutaSelected = tblRutaElements.get(selection);
                     }
                 }
             }
+        }
         );
     }
 
-    public void updateCMBPasajero() {
-        cmbPasajero.removeAllItems();
-        for (Pasajero p: pasajeroData.getList()) {
-            cmbPasajeroElements.add(p);
-            cmbPasajero.addItem(p.getId_pasajero()+" - "+p.getNombre()+" "+p.getApellido());
-        }
-    }
-    
     public void updateTBLRuta() {
         DefaultTableModel table = new DefaultTableModel() {
             @Override
@@ -62,14 +97,14 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
                 return false;
             }
         };
-        
+
         table.addColumn("Colectivo");
         table.addColumn("Origen");
         table.addColumn("Destino");
         table.addColumn("Salida");
         table.addColumn("Llegada");
         tblRuta.setModel(table);
-        
+
         renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         tblRuta.getColumnModel().getColumn(0).setPreferredWidth(40);
         tblRuta.getColumnModel().getColumn(0).setCellRenderer(renderer);
@@ -81,16 +116,16 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         tblRuta.getColumnModel().getColumn(3).setCellRenderer(renderer);
         tblRuta.getColumnModel().getColumn(4).setPreferredWidth(5);
         tblRuta.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        
+
         tblRutaElements = viajeData.SQL("SELECT * FROM rutas;");
-        
+
         for (RutaViaje r : tblRutaElements) {
-            table.addRow(new Object[]{r.getColectivo().getMarca(),r.getOrigen(),r.getDestino(),r.getHora_salida(),r.getHora_llegada()});
+            table.addRow(new Object[]{r.getColectivo().getMarca(), r.getOrigen(), r.getDestino(), r.getHora_salida(), r.getHora_llegada()});
         }
 
         tblRuta.setModel(table);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -100,9 +135,6 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jdc = new com.toedter.calendar.JDateChooser();
         lblFViaje = new javax.swing.JLabel();
-        lblPasajero = new javax.swing.JLabel();
-        cmbPasajero = new javax.swing.JComboBox<>();
-        jSeparator1 = new javax.swing.JSeparator();
         lblColectivo = new javax.swing.JLabel();
         lblOrigen = new javax.swing.JLabel();
         lblDestino = new javax.swing.JLabel();
@@ -185,7 +217,7 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRuta = new javax.swing.JTable();
-        btnComprar = new javax.swing.JButton();
+        btnVender = new javax.swing.JButton();
         btnResetear = new javax.swing.JButton();
 
         setClosable(true);
@@ -196,12 +228,6 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         lblFViaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFViaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblFViaje.setText("FECHA DE VIAJE:");
-
-        lblPasajero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPasajero.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblPasajero.setText("PASAJERO:");
-
-        cmbPasajero.addActionListener(this::cmbPasajeroActionPerformed);
 
         lblColectivo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblColectivo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -237,61 +263,37 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addComponent(jSeparator2)
+            .addComponent(jSeparator4)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFViaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jdc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHLlegada)
-                    .addComponent(lblHSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtHLlegada)
-                    .addComponent(txtHSalida))
-                .addGap(10, 10, 10))
-            .addComponent(jSeparator4)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jdc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblColectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(10, Short.MAX_VALUE)
-                        .addComponent(lblPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDestino)
+                            .addComponent(lblOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cmbPasajero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblDestino)
-                                    .addComponent(lblOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDestino)
-                                    .addComponent(txtOrigen))))))
-                .addGap(10, 10, 10))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtOrigen)))
+                    .addComponent(lblColectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblHLlegada)
+                            .addComponent(lblHSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtHSalida))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(lblPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(cmbPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addContainerGap()
                 .addComponent(lblColectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,9 +303,9 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDestino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDestino))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,13 +315,13 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblHLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtHLlegada))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblFViaje)
-                .addGap(5, 5, 5)
+                .addGap(18, 18, 18)
                 .addComponent(jdc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(53, 53, 53))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -814,7 +816,8 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         tblRuta.setRequestFocusEnabled(false);
         jScrollPane1.setViewportView(tblRuta);
 
-        btnComprar.setLabel("Comprar");
+        btnVender.setText("Vender");
+        btnVender.addActionListener(this::btnVenderActionPerformed);
 
         btnResetear.setLabel("Resetear");
 
@@ -836,7 +839,7 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnComprar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnVender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(5, 5, 5))
@@ -856,7 +859,7 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnComprar)
+                    .addComponent(btnVender)
                     .addComponent(btnResetear))
                 .addGap(5, 5, 5))
         );
@@ -878,11 +881,6 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPasajeroActionPerformed
-        int selection = cmbPasajero.getSelectedIndex();
-        if (selection != -1) {cmbPasajeroSelected = cmbPasajeroElements.get(selection);}
-    }//GEN-LAST:event_cmbPasajeroActionPerformed
 
     private void btnA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA1ActionPerformed
         // TODO add your handling code here:
@@ -1012,6 +1010,53 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnA32ActionPerformed
 
+    private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
+        //ruta seleccionada que contiene destino, origen y hora
+        if (tblRutaSelected == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Seleccione una ruta.");
+            return;
+        }
+
+        //fecha
+        Date date = jdc.getDate();
+
+        if (date == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Seleccione una fecha de viaje.");
+            return;
+        }
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = formato.format(date);
+
+        DateTimeFormatter formateador
+                = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        LocalDate fechaViaje = LocalDate.parse(fecha, formateador);
+
+        //asiento
+        if (btnGroup.getSelection() == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Seleccione un asiento.");
+            return;
+        }
+
+        int asiento = Integer.parseInt(
+                btnGroup.getSelection().getActionCommand()
+        );
+
+        vistaVenta.setDatosVenta(
+                tblRutaSelected,
+                fechaViaje,
+                asiento
+        );
+
+        vistaVenta.setLocation(btnVender.getX(), 0);
+        vistaVenta.show();
+        desktopMain.moveToFront(vistaVenta);
+    }//GEN-LAST:event_btnVenderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnA1;
@@ -1046,10 +1091,9 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
     private javax.swing.JToggleButton btnA7;
     private javax.swing.JToggleButton btnA8;
     private javax.swing.JToggleButton btnA9;
-    private javax.swing.JButton btnComprar;
     private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton btnResetear;
-    private javax.swing.JComboBox<String> cmbPasajero;
+    private javax.swing.JButton btnVender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1089,7 +1133,6 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private com.toedter.calendar.JDateChooser jdc;
@@ -1100,7 +1143,6 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblHSalida;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblOrigen;
-    private javax.swing.JLabel lblPasajero;
     private javax.swing.JTable tblRuta;
     private javax.swing.JTextField txtDestino;
     private javax.swing.JTextField txtHLlegada;

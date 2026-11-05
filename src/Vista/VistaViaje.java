@@ -1,12 +1,9 @@
 package Vista;
 
-import Modelo.Pasajero;
 import Modelo.RutaViaje;
-import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaMain;
-import static Vista.VistaMain.vistaPasajeroM;
 import static Vista.VistaMain.vistaViajeM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -14,12 +11,14 @@ import javax.swing.table.DefaultTableModel;
 public class VistaViaje extends javax.swing.JInternalFrame {
 
     javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableModel table;
     
     public ArrayList<RutaViaje> tableList = new ArrayList<>();
     public int tableIndex = -1;
     
     public VistaViaje() {
         initComponents();
+        armarTabla();
         updateAll();
         
         tblRuta.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -32,7 +31,10 @@ public class VistaViaje extends javax.swing.JInternalFrame {
                 public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                     if (!evt.getValueIsAdjusting()) {
                         int selection = tblRuta.getSelectedRow();
-                        if (selection != -1) {tableIndex = selection; updateIndex();}
+                        if (selection != -1) {
+                            tableIndex = selection;
+                            updateIndex();
+                        }
                     }
                 }
             }
@@ -40,33 +42,42 @@ public class VistaViaje extends javax.swing.JInternalFrame {
     }
     
     public void updateIndex() {
-        boolean type = false;
-        if (tableIndex != -1) {
-            tblRuta.setRowSelectionInterval(tableIndex, tableIndex);
-            type = true;
-        }
-        btnModificar.setEnabled(type);
-        btnEliminar.setEnabled(type);
-        btnAlta.setEnabled(type);
-        btnBaja.setEnabled(type);
+            if (tableIndex != -1) {
+                tblRuta.setRowSelectionInterval(tableIndex, tableIndex);
+
+                btnModificar.setEnabled(true);
+                btnEliminar.setEnabled(true);
+                
+                boolean estado = String.valueOf(tblRuta.getValueAt(tblRuta.getSelectedRow(), 6)).equalsIgnoreCase("Activo");
+
+                if (estado) {
+                    btnAlta.setEnabled(false);
+                    btnBaja.setEnabled(true);
+                    
+                } else {
+                    btnAlta.setEnabled(true);
+                    btnBaja.setEnabled(false);
+                }
+
+            } else {
+                btnModificar.setEnabled(false);
+                btnEliminar.setEnabled(false);
+                btnAlta.setEnabled(false);
+                btnBaja.setEnabled(false);
+            }
+
     }
     
-    public void updateAll() {
+    public void armarTabla() {
+        String[] titulos = {"Origen", "Destino", "Hora salida", "Hora llegada,", "Colectivo", "Precio", "Estado"};
         
-        DefaultTableModel table = new DefaultTableModel() {
+        table = new DefaultTableModel(null, titulos) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
         
-        table.addColumn("Origen");
-        table.addColumn("Destino");
-        table.addColumn("Hora Salida");
-        table.addColumn("Hora Llegada");
-        table.addColumn("Colectivo");
-        table.addColumn("Precio");
-        table.addColumn("Estado");
         tblRuta.setModel(table);
         
         renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
@@ -85,6 +96,10 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         tblRuta.getColumnModel().getColumn(6).setPreferredWidth(5);
         tblRuta.getColumnModel().getColumn(6).setCellRenderer(renderer);
         
+    }
+    
+    public void updateAll() {
+        table.setRowCount(0);
         tableList = viajeData.getList();
         
         for (RutaViaje r : tableList) {
@@ -93,8 +108,6 @@ public class VistaViaje extends javax.swing.JInternalFrame {
             table.addRow(new Object[]{r.getOrigen(),r.getDestino(),r.getHora_salida(),r.getHora_llegada(),r.getColectivo().getModelo(),r.getPrecio(), estado});
         }
 
-        tblRuta.setModel(table);
-        
         updateIndex();
     }
 
@@ -211,9 +224,13 @@ public class VistaViaje extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int id = tableList.get(tableIndex).getId_ruta();
-        if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-        vistaMain.ruta("REMOVE",id);
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "Esta acción eliminará permanentemente la ruta de la base de datos\n¿Desea continuar?", "Advertencia: borrado permanente", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+        
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            int id = tableList.get(tableIndex).getId_ruta();
+            if ((tableIndex+1) == tableList.size()) {tableIndex--;}
+            vistaMain.ruta("REMOVE",id);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed

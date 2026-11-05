@@ -11,12 +11,14 @@ import javax.swing.table.DefaultTableModel;
 public class VistaPasajero extends javax.swing.JInternalFrame {
 
     javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableModel table;
     
     public ArrayList<Pasajero> tableList = new ArrayList<>();
     public int tableIndex = -1;
     
     public VistaPasajero() {
         initComponents();
+        armarTabla();
         updateAll();
         
         tblPasajero.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -42,18 +44,16 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
         public void updateIndex() {
             if (tableIndex != -1) {
                 tblPasajero.setRowSelectionInterval(tableIndex, tableIndex);
-                boolean estado = true;
-
-                if (String.valueOf(tblPasajero.getValueAt(tblPasajero.getSelectedRow(), 5)).equalsIgnoreCase("Inactivo")) {
-                    estado = false;
-                }
 
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
+                
+                boolean estado = String.valueOf(tblPasajero.getValueAt(tblPasajero.getSelectedRow(), 5)).equalsIgnoreCase("Activo");
 
-                if (estado) { // Se habilitan los botones según el estado del pasajero.
+                if (estado) {
                     btnAlta.setEnabled(false);
                     btnBaja.setEnabled(true);
+                    
                 } else {
                     btnAlta.setEnabled(true);
                     btnBaja.setEnabled(false);
@@ -67,22 +67,17 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
             }
 
         }
-    
-    public void updateAll() {
         
-        DefaultTableModel table = new DefaultTableModel() {
+    public void armarTabla() {
+        String[] titulos = {"DNI", "Nombre", "Apellido", "Correo,", "Teléfono", "Estado"};
+        
+        table = new DefaultTableModel(null, titulos) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
         
-        table.addColumn("DNI");
-        table.addColumn("Nombre");
-        table.addColumn("Apellido");
-        table.addColumn("Correo");
-        table.addColumn("Teléfono");
-        table.addColumn("Estado");
         tblPasajero.setModel(table);
         
         renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
@@ -99,6 +94,11 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
         tblPasajero.getColumnModel().getColumn(5).setPreferredWidth(5);
         tblPasajero.getColumnModel().getColumn(5).setCellRenderer(renderer);
         
+    }
+    
+    
+    public void updateAll() {
+        table.setRowCount(0);
         tableList = pasajeroData.getList();
         
         for (Pasajero p : tableList) {
@@ -107,8 +107,6 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
             table.addRow(new Object[]{p.getDni(), p.getNombre(), p.getApellido(), p.getCorreo(), p.getTelefono(), estado});
         }
 
-        tblPasajero.setModel(table);
-        
         updateIndex();
     }
 
@@ -225,9 +223,13 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int id = tableList.get(tableIndex).getId_pasajero();
-        if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-        vistaMain.pasajero("REMOVE",id);
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "Esta acción eliminará permanentemente al pasajero de la base de datos\n¿Desea continuar?", "Advertencia: borrado permanente", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+        
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            int id = tableList.get(tableIndex).getId_pasajero();
+            if ((tableIndex+1) == tableList.size()) {tableIndex--;}
+            vistaMain.pasajero("REMOVE",id);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed

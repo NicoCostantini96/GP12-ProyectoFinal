@@ -72,7 +72,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
     }
     
     public void armarTabla() {
-        String[] titulos = {"Matrícula", "Marca", "Modelo", "Capacidad,", "Chofer", "Estado"};
+        String[] titulos = {"Matrícula", "Marca", "Modelo", "Capacidad", "Chofer", "Estado"};
         
         table = new DefaultTableModel(null, titulos) {
             @Override

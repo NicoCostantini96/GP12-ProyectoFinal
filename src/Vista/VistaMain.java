@@ -10,7 +10,7 @@ import Persistencia.ColectivoData;
 import Persistencia.PasajeData;
 import Persistencia.PasajeroData;
 import Persistencia.RutaViajeData;
-import static Vista.VistaPasajes.vistaVenta;
+import static Vista.VistaPasaje2.vistaVenta;
 import javax.swing.JDesktopPane;
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +32,8 @@ public class VistaMain extends javax.swing.JFrame {
     public static VistaColectivoModificar vistaColectivoM = new VistaColectivoModificar();
     public static VistaViaje vistaViaje = new VistaViaje();
     public static VistaViajeModificar vistaViajeM = new VistaViajeModificar();
-    public static VistaPasajes vistaPasajes = new VistaPasajes();
+    public static VistaPasaje vistaPasaje = new VistaPasaje();
+    public static VistaPasajeModificar vistaPasajeM = new VistaPasajeModificar();
 
     public static JDesktopPane desktopMain;
 
@@ -46,7 +47,8 @@ public class VistaMain extends javax.swing.JFrame {
         desktopMain.add(vistaColectivoM);
         desktopMain.add(vistaViaje);
         desktopMain.add(vistaViajeM);
-        desktopMain.add(vistaPasajes);
+        desktopMain.add(vistaPasaje);
+        desktopMain.add(vistaPasajeM);
         desktopMain.add(vistaVenta);
         img();
         configurarListenersDeRedimensionamiento();
@@ -77,6 +79,7 @@ public void img() {
             }
         });
     }
+    
     public void pasajero(String type, int id) {
         if (type.equals("INSERT")) {
             vistaPasajero.tableIndex = vistaPasajero.tableList.size();
@@ -185,6 +188,34 @@ public void img() {
         vistaViaje.updateAll();
     }
 
+    public void pasaje(String type, int id) {
+        if (type.equals("INSERT")) {
+            vistaPasaje.tableIndex = vistaPasaje.tableList.size();
+            vistaPasajeM.hide();
+        }
+        if (type.equals("REMOVE")) {
+            for (Pasaje p : pasajeData.SQL("select * from pasajes where id_pasaje = " + id)) {
+                asientoData.remove(p.getLugar().getId_lugar());
+            }
+            if (vistaPasajeM.pasaje != null && vistaPasajeM.pasaje.getId_pasaje() == id && vistaPasajeM.estate == 2) {
+                vistaPasajeM.hide();
+            }
+            pasajeData.remove(id);
+        }
+        if (type.equals("MODIFY")) {
+            int index = -1;
+            for (Pasaje p : pasajeData.getList()) {
+                index++;
+                if (p.getId_pasaje() == id) {
+                    break;
+                }
+            }
+            vistaPasaje.tableIndex = index;
+            vistaPasajeM.hide();
+        }
+        vistaPasaje.updateAll();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -305,9 +336,9 @@ public void img() {
     }//GEN-LAST:event_mitPasajeroActionPerformed
 
     private void mitPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitPasajesActionPerformed
-        vistaPasajes.setLocation(mnuPasajes.getX(), 0);
-        vistaPasajes.show();
-        desktopMain.moveToFront(vistaPasajes);
+        vistaPasaje.setLocation(mnuPasajes.getX(), 0);
+        vistaPasaje.show();
+        desktopMain.moveToFront(vistaPasaje);
     }//GEN-LAST:event_mitPasajesActionPerformed
 
     private void mitColectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitColectivoActionPerformed

@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Colectivo;
 import static Vista.TestMain.colectivoData;
 import static Vista.VistaMain.vistaMain;
+import java.util.ArrayList;
 
 public class VistaColectivoModificar extends javax.swing.JInternalFrame {
 
@@ -482,6 +483,12 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
                 lblMsjModelo.setText("No se permiten símbolos!!");
             }else if (txt.length() != 7) {
                 lblMsjMatricula.setText("Tienen que ser 7 caracteres!!!!");
+            }else {
+                ArrayList<Colectivo> cList = colectivoData.SQL("SELECT * FROM colectivos WHERE matricula = '"+txt+"';");
+                System.out.println(cList);
+                if (!cList.isEmpty() && (cList.getFirst().getId_colectivo() != colectivo.getId_colectivo() || estate==1)) {
+                    lblMsjMatricula.setText("Esa matricula ya está en uso!!!!");
+                }
             }
         }
     }//GEN-LAST:event_txtMatriculaKeyReleased

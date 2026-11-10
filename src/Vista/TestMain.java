@@ -12,6 +12,7 @@ import Persistencia.PasajeroData;
 import Persistencia.RutaViajeData;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -928,7 +929,7 @@ public class TestMain {
             }
         }
         
-        return new RutaViaje(id,origen,destino,LocalTime.of(hSalida.get(0),hSalida.get(1),hSalida.get(2)),LocalTime.of(hLlegada.get(0),hLlegada.get(1),hLlegada.get(2)),colectivo,precio,estado);
+        return new RutaViaje(id,origen,destino,LocalDate.now(),LocalTime.of(hSalida.get(0),hSalida.get(1),hSalida.get(2)),LocalTime.of(hLlegada.get(0),hLlegada.get(1),hLlegada.get(2)),colectivo,precio,estado);
     }
     
     // MÉTODOS DEL PASAJE

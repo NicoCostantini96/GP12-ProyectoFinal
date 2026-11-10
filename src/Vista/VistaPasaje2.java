@@ -17,7 +17,7 @@ import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaPasajes extends javax.swing.JInternalFrame {
+public class VistaPasaje2 extends javax.swing.JInternalFrame {
 
     javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
     public static VistaVenta vistaVenta = new VistaVenta();
@@ -28,7 +28,7 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
     private ArrayList<RutaViaje> tblRutaElements = new ArrayList<>();
     private RutaViaje tblRutaSelected = null;
 
-    public VistaPasajes() {
+    public VistaPasaje2() {
         initComponents();
         updateTBLRuta();
 

@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Pasajero;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.vistaMain;
+import java.util.ArrayList;
 
 public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
 
@@ -482,6 +483,12 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
                 lblMsjDni.setText("Solo se permiten números!!");
             }else if (txt.length() != 8) {
                 lblMsjDni.setText("Tienen que ser 8 caracteres!!");
+            }else {
+                ArrayList<Pasajero> pList = pasajeroData.SQL("SELECT * FROM pasajeros WHERE dni = "+txt+";");
+                System.out.println(pList);
+                if (!pList.isEmpty() && (pList.getFirst().getId_pasajero() != pasajero.getId_pasajero() || estate==1)) {
+                    lblMsjDni.setText("Ese dni ya está en uso!!!!");
+                }
             }
         }
     }//GEN-LAST:event_txtDniKeyReleased

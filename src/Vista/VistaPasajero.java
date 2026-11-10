@@ -69,7 +69,7 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
         }
         
     public void armarTabla() {
-        String[] titulos = {"DNI", "Nombre", "Apellido", "Correo,", "Teléfono", "Estado"};
+        String[] titulos = {"DNI", "Nombre", "Apellido", "Correo", "Teléfono", "Estado"};
         
         table = new DefaultTableModel(null, titulos) {
             @Override

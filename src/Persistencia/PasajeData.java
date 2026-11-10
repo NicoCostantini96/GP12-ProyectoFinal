@@ -68,6 +68,7 @@ public class PasajeData {
             ps.setTime(5, java.sql.Time.valueOf(obj.getHora_venta()));
             ps.setDouble(6, obj.getPrecio());
             ps.setBoolean(7, obj.getEstado());
+            ps.setInt(8, obj.getId_pasaje());
             
             int filas = ps.executeUpdate();
             if (filas>0) {
@@ -75,6 +76,7 @@ public class PasajeData {
             }
         }catch(SQLException e) {
             System.err.println("ERROR: Datos del pasaje incompatibles!!\n");
+            System.err.println(e);
         }
     }
     

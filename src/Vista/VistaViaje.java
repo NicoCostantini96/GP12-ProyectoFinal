@@ -69,7 +69,7 @@ public class VistaViaje extends javax.swing.JInternalFrame {
     }
     
     public void armarTabla() {
-        String[] titulos = {"Origen", "Destino", "Hora salida", "Hora llegada,", "Colectivo", "Precio", "Estado"};
+        String[] titulos = {"Origen", "Destino", "Fecha Viaje", "Hora salida", "Hora llegada", "Colectivo", "Precio", "Estado"};
         
         table = new DefaultTableModel(null, titulos) {
             @Override
@@ -89,12 +89,14 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         tblRuta.getColumnModel().getColumn(2).setCellRenderer(renderer);
         tblRuta.getColumnModel().getColumn(3).setPreferredWidth(30);
         tblRuta.getColumnModel().getColumn(3).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(4).setPreferredWidth(40);
+        tblRuta.getColumnModel().getColumn(4).setPreferredWidth(30);
         tblRuta.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(5).setPreferredWidth(20);
+        tblRuta.getColumnModel().getColumn(5).setPreferredWidth(40);
         tblRuta.getColumnModel().getColumn(5).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(6).setPreferredWidth(5);
+        tblRuta.getColumnModel().getColumn(6).setPreferredWidth(20);
         tblRuta.getColumnModel().getColumn(6).setCellRenderer(renderer);
+        tblRuta.getColumnModel().getColumn(7).setPreferredWidth(5);
+        tblRuta.getColumnModel().getColumn(7).setCellRenderer(renderer);
         
     }
     
@@ -105,7 +107,7 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         for (RutaViaje r : tableList) {
             String estado = "Inactivo";
             if (r.getEstado()) {estado = "Activo";}
-            table.addRow(new Object[]{r.getOrigen(),r.getDestino(),r.getHora_salida(),r.getHora_llegada(),r.getColectivo().getModelo(),r.getPrecio(), estado});
+            table.addRow(new Object[]{r.getOrigen(),r.getDestino(),r.getFecha_viaje(),r.getHora_salida(),r.getHora_llegada(),r.getColectivo().getMatricula(),r.getPrecio(), estado});
         }
 
         updateIndex();

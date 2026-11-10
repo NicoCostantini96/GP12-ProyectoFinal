@@ -31,7 +31,7 @@ public class VistaVenta extends javax.swing.JInternalFrame {
     private LocalDate fechaViaje;
     private int salida;
     private boolean yaExiste = false;
-    private VistaPasajes ventanaPasajes;
+    private VistaPasaje2 ventanaPasajes;
 
     /**
      * Creates new form VistaVenta
@@ -509,7 +509,7 @@ public class VistaVenta extends javax.swing.JInternalFrame {
         txtTelefono.setText(telefono);    }//GEN-LAST:event_txtTelefonoKeyReleased
 
     //Metodo receptor
-    public void setDatosVenta(RutaViaje tblRutaSelected, LocalDate fechaViaje, int asiento, VistaPasajes ventanaPasajes) {
+    public void setDatosVenta(RutaViaje tblRutaSelected, LocalDate fechaViaje, int asiento, VistaPasaje2 ventanaPasajes) {
         this.rutaSelected = tblRutaSelected;
         this.fechaViaje = fechaViaje;
         this.asientoSelected = asiento;

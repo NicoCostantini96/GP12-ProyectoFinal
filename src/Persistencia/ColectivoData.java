@@ -128,5 +128,31 @@ public class ColectivoData {
         }
         return list;
     }
+    
+    public ArrayList<Colectivo> SQL(String sql) {
+        ArrayList<Colectivo> lista = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet res = ps.executeQuery();
+
+            while (res.next()) {
+                lista.add(new Colectivo(
+                    res.getInt("id_colectivo"),
+                    res.getString("matricula"),
+                    res.getString("marca"),
+                    res.getString("modelo"),
+                    res.getInt("capacidad"),
+                    res.getString("chofer"),
+                    res.getBoolean("estado")
+                ));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("ERROR SQL: " + e);
+        }
+
+        return lista;
+    }
 }
 

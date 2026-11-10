@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.time.LocalDate;
 
 public class RutaViajeData {
 
@@ -24,7 +23,7 @@ public class RutaViajeData {
 
     public void insert(RutaViaje obj) {
         try {
-            String sql = "insert into rutas(origen, destino, hora_salida, hora_llegada, id_colectivo, precio, estado, fecha_viaje) values (?, ?, ?, ?, ?, ?, ?, ?);";
+            String sql = "insert into rutas(origen, destino, hora_salida, hora_llegada, id_colectivo, precio, estado) values (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getOrigen());
             ps.setString(2, obj.getDestino());
@@ -33,7 +32,6 @@ public class RutaViajeData {
             ps.setInt(5, obj.getColectivo().getId_colectivo());
             ps.setBigDecimal(6, BigDecimal.valueOf(obj.getPrecio()));
             ps.setBoolean(7, obj.getEstado());
-            ps.setDate(8, java.sql.Date.valueOf(obj.getFecha_viaje()));
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
@@ -64,7 +62,7 @@ public class RutaViajeData {
 
     public void update(RutaViaje obj) {
         try {
-            String sql = "update rutas set origen = ?, destino = ?, hora_salida = ?, hora_llegada = ?, id_colectivo = ?, precio = ?, estado = ?, fecha_viaje = ? where id_ruta = ?";
+            String sql = "update rutas set origen = ?, destino = ?, hora_salida = ?, hora_llegada = ?, id_colectivo = ?, precio = ?, estado = ? where id_ruta = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getOrigen());
             ps.setString(2, obj.getDestino());
@@ -73,8 +71,7 @@ public class RutaViajeData {
             ps.setInt(5, obj.getColectivo().getId_colectivo());
             ps.setBigDecimal(6, BigDecimal.valueOf(obj.getPrecio()));
             ps.setBoolean(7, obj.getEstado());
-            ps.setDate(8, java.sql.Date.valueOf(obj.getFecha_viaje()));
-            ps.setInt(9, obj.getId_ruta());
+            ps.setInt(8, obj.getId_ruta());
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
@@ -103,8 +100,7 @@ public class RutaViajeData {
                         res.getTime("hora_llegada").toLocalTime(),
                         colectivoData.getById(id),
                         res.getBigDecimal("precio").doubleValue(),
-                        res.getBoolean("estado"),
-                        res.getDate("fecha_viaje").toLocalDate()
+                        res.getBoolean("estado")
                 );
             }
         } catch (SQLException e) {
@@ -131,8 +127,7 @@ public class RutaViajeData {
                         res.getTime("hora_llegada").toLocalTime(),
                         bondi,
                         res.getBigDecimal("precio").doubleValue(),
-                        res.getBoolean("estado"),
-                        res.getDate("fecha_viaje").toLocalDate()
+                        res.getBoolean("estado")
                 );
                 list.add(obj);
             }
@@ -141,7 +136,7 @@ public class RutaViajeData {
         }
         return list;
     }
-
+    
     public ArrayList<RutaViaje> SQL(String sql) {
         ArrayList<RutaViaje> lista = new ArrayList<>();
 
@@ -158,8 +153,7 @@ public class RutaViajeData {
                     res.getTime("hora_llegada").toLocalTime(),
                     colectivoData.getById(res.getInt("id_colectivo")),
                     res.getBigDecimal("precio").doubleValue(),
-                    res.getBoolean("estado"),
-                    res.getDate("fecha_viaje").toLocalDate()
+                    res.getBoolean("estado")
                 ));
             }
 

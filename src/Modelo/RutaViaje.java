@@ -12,9 +12,8 @@ public class RutaViaje {
     private Colectivo colectivo;
     private double precio;
     private boolean estado;
-    private LocalDate fecha_viaje;
 
-    public RutaViaje(int id_ruta, String origen, String destino, LocalTime hora_salida, LocalTime hora_llegada, Colectivo colectivo, double precio, boolean estado, LocalDate fecha_viaje) {
+    public RutaViaje(int id_ruta, String origen, String destino, LocalTime hora_salida, LocalTime hora_llegada, Colectivo colectivo, double precio, boolean estado) {
         this.id_ruta = id_ruta;
         this.origen = origen;
         this.destino = destino;
@@ -23,7 +22,6 @@ public class RutaViaje {
         this.colectivo = colectivo;
         this.precio = precio;
         this.estado = estado;
-        this.fecha_viaje = fecha_viaje;
     }
 
     public int getId_ruta() {
@@ -90,13 +88,4 @@ public class RutaViaje {
         this.estado = estado;
     }
 
-    public LocalDate getFecha_viaje() {
-        return fecha_viaje;
-    }
-    
-    public void setFecha_viaje(LocalDate fecha_viaje) {
-        this.fecha_viaje = fecha_viaje;
-    }
-
-    
 }

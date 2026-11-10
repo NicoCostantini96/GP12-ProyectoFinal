@@ -126,6 +126,12 @@ public class VistaPasajes extends javax.swing.JInternalFrame {
         tblRuta.setModel(table);
     }
     
+    public void updateAsiento(){
+        if (tblRutaSelected != null) {
+            
+        }
+    }
+    
     public void deshabilitarAsiento(int numeroAsiento) {
     Enumeration<AbstractButton> botones = btnGroup.getElements();
 

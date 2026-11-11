@@ -47,10 +47,8 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
 
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
-                
-                boolean estado = String.valueOf(tblPasajero.getValueAt(tblPasajero.getSelectedRow(), 5)).equalsIgnoreCase("Activo");
 
-                if (estado) {
+                if (tableList.get(tableIndex).getEstado()) {
                     btnAlta.setEnabled(false);
                     btnBaja.setEnabled(true);
                     

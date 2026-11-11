@@ -6,6 +6,7 @@ import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.pasajeData;
 import static Vista.VistaMain.vistaMain;
+import static Vista.VistaMain.vistaPasajeM;
 import static Vista.VistaMain.vistaPasajeroM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -50,9 +51,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 
-                boolean estado = String.valueOf(tblPasaje.getValueAt(tblPasaje.getSelectedRow(), 6)).equalsIgnoreCase("Activo");
-
-                if (estado) {
+                if (tableList.get(tableIndex).getEstado()) {
                     btnAlta.setEnabled(false);
                     btnBaja.setEnabled(true);
                     
@@ -206,24 +205,24 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        vistaPasajeroM.setLocation(
-            this.getX() + ((this.getWidth() - vistaPasajeroM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaPasajeroM.getHeight()) / 2)
+        vistaPasajeM.setLocation(
+            this.getX() + ((this.getWidth() - vistaPasajeM.getWidth()) / 2),
+            this.getY() + ((this.getHeight() - vistaPasajeM.getHeight()) / 2)
         );
-        //vistaPasajeroM.pasajero = tableList.get(tableIndex);
-        //vistaPasajeroM.start(2);
-        //vistaPasajeroM.show();
-        //desktopMain.moveToFront(vistaPasajeroM);
+        vistaPasajeM.pasaje = tableList.get(tableIndex);
+        vistaPasajeM.start(2);
+        vistaPasajeM.show();
+        desktopMain.moveToFront(vistaPasajeM);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        vistaPasajeroM.setLocation(
-            this.getX() + ((this.getWidth() - vistaPasajeroM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaPasajeroM.getHeight()) / 2)
+        vistaPasajeM.setLocation(
+            this.getX() + ((this.getWidth() - vistaPasajeM.getWidth()) / 2),
+            this.getY() + ((this.getHeight() - vistaPasajeM.getHeight()) / 2)
         );
-        vistaPasajeroM.start(1);
-        vistaPasajeroM.show();
-        desktopMain.moveToFront(vistaPasajeroM);
+        vistaPasajeM.start(1);
+        vistaPasajeM.show();
+        desktopMain.moveToFront(vistaPasajeM);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed

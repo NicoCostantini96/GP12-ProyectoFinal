@@ -48,9 +48,7 @@ public class VistaViaje extends javax.swing.JInternalFrame {
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 
-                boolean estado = String.valueOf(tblRuta.getValueAt(tblRuta.getSelectedRow(), 6)).equalsIgnoreCase("Activo");
-
-                if (estado) {
+                if (tableList.get(tableIndex).getEstado()) {
                     btnAlta.setEnabled(false);
                     btnBaja.setEnabled(true);
                     
@@ -91,7 +89,7 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         tblRuta.getColumnModel().getColumn(3).setCellRenderer(renderer);
         tblRuta.getColumnModel().getColumn(4).setPreferredWidth(30);
         tblRuta.getColumnModel().getColumn(4).setCellRenderer(renderer);
-        tblRuta.getColumnModel().getColumn(5).setPreferredWidth(40);
+        tblRuta.getColumnModel().getColumn(5).setPreferredWidth(30);
         tblRuta.getColumnModel().getColumn(5).setCellRenderer(renderer);
         tblRuta.getColumnModel().getColumn(6).setPreferredWidth(20);
         tblRuta.getColumnModel().getColumn(6).setCellRenderer(renderer);

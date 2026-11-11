@@ -51,9 +51,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 
-                boolean estado = String.valueOf(tblColectivo.getValueAt(tblColectivo.getSelectedRow(), 5)).equalsIgnoreCase("Activo");
-
-                if (estado) {
+                if (tableList.get(tableIndex).getEstado()) {
                     btnAlta.setEnabled(false);
                     btnBaja.setEnabled(true);
                     

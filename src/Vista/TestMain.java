@@ -648,7 +648,7 @@ public class TestMain {
         String formatList = "%-3s %-11s %-3s %s%n";
         System.out.printf(formatList, "ID LUGAR:", "| ID COLECTIVO:", "| NUMERO ASIENTO:", "| ESTADO:");
         for (Asiento i : list) {
-            System.out.printf(formatList, i.getId_lugar(), "| " + i.getColectivo().getId_colectivo(), "| " + i.getNumero_asiento(), "| " + i.getEstado());
+            System.out.printf(formatList, i.getId_lugar(), "| " + i.getRuta().getId_ruta(), "| " + i.getNumero_asiento(), "| " + i.getEstado());
         }
         System.out.println("");
     }
@@ -682,19 +682,19 @@ public class TestMain {
 
     static public Asiento createAsiento(Asiento obj) {
         int id = 0;
-        Colectivo colectivo = null;
+        RutaViaje ruta = null;
         int num = 0;
         boolean estado = false;
 
         if (obj != null) {
             id = obj.getId_lugar();
-            colectivo = obj.getColectivo();
+            ruta = obj.getRuta();
             num = obj.getNumero_asiento();
             estado = obj.getEstado();
         }
 
         if (verifyChange(obj, "Desea modificar el colectivo? (s/n): ")) {
-            colectivo = findColectivo();
+            ruta = findRuta();
         }
 
         if (verifyChange(obj, "Desea modificar el numero de asiento? (s/n): ")) {
@@ -731,7 +731,7 @@ public class TestMain {
             }
         }
 
-        return new Asiento(id, colectivo, num, estado);
+        return new Asiento(id, ruta, num, estado);
     }
     
     // MÉTODOS DEL RUTAVIAJE

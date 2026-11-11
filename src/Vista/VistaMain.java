@@ -30,6 +30,8 @@ public class VistaMain extends javax.swing.JFrame {
     public static VistaPasajeroModificar vistaPasajeroM = new VistaPasajeroModificar();
     public static VistaColectivo vistaColectivo = new VistaColectivo();
     public static VistaColectivoModificar vistaColectivoM = new VistaColectivoModificar();
+    public static VistaAsiento vistaAsiento = new VistaAsiento();
+    public static VistaAsientoModificar vistaAsientoM = new VistaAsientoModificar();
     public static VistaViaje vistaViaje = new VistaViaje();
     public static VistaViajeModificar vistaViajeM = new VistaViajeModificar();
     public static VistaPasaje vistaPasaje = new VistaPasaje();
@@ -45,6 +47,8 @@ public class VistaMain extends javax.swing.JFrame {
         desktopMain.add(vistaPasajeroM);
         desktopMain.add(vistaColectivo);
         desktopMain.add(vistaColectivoM);
+        desktopMain.add(vistaAsiento);
+        desktopMain.add(vistaAsientoM);
         desktopMain.add(vistaViaje);
         desktopMain.add(vistaViajeM);
         desktopMain.add(vistaPasaje);
@@ -87,7 +91,7 @@ public void img() {
         }
         if (type.equals("REMOVE")) {
             for (Pasaje p : pasajeData.SQL("select * from pasajes where id_pasajero = " + id)) {
-                pasajeData.remove(p.getId_pasaje());
+                pasaje("REMOVE", p.getId_pasaje());
             }
             if (vistaPasajeroM.pasajero != null && vistaPasajeroM.pasajero.getId_pasajero() == id && vistaPasajeroM.estate == 2) {
                 vistaPasajeroM.hide();
@@ -122,7 +126,7 @@ public void img() {
                     + "join colectivos c2 on c2.id_colectivo = lugares.id_colectivo\n"
                     + "where c1.id_colectivo = " + id + " or c2.id_colectivo = " + id
             )) {
-                pasajeData.remove(p.getId_pasaje());
+                pasaje("REMOVE", p.getId_pasaje());
             }
 
             for (Asiento a : asientoData.SQL(
@@ -167,7 +171,7 @@ public void img() {
         }
         if (type.equals("REMOVE")) {
             for (Pasaje p : pasajeData.SQL("select * from pasajes where id_ruta = " + id)) {
-                pasajeData.remove(p.getId_pasaje());
+                pasaje("REMOVE", p.getId_pasaje());
             }
             if (vistaViajeM.ruta != null && vistaViajeM.ruta.getId_ruta() == id && vistaViajeM.estate == 2) {
                 vistaViajeM.hide();
@@ -188,6 +192,34 @@ public void img() {
         vistaViaje.updateAll();
     }
 
+    public void asiento(String type, int id) {
+        if (type.equals("INSERT")) {
+            vistaAsiento.tableIndex = vistaPasaje.tableList.size();
+            vistaAsientoM.hide();
+        }
+        if (type.equals("REMOVE")) {
+            for (Pasaje p : pasajeData.SQL("select * from pasajes where id_lugar = " + id)) {
+                pasaje("REMOVE", p.getId_pasaje());
+            }
+            if (vistaAsientoM.asiento != null && vistaAsientoM.asiento.getId_lugar() == id && vistaAsientoM.estate == 2) {
+                vistaAsientoM.hide();
+            }
+            asientoData.remove(id);
+        }
+        if (type.equals("MODIFY")) {
+            int index = -1;
+            for (Asiento a : asientoData.getList()) {
+                index++;
+                if (a.getId_lugar() == id) {
+                    break;
+                }
+            }
+            vistaAsiento.tableIndex = index;
+            vistaAsientoM.hide();
+        }
+        vistaAsiento.updateAll();
+    }
+    
     public void pasaje(String type, int id) {
         if (type.equals("INSERT")) {
             vistaPasaje.tableIndex = vistaPasaje.tableList.size();
@@ -195,7 +227,7 @@ public void img() {
         }
         if (type.equals("REMOVE")) {
             for (Pasaje p : pasajeData.SQL("select * from pasajes where id_pasaje = " + id)) {
-                asientoData.remove(p.getLugar().getId_lugar());
+                asiento("REMOVE", p.getLugar().getId_lugar());
             }
             if (vistaPasajeM.pasaje != null && vistaPasajeM.pasaje.getId_pasaje() == id && vistaPasajeM.estate == 2) {
                 vistaPasajeM.hide();
@@ -229,6 +261,8 @@ public void img() {
         mitPasajero = new javax.swing.JMenuItem();
         mnuColectivo = new javax.swing.JMenu();
         mitColectivo = new javax.swing.JMenuItem();
+        mnuAsiento = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnuRuta = new javax.swing.JMenu();
         mitRuta = new javax.swing.JMenuItem();
         mnuPasajes = new javax.swing.JMenu();
@@ -284,6 +318,14 @@ public void img() {
         mnuColectivo.add(mitColectivo);
 
         mnbNavegador.add(mnuColectivo);
+
+        mnuAsiento.setText("Asiento");
+
+        jMenuItem1.setText("Asiento");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        mnuAsiento.add(jMenuItem1);
+
+        mnbNavegador.add(mnuAsiento);
 
         mnuRuta.setText("Ruta");
 
@@ -353,6 +395,12 @@ public void img() {
         desktopMain.moveToFront(vistaViaje);
     }//GEN-LAST:event_mitRutaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        vistaAsiento.setLocation(mnuAsiento.getX(), 0);
+        vistaAsiento.show();
+        desktopMain.moveToFront(vistaAsiento);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new VistaMain().setVisible(true));
 
@@ -362,6 +410,7 @@ public void img() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dtpEscritorio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem mitColectivo;
     private javax.swing.JMenuItem mitPasajero;
     private javax.swing.JMenuItem mitPasajes;
@@ -369,6 +418,7 @@ public void img() {
     private javax.swing.JMenuItem mitSalir;
     private javax.swing.JMenuBar mnbNavegador;
     private javax.swing.JMenu mnuArchivo;
+    private javax.swing.JMenu mnuAsiento;
     private javax.swing.JMenu mnuColectivo;
     private javax.swing.JMenu mnuPasajero;
     private javax.swing.JMenu mnuPasajes;

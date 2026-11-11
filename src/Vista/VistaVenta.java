@@ -477,7 +477,7 @@ public class VistaVenta extends javax.swing.JInternalFrame {
                 //creamos asiento:
                 Asiento nuevoAsiento = new Asiento(
                         0,
-                        rutaSelected.getColectivo(),
+                        rutaSelected,
                         asientoSelected,
                         false //para verificar en el armado que si es false no se puede vender
                 );

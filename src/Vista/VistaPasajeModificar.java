@@ -11,13 +11,17 @@ import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaMain;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class VistaPasajeModificar extends javax.swing.JInternalFrame {
 
     public Pasaje pasaje = null;
-    private LocalTime hventa = LocalTime.of(0,0,0);
+    private LocalTime hVenta = LocalTime.of(0,0,0);
+    private RutaViaje ruta = null;
+    private Pasajero pasajero = null;
+    private int asientoIndex = 0;
     public int estate = 0;
     
     public VistaPasajeModificar() {
@@ -27,14 +31,31 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     public void start(int type) {
         estate = type;
         
-        var cmbPasajeroIndex = 0; cmbPasajero.removeAllItems();
+       var cmbPasajeroIndex = 0; cmbPasajero.removeAllItems();
         for (Pasajero p : pasajeroData.getList()) {
-            cmbPasajero.addItem(p.getNombre() + " " + p.getApellido() + " " + p.getDni());
+            cmbPasajero.addItem(p.getDni() + " " + p.getNombre() + " " + p.getApellido());
             if (estate == 2 && pasaje.getPasajero().getId_pasajero() == p.getId_pasajero()) {
                 cmbPasajeroIndex = cmbPasajero.getItemCount() - 1;
             }
         }
         if (cmbPasajero.getItemCount() > 0) {cmbPasajero.setSelectedIndex(cmbPasajeroIndex);}
+        
+        boolean rutaEnd = false;
+        int rutaIndex = -1;
+        cmbRuta.removeAllItems();
+        for (RutaViaje r : viajeData.getList()) {
+            cmbRuta.addItem(r.getOrigen() + " - " + r.getDestino() + " - " + r.getColectivo().getMatricula() + " - " + r.getHora_salida());
+            if (!rutaEnd) {
+                rutaIndex++;
+                if (estate == 2) {
+                    if (pasaje.getRuta().getId_ruta() == r.getId_ruta()) {rutaEnd = true;}
+                }else{
+                    rutaIndex = 0;
+                }
+            }
+        }
+        cmbRuta.setSelectedIndex(rutaIndex);
+        
         cmbUpdate();
         
         if (estate == 1) {
@@ -54,28 +75,21 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     }
     
     private void cmbUpdate() {
-        int rutaIndex = 0;
-        cmbRuta.removeAllItems();
-        
-        for (RutaViaje r : viajeData.getList()) {
-            cmbRuta.addItem(r.getOrigen() + " - " + r.getDestino() + " - " + r.getColectivo().getMatricula() + " - " + r.getHora_salida());
-            if (estate == 2 && pasaje.getRuta().getId_ruta() == r.getId_ruta()) {
-                rutaIndex = cmbRuta.getItemCount() - 1;
+        if (cmbRuta.getSelectedIndex() >= 0) {
+            ruta = viajeData.getList().get(cmbRuta.getSelectedIndex());
+            if (ruta != null) {
+                asientoIndex = 0;
+                cmbAsiento.removeAllItems();
+                for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
+                    boolean me = (estate == 2 && pasaje.getLugar().getNumero_asiento() == i+1);
+                    ArrayList<Asiento> ocupado = asientoData.SQL("SELECT * FROM `lugares` WHERE id_colectivo = "+ruta.getColectivo().getId_colectivo()+" and numero_asiento = "+i+1+";");
+                    if (!ocupado.isEmpty() && !me) {continue;}
+                    cmbAsiento.addItem(String.valueOf(i+1));
+                    if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
+                }
+                cmbAsiento.setSelectedIndex(asientoIndex);
             }
         }
-
-        if (cmbRuta.getItemCount() > 0) {cmbRuta.setSelectedIndex(rutaIndex);}
-
-        int capacidad = viajeData.getList().get(rutaIndex).getColectivo().getCapacidad();
-        int asientoIndex = 0;
-        cmbAsiento.removeAllItems();
-
-        for (int i = 0; i < capacidad; i++) {
-            cmbAsiento.addItem(String.valueOf(i));
-            if (estate == 2 && pasaje.getLugar().getNumero_asiento() == i) {asientoIndex = i;}
-        }
-
-        if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
     }
     
     @SuppressWarnings("unchecked")
@@ -147,6 +161,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         lblDni.setText("PSAJERO:");
 
         cmbPasajero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbPasajero.addActionListener(this::cmbPasajeroActionPerformed);
 
         javax.swing.GroupLayout pnlDniInputLayout = new javax.swing.GroupLayout(pnlDniInput);
         pnlDniInput.setLayout(pnlDniInputLayout);
@@ -460,21 +475,25 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        /*
         if (txtHVenta.getText().length() < 1) {
             lblMsjHVenta.setText("Ingrese una hora!!");
         }
         if (txtPrecio.getText().length() < 1) {
-            lblMsjFVenta.setText("Ingrese un precio!!");
+            lblMsjPrecio.setText("Ingrese un precio!!");
         }
         
         if (
+            lblMsjFVenta.getText().length() < 1 &&
             lblMsjHVenta.getText().length() < 1 &&
-            lblMsjFVenta.getText().length() < 1
+            lblMsjPrecio.getText().length() < 1
         ) {
             int id = (pasaje != null) ? pasaje.getId_pasaje() : 0;
+            Asiento asiento = (pasaje != null) ? pasaje.getLugar() : new Asiento(0,ruta,asientoIndex,true);
+            //Asiento asiento = pasaje.getLugar();
+            LocalDate fVenta = dateFVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            double precio = Double.parseDouble(txtPrecio.getText());
             
-            Pasaje p = new Pasajero(id,dni,nombre,apellido,correo,telefono,true);
+            Pasaje p = new Pasaje(id,pasajero,asiento,ruta,fVenta,hVenta,precio,true);
             
             if (estate == 1) {
                 pasajeData.insert(p);
@@ -484,7 +503,6 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 vistaMain.pasaje("MODIFY",pasaje.getId_pasaje());
             }
         }
-        */
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtHVentaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHVentaKeyReleased
@@ -497,7 +515,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 int m = (hsplit.length > 1) ? Integer.parseInt(hsplit[1]) : 0;
                 int s = (hsplit.length > 2) ? Integer.parseInt(hsplit[2]) : 0;
                 if (hsplit.length > 3) {throw new Exception();}
-                hventa = LocalTime.of(h, m, s);
+                hVenta = LocalTime.of(h, m, s);
             } catch (Exception e) {
                 lblMsjHVenta.setText("Ingrese una hora válida!!");
             }
@@ -517,8 +535,14 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPrecioKeyReleased
 
     private void cmbRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRutaActionPerformed
-        //cmbUpdate();
+        cmbUpdate();
     }//GEN-LAST:event_cmbRutaActionPerformed
+
+    private void cmbPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPasajeroActionPerformed
+        if (cmbPasajero.getSelectedIndex() >= 0) {
+            pasajero = pasajeroData.getList().get(cmbPasajero.getSelectedIndex());
+        }
+    }//GEN-LAST:event_cmbPasajeroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

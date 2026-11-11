@@ -228,11 +228,11 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "Esta acción eliminará permanentemente al pasajero de la base de datos\n¿Desea continuar?", "Advertencia: borrado permanente", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
         
-        //if (opcion == javax.swing.JOptionPane.YES_OPTION) {
-        //    int id = tableList.get(tableIndex).getId_pasajero();
-        //    if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-        //    vistaMain.pasajero("REMOVE",id);
-        //}
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            int id = tableList.get(tableIndex).getId_pasaje();
+            if ((tableIndex+1) == tableList.size()) {tableIndex--;}
+            vistaMain.pasaje("REMOVE",id);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed

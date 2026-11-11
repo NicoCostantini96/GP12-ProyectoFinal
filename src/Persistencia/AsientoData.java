@@ -2,7 +2,7 @@ package Persistencia;
 
 import Modelo.Asiento;
 import Modelo.Pasajero;
-import static Vista.TestMain.colectivoData;
+import static Vista.VistaMain.viajeData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,12 +23,11 @@ public class AsientoData {
 
     public void insert(Asiento obj) {
         try {
-            String sql = "insert into lugares(id_lugar,id_colectivo,numero_asiento,estado) values (?, ?, ?, ?);";
+            String sql = "INSERT INTO lugares(id_ruta, numero_asiento, estado) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, obj.getId_lugar());
-            ps.setInt(2, obj.getColectivo().getId_colectivo());
-            ps.setInt(3, obj.getNumero_asiento());
-            ps.setBoolean(4, obj.getEstado());
+            ps.setInt(1, obj.getRuta().getId_ruta());
+            ps.setInt(2, obj.getNumero_asiento());
+            ps.setBoolean(3, obj.getEstado());
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
@@ -64,18 +63,20 @@ public class AsientoData {
 
     public void update(Asiento obj) {
         try {
-            String sql = "update lugares set id_colectivo = ?, numero_asiento = ?, estado = ? where id_lugar = ?";
+            String sql = "update lugares set id_ruta = ?, numero_asiento = ?, estado = ? where id_lugar = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getColectivo().getId_colectivo());
+            ps.setInt(1, obj.getRuta().getId_ruta());
             ps.setInt(2, obj.getNumero_asiento());
             ps.setBoolean(3, obj.getEstado());
+            ps.setInt(4, obj.getId_lugar());
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println(cGreen + "Pasajero editado con exito!!\n" + cReset);
+                System.out.println(cGreen + "Lugar editado con exito!!\n" + cReset);
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: Datos del pasajero incompatibles!!\n");
+            System.err.println("ERROR: Datos del lugar incompatibles!!\n");
+            System.out.println(e);
         }
     }
 
@@ -91,7 +92,7 @@ public class AsientoData {
             while (res.next()) {
                 obj = new Asiento(
                         res.getInt("id_lugar"),
-                        colectivoData.getById(res.getInt("id_colectivo")),
+                        viajeData.getById(res.getInt("id_ruta")),
                         res.getInt("numero_asiento"),
                         res.getBoolean("estado")
                 );
@@ -112,7 +113,7 @@ public class AsientoData {
             while (res.next()) {
                 Asiento obj = new Asiento(
                         res.getInt("id_lugar"),
-                        colectivoData.getById(res.getInt("id_colectivo")),
+                        viajeData.getById(res.getInt("id_ruta")),
                         res.getInt("numero_asiento"),
                         res.getBoolean("estado")
                 );
@@ -134,7 +135,7 @@ public class AsientoData {
             while (res.next()) {
                 lista.add(new Asiento(
                         res.getInt("id_lugar"),
-                        colectivoData.getById(res.getInt("id_colectivo")),
+                        viajeData.getById(res.getInt("id_ruta")),
                         res.getInt("numero_asiento"),
                         res.getBoolean("estado")
                 ));

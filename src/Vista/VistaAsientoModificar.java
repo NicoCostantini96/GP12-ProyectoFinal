@@ -14,6 +14,8 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
 
     public Asiento asiento = null;
     public RutaViaje ruta = null;
+    private ArrayList<RutaViaje> rutaList = new ArrayList<>();
+    private int rutaIndex = -1;
     private int asientoIndex = 0;
     public int estate = 0;
     
@@ -23,11 +25,13 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
     
     public void start(int type) {
         estate = type;
+        rutaIndex = -1;
         
         boolean rutaEnd = false;
         int rutaIndex = -1;
         cmbRuta.removeAllItems();
         for (RutaViaje r : viajeData.getList()) {
+            rutaList.add(r);
             cmbRuta.addItem(r.getColectivo().getMatricula() + " - (" + r.getOrigen() + " - " + r.getDestino() + ") - " + r.getHora_salida());
             if (!rutaEnd) {
                 rutaIndex++;
@@ -248,8 +252,11 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         int id = (asiento != null) ? asiento.getId_lugar() : 0;
-
-        Asiento a = new Asiento(id,ruta,asientoIndex,true);
+        RutaViaje rutas = ruta;
+        if (rutaIndex >= 0 && rutaIndex < rutaList.size()) {rutas = rutaList.get(rutaIndex);}
+        int nAsiento = Integer.parseInt(cmbAsiento.getSelectedItem().toString());
+        
+        Asiento a = new Asiento(id,rutas,nAsiento,true);
 
         if (estate == 1) {
             asientoData.insert(a);
@@ -268,6 +275,7 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void cmbRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRutaActionPerformed
+        rutaIndex = cmbRuta.getSelectedIndex();
         cmbAsientoUpdate();
     }//GEN-LAST:event_cmbRutaActionPerformed
 

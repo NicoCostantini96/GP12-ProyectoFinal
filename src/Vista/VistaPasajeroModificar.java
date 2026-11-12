@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Pasajero;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.vistaMain;
+import static Vista.VistaMain.vistaPasajero;
 import java.util.ArrayList;
 
 public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
@@ -36,6 +37,14 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblMsjCorreo.setText("");
         lblMsjTelefono.setText("");
         estate = type;
+    }
+    
+    public void delHideWindow() {
+        Pasajero p = null;
+        if (pasajero != null) {p = pasajeroData.getById(pasajero.getId_pasajero());}
+        if (p == null) {
+            this.hide();
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -467,11 +476,18 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 pasajeroData.insert(p);
-                vistaMain.pasajero("INSERT",id);
+                vistaPasajero.tableIndex = vistaPasajero.tableList.size();
             } else {
                 pasajeroData.update(p);
-                vistaMain.pasajero("MODIFY",pasajero.getId_pasajero());
+                int index = -1;
+                for (Pasajero pl : pasajeroData.getList()) {
+                    index++;
+                    if (pl.getId_pasajero() == id) {break;}
+                }
+                vistaPasajero.tableIndex = index;
             }
+            vistaPasajero.updateAll();
+            this.hide();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

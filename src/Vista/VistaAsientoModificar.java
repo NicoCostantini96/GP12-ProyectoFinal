@@ -6,13 +6,14 @@ import Modelo.RutaViaje;
 import static Vista.TestMain.asientoData;
 import static Vista.TestMain.colectivoData;
 import static Vista.VistaMain.viajeData;
+import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaMain;
 import java.util.ArrayList;
 
 public class VistaAsientoModificar extends javax.swing.JInternalFrame {
 
     public Asiento asiento = null;
-    private RutaViaje ruta = null;
+    public RutaViaje ruta = null;
     private int asientoIndex = 0;
     public int estate = 0;
     
@@ -48,20 +49,28 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
         }
     }
     
+    public void delHideWindow() {
+        Asiento a = null;
+        if (asiento != null) {a = asientoData.getById(asiento.getId_lugar());}
+        if (a == null) {
+            this.hide();
+        }
+    }
+    
     private void cmbAsientoUpdate() {
         if (cmbRuta.getSelectedIndex() >= 0) {
-            ruta = viajeData.getList().get(cmbRuta.getSelectedIndex());
             if (ruta != null) {
                 asientoIndex = 0;
                 cmbAsiento.removeAllItems();
                 for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
                     boolean me = (estate == 2 && asiento.getNumero_asiento() == i+1);
-                    ArrayList<Asiento> ocupado = asientoData.SQL("SELECT * FROM `lugares` JOIN rutas ON rutas.id_ruta = lugares.id_ruta WHERE rutas.id_colectivo = "+ruta.getColectivo().getId_colectivo()+" and numero_asiento = "+i+1+";");
-                    if (!ocupado.isEmpty() && !me) {continue;}
-                    cmbAsiento.addItem(String.valueOf(i+1));
-                    if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
+                    ArrayList<Asiento> ocupado = asientoData.SQL("SELECT * FROM `lugares` JOIN rutas ON rutas.id_ruta = lugares.id_ruta WHERE rutas.id_ruta = "+ruta.getId_ruta()+" and rutas.id_colectivo = "+ruta.getColectivo().getId_colectivo()+" and lugares.numero_asiento = "+(i+1)+";");
+                    if (ocupado.isEmpty() || me) {
+                        cmbAsiento.addItem(String.valueOf(i+1));
+                        if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
+                    }
                 }
-                cmbAsiento.setSelectedIndex(asientoIndex);
+                if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
             }
         }
     }
@@ -244,11 +253,18 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
 
         if (estate == 1) {
             asientoData.insert(a);
-            vistaMain.asiento("INSERT",0);
+            vistaAsiento.tableIndex = vistaAsiento.tableList.size();
         } else {
             asientoData.update(a);
-            vistaMain.asiento("MODIFY",asiento.getId_lugar());
+            int index = -1;
+            for (Asiento al : asientoData.getList()) {
+                index++;
+                if (al.getId_lugar() == id) {break;}
+            }
+            vistaAsiento.tableIndex = index;
         }
+        vistaAsiento.updateAll();
+        this.hide();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void cmbRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRutaActionPerformed

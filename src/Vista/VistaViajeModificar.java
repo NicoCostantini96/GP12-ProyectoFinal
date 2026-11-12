@@ -7,6 +7,7 @@ import static Vista.TestMain.colectivoData;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaMain;
+import static Vista.VistaMain.vistaViaje;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -77,6 +78,14 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         update();
     }
 
+    public void delHideWindow() {
+        RutaViaje r = null;
+        if (ruta != null) {r = viajeData.getById(ruta.getId_ruta());}
+        if (r == null) {
+            this.hide();
+        }
+    }
+    
     public void hVerify() {
         lblHoras.setText("");
         int errors = 0;
@@ -621,11 +630,18 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
 
             if (estate == 1) {
                 viajeData.insert(r);
-                vistaMain.ruta("INSERT", id);
+                vistaViaje.tableIndex = vistaViaje.tableList.size();
             } else {
                 viajeData.update(r);
-                vistaMain.ruta("MODIFY", ruta.getId_ruta());
+                int index = -1;
+                for (RutaViaje rl : viajeData.getList()) {
+                    index++;
+                    if (rl.getId_ruta() == id) {break;}
+                }
+                vistaViaje.tableIndex = index;
             }
+            vistaViaje.updateAll();
+            this.hide();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

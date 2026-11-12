@@ -8,6 +8,7 @@ import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.vistaColectivoM;
 import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasajeroM;
+import static Vista.VistaMain.vistaViaje;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,30 +44,32 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
             }
         );
     }
-    
+
     public void updateIndex() {
-            if (tableIndex != -1) {
-                tblColectivo.setRowSelectionInterval(tableIndex, tableIndex);
+        if (tableIndex >= 0 && tableIndex < tableList.size()) {
 
-                btnModificar.setEnabled(true);
-                btnEliminar.setEnabled(true);
-                
-                if (tableList.get(tableIndex).getEstado()) {
-                    btnAlta.setEnabled(false);
-                    btnBaja.setEnabled(true);
-                    
-                } else {
-                    btnAlta.setEnabled(true);
-                    btnBaja.setEnabled(false);
-                }
+            tblColectivo.setRowSelectionInterval(tableIndex, tableIndex);
 
-            } else {
-                btnModificar.setEnabled(false);
-                btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+
+            if (tableList.get(tableIndex).getEstado()) {
                 btnAlta.setEnabled(false);
+                btnBaja.setEnabled(true);
+            } else {
+                btnAlta.setEnabled(true);
                 btnBaja.setEnabled(false);
             }
 
+        } else {
+            tableIndex = -1;
+            tblColectivo.clearSelection();
+
+            btnModificar.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnAlta.setEnabled(false);
+            btnBaja.setEnabled(false);
+        }
     }
     
     public void armarTabla() {
@@ -227,7 +230,9 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
             int id = tableList.get(tableIndex).getId_colectivo();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-            vistaMain.colectivo("REMOVE",id);
+            colectivoData.remove(id);
+            vistaColectivoM.delHideWindow();
+            updateAll(); vistaViaje.updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

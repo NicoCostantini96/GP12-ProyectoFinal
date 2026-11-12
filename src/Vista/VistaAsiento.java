@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Asiento;
 import Modelo.Colectivo;
 import Modelo.Pasajero;
+import Modelo.RutaViaje;
 import static Vista.TestMain.asientoData;
 import static Vista.TestMain.colectivoData;
 import static Vista.TestMain.pasajeroData;
@@ -10,6 +11,7 @@ import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.vistaAsientoM;
 import static Vista.VistaMain.vistaColectivoM;
 import static Vista.VistaMain.vistaMain;
+import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaPasajeroM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +22,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
     private DefaultTableModel table;
     
     public ArrayList<Asiento> tableList = new ArrayList<>();
+    public ArrayList<RutaViaje> rutaList = new ArrayList<>();
     public int tableIndex = -1;
     
     public VistaAsiento() {
@@ -48,28 +51,30 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
     }
     
     public void updateIndex() {
-            if (tableIndex != -1) {
-                tblAsiento.setRowSelectionInterval(tableIndex, tableIndex);
+        if (tableIndex >= 0 && tableIndex < tableList.size()) {
 
-                btnModificar.setEnabled(true);
-                btnEliminar.setEnabled(true);
-                
-                if (tableList.get(tableIndex).getEstado()) {
-                    btnAlta.setEnabled(false);
-                    btnBaja.setEnabled(true);
-                    
-                } else {
-                    btnAlta.setEnabled(true);
-                    btnBaja.setEnabled(false);
-                }
+            tblAsiento.setRowSelectionInterval(tableIndex, tableIndex);
 
-            } else {
-                btnModificar.setEnabled(false);
-                btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+
+            if (tableList.get(tableIndex).getEstado()) {
                 btnAlta.setEnabled(false);
+                btnBaja.setEnabled(true);
+            } else {
+                btnAlta.setEnabled(true);
                 btnBaja.setEnabled(false);
             }
 
+        } else {
+            tableIndex = -1;
+            tblAsiento.clearSelection();
+
+            btnModificar.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnAlta.setEnabled(false);
+            btnBaja.setEnabled(false);
+        }
     }
     
     public void armarTabla() {
@@ -85,7 +90,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         tblAsiento.setModel(table);
         
         renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
-        tblAsiento.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblAsiento.getColumnModel().getColumn(0).setPreferredWidth(200);
         tblAsiento.getColumnModel().getColumn(0).setCellRenderer(renderer);
         tblAsiento.getColumnModel().getColumn(1).setPreferredWidth(20);
         tblAsiento.getColumnModel().getColumn(1).setCellRenderer(renderer);
@@ -99,9 +104,12 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         tableList = asientoData.getList();
         
         for (Asiento a : tableList) {
-            String estado = "Inactivo";
-            if (a.getEstado()) {estado = "Activo";}
-            table.addRow(new Object[]{a.getRuta().getColectivo().getMatricula()+" - ("+a.getRuta().getOrigen()+" - "+a.getRuta().getDestino()+")", a.getNumero_asiento(), estado});
+            if (a.getRuta().getColectivo() != null) {
+                rutaList.add(a.getRuta());
+                String estado = "Inactivo";
+                if (a.getEstado()) {estado = "Activo";}
+                table.addRow(new Object[]{a.getRuta().getColectivo().getMatricula()+" - ("+a.getRuta().getOrigen()+" - "+a.getRuta().getDestino()+") - "+a.getRuta().getHora_salida(), a.getNumero_asiento(), estado});
+            }
         }
 
         updateIndex();
@@ -204,6 +212,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
             this.getY() + ((this.getHeight() - vistaAsientoM.getHeight()) / 2)
         );
         vistaAsientoM.asiento = tableList.get(tableIndex);
+        vistaAsientoM.ruta = rutaList.get(tableIndex);
         vistaAsientoM.start(2);
         vistaAsientoM.show();
         desktopMain.moveToFront(vistaAsientoM);
@@ -224,7 +233,9 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
             int id = tableList.get(tableIndex).getId_lugar();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-            vistaMain.colectivo("REMOVE",id);
+            asientoData.remove(id);
+            vistaAsientoM.delHideWindow();
+            updateAll(); vistaPasaje.updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

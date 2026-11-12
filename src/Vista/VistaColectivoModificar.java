@@ -2,6 +2,7 @@ package Vista;
 
 import Modelo.Colectivo;
 import static Vista.TestMain.colectivoData;
+import static Vista.VistaMain.vistaColectivo;
 import static Vista.VistaMain.vistaMain;
 import java.util.ArrayList;
 
@@ -36,6 +37,14 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         lblMsjCapacidad.setText("");
         lblMsjChofer.setText("");
         estate = type;
+    }
+    
+    public void delHideWindow() {
+        Colectivo c = null;
+        if (colectivo != null) {c = colectivoData.getById(colectivo.getId_colectivo());}
+        if (c == null) {
+            this.hide();
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -467,11 +476,18 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 colectivoData.insert(c);
-                vistaMain.colectivo("INSERT",0);
+                vistaColectivo.tableIndex = vistaColectivo.tableList.size();
             } else {
                 colectivoData.update(c);
-                vistaMain.colectivo("MODIFY",colectivo.getId_colectivo());
+                int index = -1;
+                for (Colectivo cl : colectivoData.getList()) {
+                    index++;
+                    if (cl.getId_colectivo() == id) {break;}
+                }
+                vistaColectivo.tableIndex = index;
             }
+            vistaColectivo.updateAll();
+            this.hide();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

@@ -43,31 +43,33 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
             }
         );
     }
-    
-        public void updateIndex() {
-            if (tableIndex != -1) {
-                tblPasaje.setRowSelectionInterval(tableIndex, tableIndex);
+  
+    public void updateIndex() {
+        if (tableIndex >= 0 && tableIndex < tableList.size()) {
 
-                btnModificar.setEnabled(true);
-                btnEliminar.setEnabled(true);
-                
-                if (tableList.get(tableIndex).getEstado()) {
-                    btnAlta.setEnabled(false);
-                    btnBaja.setEnabled(true);
-                    
-                } else {
-                    btnAlta.setEnabled(true);
-                    btnBaja.setEnabled(false);
-                }
+            tblPasaje.setRowSelectionInterval(tableIndex, tableIndex);
 
-            } else { // Se desabilitan todos los botones por si se pierde la seleccion de alguna forma.
-                btnModificar.setEnabled(false);
-                btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+
+            if (tableList.get(tableIndex).getEstado()) {
                 btnAlta.setEnabled(false);
+                btnBaja.setEnabled(true);
+            } else {
+                btnAlta.setEnabled(true);
                 btnBaja.setEnabled(false);
             }
 
+        } else {
+            tableIndex = -1;
+            tblPasaje.clearSelection();
+
+            btnModificar.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnAlta.setEnabled(false);
+            btnBaja.setEnabled(false);
         }
+    }
         
     public void armarTabla() {
         String[] titulos = {"Pasajero", "Ruta", "Asiento", "Fecha venta", "Hora venta", "Precio", "Estado"};
@@ -231,7 +233,9 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
             int id = tableList.get(tableIndex).getId_pasaje();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-            vistaMain.pasaje("REMOVE",id);
+            pasajeData.remove(id);
+            vistaPasajeM.delHideWindow();
+            updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

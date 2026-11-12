@@ -3,7 +3,9 @@ package Vista;
 import Modelo.RutaViaje;
 import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.viajeData;
+import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaMain;
+import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaViajeM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -42,28 +44,30 @@ public class VistaViaje extends javax.swing.JInternalFrame {
     }
     
     public void updateIndex() {
-            if (tableIndex != -1) {
-                tblRuta.setRowSelectionInterval(tableIndex, tableIndex);
+        if (tableIndex >= 0 && tableIndex < tableList.size()) {
 
-                btnModificar.setEnabled(true);
-                btnEliminar.setEnabled(true);
-                
-                if (tableList.get(tableIndex).getEstado()) {
-                    btnAlta.setEnabled(false);
-                    btnBaja.setEnabled(true);
-                    
-                } else {
-                    btnAlta.setEnabled(true);
-                    btnBaja.setEnabled(false);
-                }
+            tblRuta.setRowSelectionInterval(tableIndex, tableIndex);
 
-            } else {
-                btnModificar.setEnabled(false);
-                btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+
+            if (tableList.get(tableIndex).getEstado()) {
                 btnAlta.setEnabled(false);
+                btnBaja.setEnabled(true);
+            } else {
+                btnAlta.setEnabled(true);
                 btnBaja.setEnabled(false);
             }
 
+        } else {
+            tableIndex = -1;
+            tblRuta.clearSelection();
+
+            btnModificar.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnAlta.setEnabled(false);
+            btnBaja.setEnabled(false);
+        }
     }
     
     public void armarTabla() {
@@ -229,7 +233,9 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
             int id = tableList.get(tableIndex).getId_ruta();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-            vistaMain.ruta("REMOVE",id);
+            viajeData.remove(id);
+            vistaViajeM.delHideWindow();
+            updateAll(); vistaPasaje.updateAll(); vistaAsiento.updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

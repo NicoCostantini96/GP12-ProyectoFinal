@@ -1,10 +1,15 @@
 package Vista;
 
+import Modelo.Asiento;
 import Modelo.Pasaje;
 import Modelo.Pasajero;
+import Modelo.RutaViaje;
 import static Vista.TestMain.pasajeroData;
+import static Vista.VistaMain.asientoData;
 import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.pasajeData;
+import static Vista.VistaMain.viajeData;
+import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasajeM;
 import static Vista.VistaMain.vistaPasajeroM;
@@ -17,6 +22,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
     private DefaultTableModel table;
     
     public ArrayList<Pasaje> tableList = new ArrayList<>();
+    private ArrayList<int[]> elementsList = new ArrayList<>();
     public int tableIndex = -1;
     
     public VistaPasaje() {
@@ -106,11 +112,26 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         table.setRowCount(0);
         tableList = pasajeData.getList();
         
+        boolean createAsiento = false;
+        
+        elementsList.clear();
         for (Pasaje p : tableList) {
             String estado = "Inactivo";
             if (p.getEstado()) {estado = "Activo";}
-            table.addRow(new Object[]{p.getPasajero().getNombre()+" "+p.getPasajero().getApellido(), p.getRuta().getOrigen()+" - "+p.getRuta().getDestino(), p.getLugar().getNumero_asiento(), p.getFecha_venta(), p.getHora_venta(), p.getPrecio(), estado});
+            Asiento lugar = null;
+            if (p.getLugar() == null) {
+                Asiento a = new Asiento(0,p.getRuta(),0,true);
+                asientoData.insert(a);
+                lugar = asientoData.getList().getLast();
+                createAsiento = true;
+            }else{
+                lugar = p.getLugar();
+            }
+            elementsList.add(new int[]{p.getId_pasaje(),p.getPasajero().getId_pasajero(),p.getRuta().getId_ruta(),lugar.getId_lugar()});
+            table.addRow(new Object[]{p.getPasajero().getNombre()+" "+p.getPasajero().getApellido(), p.getRuta().getOrigen()+" - "+p.getRuta().getDestino(), lugar.getNumero_asiento(), p.getFecha_venta(), p.getHora_venta(), p.getPrecio(), estado});
         }
+        
+        if (createAsiento) {vistaAsiento.updateAll();}
 
         if (vistaPasajeM != null) {vistaPasajeM.delHideWindow();}
         updateIndex();
@@ -212,7 +233,10 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
             this.getX() + ((this.getWidth() - vistaPasajeM.getWidth()) / 2),
             this.getY() + ((this.getHeight() - vistaPasajeM.getHeight()) / 2)
         );
-        vistaPasajeM.pasaje = tableList.get(tableIndex);
+        vistaPasajeM.pasaje = pasajeData.getById(elementsList.get(tableIndex)[0]);
+        vistaPasajeM.pasajero = pasajeroData.getById(elementsList.get(tableIndex)[1]);
+        vistaPasajeM.ruta = viajeData.getById(elementsList.get(tableIndex)[2]);
+        vistaPasajeM.lugar = asientoData.getById(elementsList.get(tableIndex)[3]);
         vistaPasajeM.start(2);
         vistaPasajeM.show();
         desktopMain.moveToFront(vistaPasajeM);

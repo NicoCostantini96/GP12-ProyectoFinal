@@ -112,6 +112,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
             }
         }
 
+        if (vistaAsientoM != null) {vistaAsientoM.delHideWindow();}
         updateIndex();
     }
 
@@ -234,7 +235,6 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
             int id = tableList.get(tableIndex).getId_lugar();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
             asientoData.remove(id);
-            vistaAsientoM.delHideWindow();
             updateAll(); vistaPasaje.updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed

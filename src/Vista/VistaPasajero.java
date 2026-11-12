@@ -108,6 +108,7 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
             table.addRow(new Object[]{p.getDni(), p.getNombre(), p.getApellido(), p.getCorreo(), p.getTelefono(), estado});
         }
 
+        if (vistaPasajeroM != null) {vistaPasajeroM.delHideWindow();}
         updateIndex();
     }
 
@@ -230,7 +231,6 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
             int id = tableList.get(tableIndex).getId_pasajero();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
             pasajeroData.remove(id);
-            vistaPasajeroM.delHideWindow();
             updateAll(); vistaPasaje.updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed

@@ -112,6 +112,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
             table.addRow(new Object[]{p.getPasajero().getNombre()+" "+p.getPasajero().getApellido(), p.getRuta().getOrigen()+" - "+p.getRuta().getDestino(), p.getLugar().getNumero_asiento(), p.getFecha_venta(), p.getHora_venta(), p.getPrecio(), estado});
         }
 
+        if (vistaPasajeM != null) {vistaPasajeM.delHideWindow();}
         updateIndex();
     }
 
@@ -234,7 +235,6 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
             int id = tableList.get(tableIndex).getId_pasaje();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
             pasajeData.remove(id);
-            vistaPasajeM.delHideWindow();
             updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed

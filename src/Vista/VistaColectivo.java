@@ -5,8 +5,10 @@ import Modelo.Pasajero;
 import static Vista.TestMain.colectivoData;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.desktopMain;
+import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaColectivoM;
 import static Vista.VistaMain.vistaMain;
+import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaPasajeroM;
 import static Vista.VistaMain.vistaViaje;
 import java.util.ArrayList;
@@ -110,6 +112,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
             table.addRow(new Object[]{c.getMatricula(), c.getMarca(), c.getModelo(), c.getCapacidad(), c.getChofer(), estado});
         }
 
+        if (vistaColectivoM != null) {vistaColectivoM.delHideWindow();}
         updateIndex();
     }
 
@@ -231,8 +234,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
             int id = tableList.get(tableIndex).getId_colectivo();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
             colectivoData.remove(id);
-            vistaColectivoM.delHideWindow();
-            updateAll(); vistaViaje.updateAll();
+            updateAll(); vistaViaje.updateAll(); vistaAsiento.updateAll(); vistaPasaje.updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

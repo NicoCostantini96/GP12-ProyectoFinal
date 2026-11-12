@@ -112,6 +112,7 @@ public class VistaViaje extends javax.swing.JInternalFrame {
             table.addRow(new Object[]{r.getOrigen(),r.getDestino(),r.getFecha_viaje(),r.getHora_salida(),r.getHora_llegada(),r.getColectivo().getMatricula(),r.getPrecio(), estado});
         }
 
+        if (vistaViajeM != null) {vistaViajeM.delHideWindow();}
         updateIndex();
     }
 
@@ -234,7 +235,6 @@ public class VistaViaje extends javax.swing.JInternalFrame {
             int id = tableList.get(tableIndex).getId_ruta();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
             viajeData.remove(id);
-            vistaViajeM.delHideWindow();
             updateAll(); vistaPasaje.updateAll(); vistaAsiento.updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed

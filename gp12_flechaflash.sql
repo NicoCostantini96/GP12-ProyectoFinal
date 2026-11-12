@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2026 a las 04:59:45
+-- Tiempo de generación: 12-11-2026 a las 04:42:31
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -83,7 +83,7 @@ INSERT INTO `colectivos` (`id_colectivo`, `matricula`, `marca`, `modelo`, `capac
 
 CREATE TABLE `lugares` (
   `id_lugar` int(11) NOT NULL,
-  `id_colectivo` int(33) NOT NULL,
+  `id_ruta` int(11) NOT NULL,
   `numero_asiento` int(100) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -92,7 +92,7 @@ CREATE TABLE `lugares` (
 -- Volcado de datos para la tabla `lugares`
 --
 
-INSERT INTO `lugares` (`id_lugar`, `id_colectivo`, `numero_asiento`, `estado`) VALUES
+INSERT INTO `lugares` (`id_lugar`, `id_ruta`, `numero_asiento`, `estado`) VALUES
 (1, 1, 1, 1),
 (2, 1, 2, 1),
 (3, 1, 3, 1),
@@ -1627,20 +1627,18 @@ INSERT INTO `lugares` (`id_lugar`, `id_colectivo`, `numero_asiento`, `estado`) V
 (1532, 30, 44, 1),
 (1533, 30, 45, 1),
 (1534, 30, 46, 1),
-(1535, 30, 47, 1),
-(1536, 30, 48, 1),
-(1537, 30, 49, 1),
-(1538, 30, 50, 1),
-(1539, 30, 51, 1),
-(1540, 30, 52, 1),
-(1541, 30, 53, 1),
-(1542, 30, 54, 1),
-(1543, 30, 55, 1),
-(1544, 30, 56, 1),
-(1545, 30, 57, 1),
-(1546, 30, 58, 1),
-(1547, 30, 59, 1),
-(1548, 30, 60, 1);
+(2048, 27, 51, 1),
+(2049, 27, 52, 1),
+(2050, 29, 55, 1),
+(2051, 28, 47, 1),
+(2052, 29, 56, 1),
+(2053, 29, 57, 1),
+(2054, 28, 48, 1),
+(2055, 26, 49, 1),
+(2056, 29, 58, 1),
+(2057, 26, 50, 1),
+(2058, 29, 59, 1),
+(2059, 29, 60, 1);
 
 -- --------------------------------------------------------
 
@@ -1817,8 +1815,8 @@ ALTER TABLE `colectivos`
 --
 ALTER TABLE `lugares`
   ADD PRIMARY KEY (`id_lugar`),
-  ADD UNIQUE KEY `uq_lugar_colectivo` (`id_colectivo`,`numero_asiento`),
-  ADD KEY `id_colectivo` (`id_colectivo`);
+  ADD UNIQUE KEY `uq_lugar_ruta` (`id_ruta`,`numero_asiento`),
+  ADD KEY `id_ruta` (`id_ruta`);
 
 --
 -- Indices de la tabla `pasajeros`
@@ -1858,7 +1856,7 @@ ALTER TABLE `colectivos`
 -- AUTO_INCREMENT de la tabla `lugares`
 --
 ALTER TABLE `lugares`
-  MODIFY `id_lugar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2048;
+  MODIFY `id_lugar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2063;
 
 --
 -- AUTO_INCREMENT de la tabla `pasajeros`
@@ -1886,21 +1884,21 @@ ALTER TABLE `rutas`
 -- Filtros para la tabla `lugares`
 --
 ALTER TABLE `lugares`
-  ADD CONSTRAINT `lugares_ibfk_1` FOREIGN KEY (`id_colectivo`) REFERENCES `colectivos` (`id_colectivo`);
+  ADD CONSTRAINT `lugares_ibfk_1` FOREIGN KEY (`id_ruta`) REFERENCES `rutas` (`id_ruta`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `pasajes`
 --
 ALTER TABLE `pasajes`
-  ADD CONSTRAINT `pasajes_ibfk_1` FOREIGN KEY (`id_pasajero`) REFERENCES `pasajeros` (`id_pasajero`),
-  ADD CONSTRAINT `pasajes_ibfk_2` FOREIGN KEY (`id_lugar`) REFERENCES `lugares` (`id_lugar`),
-  ADD CONSTRAINT `pasajes_ibfk_3` FOREIGN KEY (`id_ruta`) REFERENCES `rutas` (`id_ruta`);
+  ADD CONSTRAINT `pasajes_ibfk_1` FOREIGN KEY (`id_pasajero`) REFERENCES `pasajeros` (`id_pasajero`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pasajes_ibfk_2` FOREIGN KEY (`id_lugar`) REFERENCES `lugares` (`id_lugar`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pasajes_ibfk_3` FOREIGN KEY (`id_ruta`) REFERENCES `rutas` (`id_ruta`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `rutas`
 --
 ALTER TABLE `rutas`
-  ADD CONSTRAINT `rutas_ibfk_1` FOREIGN KEY (`id_colectivo`) REFERENCES `colectivos` (`id_colectivo`);
+  ADD CONSTRAINT `rutas_ibfk_1` FOREIGN KEY (`id_colectivo`) REFERENCES `colectivos` (`id_colectivo`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -40,6 +40,7 @@ public class AsientoData {
             }
         } catch (SQLException e) {
             System.err.println("ERROR: Datos del Asiento incompatibles!!\n");
+            System.out.println(e);
         }
     }
 

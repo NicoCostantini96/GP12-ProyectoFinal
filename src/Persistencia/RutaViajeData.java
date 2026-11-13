@@ -102,7 +102,7 @@ public class RutaViajeData {
                         res.getDate("fecha_viaje").toLocalDate(),
                         res.getTime("hora_salida").toLocalTime(),
                         res.getTime("hora_llegada").toLocalTime(),
-                        colectivoData.getById(id),
+                        colectivoData.getById(res.getInt("id_colectivo")),
                         res.getBigDecimal("precio").doubleValue(),
                         res.getBoolean("estado")
                 );

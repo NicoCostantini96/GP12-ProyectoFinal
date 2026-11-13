@@ -8,6 +8,7 @@ import static Vista.TestMain.colectivoData;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaMain;
+import static Vista.VistaMain.vistaPasaje;
 import java.util.ArrayList;
 
 public class VistaAsientoModificar extends javax.swing.JInternalFrame {
@@ -15,8 +16,7 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
     public Asiento asiento = null;
     public RutaViaje ruta = null;
     private ArrayList<RutaViaje> rutaList = new ArrayList<>();
-    private int rutaIndex = -1;
-    private int asientoIndex = 0;
+    private boolean initChanges = false;
     public int estate = 0;
     
     public VistaAsientoModificar() {
@@ -25,24 +25,17 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
     
     public void start(int type) {
         estate = type;
-        rutaIndex = -1;
+        initChanges = false;
         
-        boolean rutaEnd = false;
-        int rutaIndex = -1;
-        cmbRuta.removeAllItems();
+        var cmbRutaIndex = 0; cmbRuta.removeAllItems();
         for (RutaViaje r : viajeData.getList()) {
-            rutaList.add(r);
-            cmbRuta.addItem(r.getColectivo().getMatricula() + " - (" + r.getOrigen() + " - " + r.getDestino() + ") - " + r.getHora_salida());
-            if (!rutaEnd) {
-                rutaIndex++;
-                if (estate == 2) {
-                    if (ruta.getId_ruta() == r.getId_ruta()) {rutaEnd = true;}
-                }else{
-                    rutaIndex = 0;
-                }
+            cmbRuta.addItem(r.getColectivo().getMatricula() + " - (" + r.getOrigen() + " - " + r.getDestino() + ") - (" +r.getFecha_viaje()+ ") - (" + r.getHora_salida()+" - "+r.getHora_llegada()+")");
+            if (estate == 2 && ruta.getId_ruta() == r.getId_ruta()) {
+                cmbRutaIndex = cmbRuta.getItemCount() - 1;
             }
         }
-        cmbRuta.setSelectedIndex(rutaIndex);
+        if (cmbRuta.getItemCount() > 0) {cmbRuta.setSelectedIndex(cmbRutaIndex);}
+        if (estate == 1) {ruta = viajeData.getList().getFirst();}
         
         cmbAsientoUpdate();
         
@@ -51,6 +44,8 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
         }else{
             lblTitulo.setText("MODIFICAR ASIENTO");
         }
+        
+        initChanges = true;
     }
     
     public void delHideWindow() {
@@ -62,21 +57,18 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
     }
     
     private void cmbAsientoUpdate() {
-        if (cmbRuta.getSelectedIndex() >= 0) {
-            if (ruta != null) {
-                asientoIndex = 0;
-                cmbAsiento.removeAllItems();
-                for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
-                    boolean me = (estate == 2 && asiento.getNumero_asiento() == i+1);
-                    ArrayList<Asiento> ocupado = asientoData.SQL("SELECT * FROM `lugares` JOIN rutas ON rutas.id_ruta = lugares.id_ruta WHERE rutas.id_ruta = "+ruta.getId_ruta()+" and rutas.id_colectivo = "+ruta.getColectivo().getId_colectivo()+" and lugares.numero_asiento = "+(i+1)+";");
-                    if (ocupado.isEmpty() || me) {
-                        cmbAsiento.addItem(String.valueOf(i+1));
-                        if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
-                    }
-                }
-                if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
+        int asientoIndex = 0;
+        cmbAsiento.removeAllItems();
+        for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
+            boolean me = (estate == 2 && asiento.getNumero_asiento() == i+1);
+            ArrayList<Asiento> ocupado = new ArrayList<>();
+            if (ruta != null) {ocupado = asientoData.SQL("SELECT * FROM `lugares` JOIN rutas ON rutas.id_ruta = lugares.id_ruta WHERE rutas.id_ruta = "+ruta.getId_ruta()+" and lugares.numero_asiento = "+(i+1)+";");}
+            if (ocupado.isEmpty() || me) {
+                cmbAsiento.addItem(String.valueOf(i+1));
+                if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
             }
         }
+        if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
     }
     
     @SuppressWarnings("unchecked")
@@ -132,23 +124,23 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
         lblMatricula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMatricula.setText("VIAJE:");
 
-        cmbRuta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbRuta.addActionListener(this::cmbRutaActionPerformed);
 
         javax.swing.GroupLayout pnlMatriculaInputLayout = new javax.swing.GroupLayout(pnlMatriculaInput);
         pnlMatriculaInput.setLayout(pnlMatriculaInputLayout);
         pnlMatriculaInputLayout.setHorizontalGroup(
             pnlMatriculaInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(cmbRuta, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMatriculaInputLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(lblMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlMatriculaInputLayout.setVerticalGroup(
             pnlMatriculaInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMatriculaInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addGroup(pnlMatriculaInputLayout.createSequentialGroup()
                 .addComponent(lblMatricula)
+                .addGap(5, 5, 5)
                 .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -160,10 +152,7 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
         );
         pnlMatriculaLayout.setVerticalGroup(
             pnlMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMatriculaLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(pnlMatriculaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+            .addComponent(pnlMatriculaInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlMarcaInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -171,8 +160,6 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
         lblMarca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMarca.setText("ASIENTO:");
-
-        cmbAsiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout pnlMarcaInputLayout = new javax.swing.GroupLayout(pnlMarcaInput);
         pnlMarcaInput.setLayout(pnlMarcaInputLayout);
@@ -234,7 +221,7 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
                 .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(pnlMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(22, 22, 22)
                 .addComponent(pnlMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -253,10 +240,9 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         int id = (asiento != null) ? asiento.getId_lugar() : 0;
         RutaViaje rutas = ruta;
-        if (rutaIndex >= 0 && rutaIndex < rutaList.size()) {rutas = rutaList.get(rutaIndex);}
         int nAsiento = Integer.parseInt(cmbAsiento.getSelectedItem().toString());
         
-        Asiento a = new Asiento(id,rutas,nAsiento,true);
+        Asiento a = new Asiento(id,ruta,nAsiento,true);
 
         if (estate == 1) {
             asientoData.insert(a);
@@ -270,13 +256,15 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
             }
             vistaAsiento.tableIndex = index;
         }
-        vistaAsiento.updateAll();
+        vistaAsiento.updateAll(); vistaPasaje.updateAll();
         this.hide();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void cmbRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRutaActionPerformed
-        rutaIndex = cmbRuta.getSelectedIndex();
-        cmbAsientoUpdate();
+        if (initChanges && cmbRuta.getSelectedIndex() >= 0) {
+            ruta = viajeData.getList().get(cmbRuta.getSelectedIndex());
+            cmbAsientoUpdate();
+        }
     }//GEN-LAST:event_cmbRutaActionPerformed
 
 

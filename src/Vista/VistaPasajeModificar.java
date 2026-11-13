@@ -10,6 +10,7 @@ import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasaje;
+import static Vista.VistaMain.vistaAsiento;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -45,24 +46,15 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         
         var cmbRutaIndex = 0; cmbRuta.removeAllItems();
         for (RutaViaje r : viajeData.getList()) {
-            cmbRuta.addItem(r.getOrigen() + " - " + r.getDestino() + " - " + r.getColectivo().getMatricula() + " - " + r.getHora_salida());
+            cmbRuta.addItem(r.getColectivo().getMatricula() + " - (" + r.getOrigen() + " - " + r.getDestino() + ") - (" +r.getFecha_viaje()+ ") - (" + r.getHora_salida()+" - "+r.getHora_llegada()+")");
             if (estate == 2 && ruta.getId_ruta() == r.getId_ruta()) {
                 cmbRutaIndex = cmbRuta.getItemCount() - 1;
             }
         }
         if (cmbRuta.getItemCount() > 0) {cmbRuta.setSelectedIndex(cmbRutaIndex);}
+        if (estate == 1) {ruta = viajeData.getList().getFirst();}
         
-        int asientoIndex = 0;
-        cmbAsiento.removeAllItems();
-        for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
-            boolean me = (estate == 2 && lugar.getNumero_asiento() == i+1);
-            ArrayList<Asiento> ocupado = new ArrayList<>();
-            if (ruta != null) {ocupado = asientoData.SQL("SELECT * FROM `lugares` WHERE id_ruta = "+ruta.getId_ruta()+" and numero_asiento = "+i+1+";");}
-            if (!ocupado.isEmpty() && !me) {continue;}
-            cmbAsiento.addItem(String.valueOf(i+1));
-            if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
-        }
-        if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
+        cmbAsientoUpdate();
         
         if (estate == 1) {
             lblTitulo.setText("AGREGAR PASAJE");
@@ -78,6 +70,8 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         
         lblMsjFVenta.setText("");
         lblMsjHVenta.setText("");
+        lblMsjPrecio.setText("");
+        initChanges = true;
     }
     
     public void delHideWindow() {
@@ -86,6 +80,20 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         if (p == null) {
             this.hide();
         }
+    }
+    
+    private void cmbAsientoUpdate() {
+        int asientoIndex = 0;
+        cmbAsiento.removeAllItems();
+        for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
+            boolean me = (estate == 2 && lugar.getNumero_asiento() == i+1);
+            ArrayList<Asiento> ocupado = new ArrayList<>();
+            if (ruta != null) {ocupado = asientoData.SQL("SELECT * FROM `lugares` JOIN rutas ON rutas.id_ruta = lugares.id_ruta WHERE rutas.id_ruta = "+ruta.getId_ruta()+" and lugares.numero_asiento = "+(i+1)+";");}
+            if (!ocupado.isEmpty() && !me) {continue;}
+            cmbAsiento.addItem(String.valueOf(i+1));
+            if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
+        }
+        if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
     }
     
     @SuppressWarnings("unchecked")
@@ -242,16 +250,17 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         pnlApellidoInput.setLayout(pnlApellidoInputLayout);
         pnlApellidoInputLayout.setHorizontalGroup(
             pnlApellidoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlApellidoInputLayout.createSequentialGroup()
+            .addComponent(cmbRuta, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlApellidoInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
         );
         pnlApellidoInputLayout.setVerticalGroup(
             pnlApellidoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlApellidoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addGroup(pnlApellidoInputLayout.createSequentialGroup()
                 .addComponent(lblApellido)
+                .addGap(5, 5, 5)
                 .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -266,7 +275,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             .addGroup(pnlApellidoLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(pnlApellidoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(20, 20, 20))
         );
 
         pnlCorreoInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -281,7 +290,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             pnlCorreoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCorreoInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dateFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -299,11 +308,11 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         pnlCorreo.setLayout(pnlCorreoLayout);
         pnlCorreoLayout.setHorizontalGroup(
             pnlCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlCorreoInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCorreoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(195, Short.MAX_VALUE)
                 .addComponent(lblMsjFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
+            .addComponent(pnlCorreoInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlCorreoLayout.setVerticalGroup(
             pnlCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,8 +444,8 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                             .addComponent(pnlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(pnlApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(pnlTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(pnlCorreo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(10, 10, 10))
@@ -488,8 +497,17 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             double precio = Double.parseDouble(txtPrecio.getText());
             
             int asiento = Integer.parseInt(cmbAsiento.getSelectedItem().toString());
-            lugar.setNumero_asiento(asiento);
-            asientoData.update(lugar);
+            
+            if (estate == 1) {
+                lugar = new Asiento(0, ruta, asiento, true);
+                asientoData.insert(lugar);
+            } else {
+                lugar.setNumero_asiento(asiento);
+                lugar.setRuta(ruta);
+                asientoData.update(lugar);
+            }
+            
+            vistaAsiento.updateAll();
             
             Pasaje p = new Pasaje(id,pasajero,lugar,ruta,fVenta,hVenta,precio,true);
             
@@ -542,6 +560,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     private void cmbRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRutaActionPerformed
         if (initChanges && cmbRuta.getSelectedIndex() >= 0) {
             ruta = viajeData.getList().get(cmbRuta.getSelectedIndex());
+            cmbAsientoUpdate();
         }
     }//GEN-LAST:event_cmbRutaActionPerformed
 

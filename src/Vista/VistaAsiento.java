@@ -90,7 +90,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         tblAsiento.setModel(table);
         
         renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
-        tblAsiento.getColumnModel().getColumn(0).setPreferredWidth(200);
+        tblAsiento.getColumnModel().getColumn(0).setPreferredWidth(400);
         tblAsiento.getColumnModel().getColumn(0).setCellRenderer(renderer);
         tblAsiento.getColumnModel().getColumn(1).setPreferredWidth(20);
         tblAsiento.getColumnModel().getColumn(1).setCellRenderer(renderer);
@@ -101,18 +101,32 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
     
     public void updateAll() {
         table.setRowCount(0);
-        tableList = asientoData.getList();
-        
-        for (Asiento a : tableList) {
+
+        tableList = new ArrayList<>();
+        rutaList.clear();
+
+        for (Asiento a : asientoData.getList()) {
             if (a.getRuta().getColectivo() != null) {
+                tableList.add(a);
                 rutaList.add(a.getRuta());
-                String estado = "Inactivo";
-                if (a.getEstado()) {estado = "Activo";}
-                table.addRow(new Object[]{a.getRuta().getColectivo().getMatricula()+" - ("+a.getRuta().getOrigen()+" - "+a.getRuta().getDestino()+") - "+a.getRuta().getHora_salida(), a.getNumero_asiento(), estado});
+                String estado = a.getEstado() ? "Activo" : "Inactivo";
+                table.addRow(new Object[]{
+                    a.getRuta().getColectivo().getMatricula()
+                        + " - (" + a.getRuta().getOrigen()
+                        + " - " + a.getRuta().getDestino()
+                        + ") - (" + a.getRuta().getFecha_viaje()
+                        + ") - (" + a.getRuta().getHora_salida()
+                        + " - " + a.getRuta().getHora_llegada() + ")",
+                    a.getNumero_asiento(),
+                    estado
+                });
             }
         }
 
-        if (vistaAsientoM != null) {vistaAsientoM.delHideWindow();}
+        if (vistaAsientoM != null) {
+            vistaAsientoM.delHideWindow();
+        }
+
         updateIndex();
     }
 

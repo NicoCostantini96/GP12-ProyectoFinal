@@ -36,6 +36,12 @@ public class VistaMain extends javax.swing.JFrame {
     public static VistaViajeModificar vistaViajeM = new VistaViajeModificar();
     public static VistaPasaje vistaPasaje = new VistaPasaje();
     public static VistaPasajeModificar vistaPasajeM = new VistaPasajeModificar();
+    public static informes1 informes1 = new informes1();
+    public static informes2 informes2 = new informes2();
+    public static informes3 informes3 = new informes3();
+    public static informes4 informes4 = new informes4();
+    public static informes5 informes5 = new informes5();
+    public static informes6 informes6 = new informes6();
 
     public static JDesktopPane desktopMain;
 
@@ -54,22 +60,29 @@ public class VistaMain extends javax.swing.JFrame {
         desktopMain.add(vistaPasaje);
         desktopMain.add(vistaPasajeM);
         desktopMain.add(vistaVenta);
+        desktopMain.add(informes1);
+        desktopMain.add(informes2);
+        desktopMain.add(informes3);
+        desktopMain.add(informes4);
+        desktopMain.add(informes5);
+        desktopMain.add(informes6);
+
         img();
         configurarListenersDeRedimensionamiento();
     }
 
-public void img() {
+    public void img() {
         ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/IMG/flechaflash.jpg"));
-        
+
         // Obtenemos el ancho y alto actual del contenedor (dtpEscritorio) 
         // en lugar de usar valores fijos (594x470). Si recién inicia, usamos un tamaño por defecto.
         int ancho = dtpEscritorio.getWidth() > 0 ? dtpEscritorio.getWidth() : 594;
         int alto = dtpEscritorio.getHeight() > 0 ? dtpEscritorio.getHeight() : 470;
-        
+
         // Escala la imagen con alta calidad (Image.SCALE_SMOOTH)
         Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         jLabel1.setIcon(new ImageIcon(imagenEscalada));
-        
+
         // Aseguramos que el JLabel ocupe todo el JDesktopPane
         jLabel1.setBounds(0, 0, ancho, alto);
     }
@@ -83,11 +96,12 @@ public void img() {
             }
         });
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         dtpEscritorio = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         mnbNavegador = new javax.swing.JMenuBar();
@@ -103,6 +117,15 @@ public void img() {
         mitRuta = new javax.swing.JMenuItem();
         mnuPasajes = new javax.swing.JMenu();
         mitPasajes = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mnuLista1 = new javax.swing.JMenuItem();
+        mnuLista2 = new javax.swing.JMenuItem();
+        mnuLista3 = new javax.swing.JMenuItem();
+        mnuLista4 = new javax.swing.JMenuItem();
+        mnuLista5 = new javax.swing.JMenuItem();
+        mnuLista6 = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(56, 36));
@@ -179,6 +202,34 @@ public void img() {
 
         mnbNavegador.add(mnuPasajes);
 
+        jMenu2.setText("Informes");
+
+        mnuLista1.setText("Listar Por Hora");
+        mnuLista1.addActionListener(this::mnuLista1ActionPerformed);
+        jMenu2.add(mnuLista1);
+
+        mnuLista2.setText("Listar Pasajes x Pasajero");
+        mnuLista2.addActionListener(this::mnuLista2ActionPerformed);
+        jMenu2.add(mnuLista2);
+
+        mnuLista3.setText("Lista de Choferes y Colectivos");
+        mnuLista3.addActionListener(this::mnuLista3ActionPerformed);
+        jMenu2.add(mnuLista3);
+
+        mnuLista4.setText("Consulta Asientos disponibles");
+        mnuLista4.addActionListener(this::mnuLista4ActionPerformed);
+        jMenu2.add(mnuLista4);
+
+        mnuLista5.setText("Lista Colectivos x Fecha");
+        mnuLista5.addActionListener(this::mnuLista5ActionPerformed);
+        jMenu2.add(mnuLista5);
+
+        mnuLista6.setText("Lista Asientos x ruta");
+        mnuLista6.addActionListener(this::mnuLista6ActionPerformed);
+        jMenu2.add(mnuLista6);
+
+        mnbNavegador.add(jMenu2);
+
         setJMenuBar(mnbNavegador);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,6 +288,43 @@ public void img() {
         desktopMain.moveToFront(vistaAsiento);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void mnuLista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista1ActionPerformed
+        informes1.setLocation(mnuLista1.getX(), 0);
+        informes1.show();
+        desktopMain.moveToFront(informes1);
+    }//GEN-LAST:event_mnuLista1ActionPerformed
+
+    private void mnuLista2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista2ActionPerformed
+        informes2.setLocation(mnuLista2.getX(), 0);
+        informes2.show();
+        desktopMain.moveToFront(informes2);
+
+    }//GEN-LAST:event_mnuLista2ActionPerformed
+
+    private void mnuLista3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista3ActionPerformed
+        informes3.setLocation(mnuLista3.getX(), 0);
+        informes3.show();
+        desktopMain.moveToFront(informes3);
+    }//GEN-LAST:event_mnuLista3ActionPerformed
+
+    private void mnuLista4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista4ActionPerformed
+        informes4.setLocation(mnuLista4.getX(), 0);
+        informes4.show();
+        desktopMain.moveToFront(informes4);
+    }//GEN-LAST:event_mnuLista4ActionPerformed
+
+    private void mnuLista5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista5ActionPerformed
+        informes5.setLocation(mnuLista5.getX(), 0);
+        informes5.show();
+        desktopMain.moveToFront(informes5);
+    }//GEN-LAST:event_mnuLista5ActionPerformed
+
+    private void mnuLista6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista6ActionPerformed
+        informes6.setLocation(mnuLista6.getX(), 0);
+        informes6.show();
+        desktopMain.moveToFront(informes6);
+    }//GEN-LAST:event_mnuLista6ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new VistaMain().setVisible(true));
 
@@ -246,6 +334,8 @@ public void img() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dtpEscritorio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem mitColectivo;
     private javax.swing.JMenuItem mitPasajero;
@@ -256,6 +346,12 @@ public void img() {
     private javax.swing.JMenu mnuArchivo;
     private javax.swing.JMenu mnuAsiento;
     private javax.swing.JMenu mnuColectivo;
+    private javax.swing.JMenuItem mnuLista1;
+    private javax.swing.JMenuItem mnuLista2;
+    private javax.swing.JMenuItem mnuLista3;
+    private javax.swing.JMenuItem mnuLista4;
+    private javax.swing.JMenuItem mnuLista5;
+    private javax.swing.JMenuItem mnuLista6;
     private javax.swing.JMenu mnuPasajero;
     private javax.swing.JMenu mnuPasajes;
     private javax.swing.JMenu mnuRuta;

@@ -14,6 +14,7 @@ import static Vista.VistaMain.vistaAsiento;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,10 +26,17 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     public Asiento lugar = null;
     private boolean initChanges = false;
     private LocalTime hVenta = LocalTime.of(0,0,0);
+    private LocalDate fVenta = LocalDate.now();
     public int estate = 0;
     
     public VistaPasajeModificar() {
         initComponents();
+        dateFVenta.addPropertyChangeListener("date", evt -> {
+            if (dateFVenta.getDate() != null) {
+                fVenta = dateFVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                cmbRutaUpdate();
+            }
+        });
     }
     
     public void start(int type) {
@@ -44,29 +52,26 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         }
         if (cmbPasajero.getItemCount() > 0) {cmbPasajero.setSelectedIndex(cmbPasajeroIndex);}
         
-        var cmbRutaIndex = 0; cmbRuta.removeAllItems();
-        for (RutaViaje r : viajeData.getList()) {
-            cmbRuta.addItem(r.getColectivo().getMatricula() + " - (" + r.getOrigen() + " - " + r.getDestino() + ") - (" +r.getFecha_viaje()+ ") - (" + r.getHora_salida()+" - "+r.getHora_llegada()+")");
-            if (estate == 2 && ruta.getId_ruta() == r.getId_ruta()) {
-                cmbRutaIndex = cmbRuta.getItemCount() - 1;
-            }
+        if (estate == 1) {
+            fVenta = LocalDate.now();
+            hVenta = LocalTime.now().withSecond(0).withNano(0);
+        }else{
+            fVenta = pasaje.getFecha_venta();
+            hVenta = pasaje.getHora_venta();
         }
-        if (cmbRuta.getItemCount() > 0) {cmbRuta.setSelectedIndex(cmbRutaIndex);}
-        if (estate == 1) {ruta = viajeData.getList().getFirst();}
         
-        cmbAsientoUpdate();
+        cmbRutaUpdate();
         
         if (estate == 1) {
             lblTitulo.setText("AGREGAR PASAJE");
-            dateFVenta.setDate(java.sql.Date.valueOf(LocalDate.now()));
-            txtHVenta.setText("");
-            txtPrecio.setText("");
+            if (ruta != null) {txtPrecio.setText(String.valueOf(ruta.getPrecio()));}else{txtPrecio.setText("0");}
         }else{
             lblTitulo.setText("MODIFICAR PASAJE");
-            dateFVenta.setDate(java.sql.Date.valueOf(pasaje.getFecha_venta()));
-            txtHVenta.setText(String.valueOf(pasaje.getHora_venta()));
             txtPrecio.setText(String.valueOf(pasaje.getPrecio()));
         }
+        
+        dateFVenta.setDate(java.sql.Date.valueOf(fVenta));
+        txtHVenta.setText(hVenta.format(DateTimeFormatter.ofPattern(hVenta.getSecond() > 0 ? "HH:mm:ss" : "HH:mm")));
         
         lblMsjFVenta.setText("");
         lblMsjHVenta.setText("");
@@ -82,18 +87,39 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         }
     }
     
+    private void cmbRutaUpdate() {
+        var cmbRutaIndex = 0; cmbRuta.removeAllItems();
+        for (RutaViaje r : viajeData.getList()) {
+                if (r.getFecha_viaje().isAfter(fVenta) || (r.getFecha_viaje().isEqual(fVenta) && r.getHora_salida().isAfter(hVenta))) {
+                cmbRuta.addItem(r.getColectivo().getMatricula() + " - (" + r.getOrigen() + " - " + r.getDestino() + ") - (" +r.getFecha_viaje()+ ") - (" + r.getHora_salida()+" - "+r.getHora_llegada()+")");
+                if (estate == 2 && ruta.getId_ruta() == r.getId_ruta()) {
+                    cmbRutaIndex = cmbRuta.getItemCount() - 1;
+                }
+            }
+        }
+        if (cmbRuta.getItemCount() > 0) {
+            cmbRuta.setSelectedIndex(cmbRutaIndex);
+            if (estate == 1) {ruta = viajeData.getList().getFirst();}
+        }else{
+            ruta = null;
+        }
+        cmbAsientoUpdate();
+    }
+    
     private void cmbAsientoUpdate() {
         int asientoIndex = 0;
         cmbAsiento.removeAllItems();
-        for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
-            boolean me = (estate == 2 && lugar.getNumero_asiento() == i+1);
-            ArrayList<Asiento> ocupado = new ArrayList<>();
-            if (ruta != null) {ocupado = asientoData.SQL("SELECT * FROM `lugares` JOIN rutas ON rutas.id_ruta = lugares.id_ruta WHERE rutas.id_ruta = "+ruta.getId_ruta()+" and lugares.numero_asiento = "+(i+1)+";");}
-            if (!ocupado.isEmpty() && !me) {continue;}
-            cmbAsiento.addItem(String.valueOf(i+1));
-            if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
+        if (ruta != null) {
+            for (int i = 0; i < ruta.getColectivo().getCapacidad(); i++) {
+                boolean me = (estate == 2 && lugar.getNumero_asiento() == i+1);
+                ArrayList<Asiento> ocupado = new ArrayList<>();
+                if (ruta != null) {ocupado = asientoData.SQL("SELECT * FROM `lugares` JOIN rutas ON rutas.id_ruta = lugares.id_ruta WHERE rutas.id_ruta = "+ruta.getId_ruta()+" and lugares.numero_asiento = "+(i+1)+";");}
+                if (!ocupado.isEmpty() && !me) {continue;}
+                cmbAsiento.addItem(String.valueOf(i+1));
+                if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
+            }
+            if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
         }
-        if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
     }
     
     @SuppressWarnings("unchecked")
@@ -560,6 +586,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     private void cmbRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRutaActionPerformed
         if (initChanges && cmbRuta.getSelectedIndex() >= 0) {
             ruta = viajeData.getList().get(cmbRuta.getSelectedIndex());
+            txtPrecio.setText(String.valueOf(ruta.getPrecio()));
             cmbAsientoUpdate();
         }
     }//GEN-LAST:event_cmbRutaActionPerformed

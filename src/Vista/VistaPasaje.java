@@ -258,8 +258,8 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
             int id = tableList.get(tableIndex).getId_pasaje();
             if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-            pasajeData.remove(id);
-            updateAll();
+            asientoData.remove(elementsList.get(tableIndex)[3]); vistaAsiento.updateAll();
+            pasajeData.remove(id); updateAll();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

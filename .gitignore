@@ -1,51 +1,36 @@
 
 # === NetBeans ===
 nbproject/private/
-nbproject/private/private.properties
-nbproject/private/private.xml
 
-# Archivos de compilación
+# === Compilación ===
 *.class
 build/
 dist/
 out/
 target/
 
-# Archivos temporales
+# === Archivos temporales ===
 *.log
 *.bak
 *.tmp
 *.swp
 *~
 
-# BlueJ
+# === BlueJ ===
 *.ctxt
 
-# Java J2ME
+# === Java J2ME ===
 .mtj.tmp/
 
-# Paquetes compilados
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# Logs de JVM
+# === Logs de JVM ===
 hs_err_pid*
 replay_pid*
 
-# Otros IDEs
+# === Otros IDEs ===
 *.iml
 .idea/
 .vscode/
 
-# Sistema operativo
+# === Sistema operativo ===
 .DS_Store
 Thumbs.db
-
-# NetBeans - archivos generados
-build/classes/.netbeans_update_resources
-build/classes/.netbeans_automatic_build

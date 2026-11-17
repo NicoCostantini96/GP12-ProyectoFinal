@@ -63,12 +63,12 @@
             <Property name="text" type="java.lang.String" value="Asiento"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="mitAsientos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Asiento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitAsientosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -103,57 +103,57 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="mnuInformes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Informes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuLista1">
+            <MenuItem class="javax.swing.JMenuItem" name="mitListarPorHora">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listar Por Hora"/>
+                <Property name="text" type="java.lang.String" value="Lista de rutas por hora"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuLista1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitListarPorHoraActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuLista2">
+            <MenuItem class="javax.swing.JMenuItem" name="mitListarPasajes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listar Pasajes x Pasajero"/>
+                <Property name="text" type="java.lang.String" value="Lista de pasajes por pasajero"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuLista2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitListarPasajesActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuLista3">
+            <MenuItem class="javax.swing.JMenuItem" name="mitChoferColectivo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista de Choferes y Colectivos"/>
+                <Property name="text" type="java.lang.String" value="Lista de choferes y colectivos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuLista3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitChoferColectivoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuLista4">
+            <MenuItem class="javax.swing.JMenuItem" name="mitConsultaAsientos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Asientos disponibles"/>
+                <Property name="text" type="java.lang.String" value="Lista de asientos disponibles"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuLista4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitConsultaAsientosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuLista5">
+            <MenuItem class="javax.swing.JMenuItem" name="mitListaColectivos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista Colectivos x Fecha"/>
+                <Property name="text" type="java.lang.String" value="Lista de colectivos por fecha"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuLista5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitListaColectivosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuLista6">
+            <MenuItem class="javax.swing.JMenuItem" name="mitAsientosPorRuta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista Asientos x ruta"/>
+                <Property name="text" type="java.lang.String" value="Lista de asientos por ruta"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuLista6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitAsientosPorRutaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -196,7 +196,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="dtpEscritorio" pref="476" max="32767" attributes="0"/>
+              <Component id="dtpEscritorio" pref="486" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -218,7 +218,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" pref="594" max="32767" attributes="0"/>
+                  <Component id="lblBackground" pref="692" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -227,14 +227,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="470" max="-2" attributes="0"/>
+                  <Component id="lblBackground" min="-2" pref="470" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblBackground">
           <Properties>
             <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>

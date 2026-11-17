@@ -1,10 +1,5 @@
 package Vista;
 
-import Modelo.Asiento;
-import Modelo.Colectivo;
-import Modelo.Pasaje;
-import Modelo.Pasajero;
-import Modelo.RutaViaje;
 import Persistencia.AsientoData;
 import Persistencia.ColectivoData;
 import Persistencia.PasajeData;
@@ -36,12 +31,12 @@ public class VistaMain extends javax.swing.JFrame {
     public static VistaViajeModificar vistaViajeM = new VistaViajeModificar();
     public static VistaPasaje vistaPasaje = new VistaPasaje();
     public static VistaPasajeModificar vistaPasajeM = new VistaPasajeModificar();
-    public static informes1 informes1 = new informes1();
-    public static informes2 informes2 = new informes2();
-    public static informes3 informes3 = new informes3();
-    public static informes4 informes4 = new informes4();
-    public static informes5 informes5 = new informes5();
-    public static informes6 informes6 = new informes6();
+    public static VistaInformePorHora informePorHora = new VistaInformePorHora();
+    public static VistaInformePasajes informePasajes = new VistaInformePasajes();
+    public static VistaInformeChoferes informeChoferes = new VistaInformeChoferes();
+    public static VistaInformeAsientosDisp informeAsientosDisp = new VistaInformeAsientosDisp();
+    public static VistaInformePorDestino informeDestinos = new VistaInformePorDestino();
+    public static VistaInformeAsientosPorRuta informeAsientosRuta = new VistaInformeAsientosPorRuta();
 
     public static JDesktopPane desktopMain;
 
@@ -60,12 +55,12 @@ public class VistaMain extends javax.swing.JFrame {
         desktopMain.add(vistaPasaje);
         desktopMain.add(vistaPasajeM);
         desktopMain.add(vistaVenta);
-        desktopMain.add(informes1);
-        desktopMain.add(informes2);
-        desktopMain.add(informes3);
-        desktopMain.add(informes4);
-        desktopMain.add(informes5);
-        desktopMain.add(informes6);
+        desktopMain.add(informePorHora);
+        desktopMain.add(informePasajes);
+        desktopMain.add(informeChoferes);
+        desktopMain.add(informeAsientosDisp);
+        desktopMain.add(informeDestinos);
+        desktopMain.add(informeAsientosRuta);
 
         img();
         configurarListenersDeRedimensionamiento();
@@ -81,10 +76,10 @@ public class VistaMain extends javax.swing.JFrame {
 
         // Escala la imagen con alta calidad (Image.SCALE_SMOOTH)
         Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-        jLabel1.setIcon(new ImageIcon(imagenEscalada));
+        lblBackground.setIcon(new ImageIcon(imagenEscalada));
 
         // Aseguramos que el JLabel ocupe todo el JDesktopPane
-        jLabel1.setBounds(0, 0, ancho, alto);
+        lblBackground.setBounds(0, 0, ancho, alto);
     }
 
     // NUEVO MÉTODO: Escucha cuando cambia el tamaño de la ventana/escritorio
@@ -103,7 +98,7 @@ public class VistaMain extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         dtpEscritorio = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
         mnbNavegador = new javax.swing.JMenuBar();
         mnuArchivo = new javax.swing.JMenu();
         mitSalir = new javax.swing.JMenuItem();
@@ -112,18 +107,18 @@ public class VistaMain extends javax.swing.JFrame {
         mnuColectivo = new javax.swing.JMenu();
         mitColectivo = new javax.swing.JMenuItem();
         mnuAsiento = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mitAsientos = new javax.swing.JMenuItem();
         mnuRuta = new javax.swing.JMenu();
         mitRuta = new javax.swing.JMenuItem();
         mnuPasajes = new javax.swing.JMenu();
         mitPasajes = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        mnuLista1 = new javax.swing.JMenuItem();
-        mnuLista2 = new javax.swing.JMenuItem();
-        mnuLista3 = new javax.swing.JMenuItem();
-        mnuLista4 = new javax.swing.JMenuItem();
-        mnuLista5 = new javax.swing.JMenuItem();
-        mnuLista6 = new javax.swing.JMenuItem();
+        mnuInformes = new javax.swing.JMenu();
+        mitListarPorHora = new javax.swing.JMenuItem();
+        mitListarPasajes = new javax.swing.JMenuItem();
+        mitChoferColectivo = new javax.swing.JMenuItem();
+        mitConsultaAsientos = new javax.swing.JMenuItem();
+        mitListaColectivos = new javax.swing.JMenuItem();
+        mitAsientosPorRuta = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -133,9 +128,9 @@ public class VistaMain extends javax.swing.JFrame {
         dtpEscritorio.setMaximumSize(new java.awt.Dimension(600, 600));
         dtpEscritorio.setMinimumSize(new java.awt.Dimension(600, 600));
 
-        jLabel1.setAutoscrolls(true);
+        lblBackground.setAutoscrolls(true);
 
-        dtpEscritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dtpEscritorio.setLayer(lblBackground, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dtpEscritorioLayout = new javax.swing.GroupLayout(dtpEscritorio);
         dtpEscritorio.setLayout(dtpEscritorioLayout);
@@ -143,14 +138,14 @@ public class VistaMain extends javax.swing.JFrame {
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dtpEscritorioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
                 .addContainerGap())
         );
         dtpEscritorioLayout.setVerticalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dtpEscritorioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -180,9 +175,9 @@ public class VistaMain extends javax.swing.JFrame {
 
         mnuAsiento.setText("Asiento");
 
-        jMenuItem1.setText("Asiento");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        mnuAsiento.add(jMenuItem1);
+        mitAsientos.setText("Asiento");
+        mitAsientos.addActionListener(this::mitAsientosActionPerformed);
+        mnuAsiento.add(mitAsientos);
 
         mnbNavegador.add(mnuAsiento);
 
@@ -202,33 +197,33 @@ public class VistaMain extends javax.swing.JFrame {
 
         mnbNavegador.add(mnuPasajes);
 
-        jMenu2.setText("Informes");
+        mnuInformes.setText("Informes");
 
-        mnuLista1.setText("Listar Por Hora");
-        mnuLista1.addActionListener(this::mnuLista1ActionPerformed);
-        jMenu2.add(mnuLista1);
+        mitListarPorHora.setText("Lista de rutas por hora");
+        mitListarPorHora.addActionListener(this::mitListarPorHoraActionPerformed);
+        mnuInformes.add(mitListarPorHora);
 
-        mnuLista2.setText("Listar Pasajes x Pasajero");
-        mnuLista2.addActionListener(this::mnuLista2ActionPerformed);
-        jMenu2.add(mnuLista2);
+        mitListarPasajes.setText("Lista de pasajes por pasajero");
+        mitListarPasajes.addActionListener(this::mitListarPasajesActionPerformed);
+        mnuInformes.add(mitListarPasajes);
 
-        mnuLista3.setText("Lista de Choferes y Colectivos");
-        mnuLista3.addActionListener(this::mnuLista3ActionPerformed);
-        jMenu2.add(mnuLista3);
+        mitChoferColectivo.setText("Lista de choferes y colectivos");
+        mitChoferColectivo.addActionListener(this::mitChoferColectivoActionPerformed);
+        mnuInformes.add(mitChoferColectivo);
 
-        mnuLista4.setText("Consulta Asientos disponibles");
-        mnuLista4.addActionListener(this::mnuLista4ActionPerformed);
-        jMenu2.add(mnuLista4);
+        mitConsultaAsientos.setText("Lista de asientos disponibles");
+        mitConsultaAsientos.addActionListener(this::mitConsultaAsientosActionPerformed);
+        mnuInformes.add(mitConsultaAsientos);
 
-        mnuLista5.setText("Lista Colectivos x Fecha");
-        mnuLista5.addActionListener(this::mnuLista5ActionPerformed);
-        jMenu2.add(mnuLista5);
+        mitListaColectivos.setText("Lista de colectivos por fecha");
+        mitListaColectivos.addActionListener(this::mitListaColectivosActionPerformed);
+        mnuInformes.add(mitListaColectivos);
 
-        mnuLista6.setText("Lista Asientos x ruta");
-        mnuLista6.addActionListener(this::mnuLista6ActionPerformed);
-        jMenu2.add(mnuLista6);
+        mitAsientosPorRuta.setText("Lista de asientos por ruta");
+        mitAsientosPorRuta.addActionListener(this::mitAsientosPorRutaActionPerformed);
+        mnuInformes.add(mitAsientosPorRuta);
 
-        mnbNavegador.add(jMenu2);
+        mnbNavegador.add(mnuInformes);
 
         setJMenuBar(mnbNavegador);
 
@@ -243,7 +238,7 @@ public class VistaMain extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(dtpEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
+                .addComponent(dtpEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 486, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -282,48 +277,48 @@ public class VistaMain extends javax.swing.JFrame {
         desktopMain.moveToFront(vistaViaje);
     }//GEN-LAST:event_mitRutaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mitAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAsientosActionPerformed
         vistaAsiento.setLocation(mnuAsiento.getX(), 0);
         vistaAsiento.show();
         desktopMain.moveToFront(vistaAsiento);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mitAsientosActionPerformed
 
-    private void mnuLista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista1ActionPerformed
-        informes1.setLocation(mnuLista1.getX(), 0);
-        informes1.show();
-        desktopMain.moveToFront(informes1);
-    }//GEN-LAST:event_mnuLista1ActionPerformed
+    private void mitListarPorHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitListarPorHoraActionPerformed
+        informePorHora.setLocation(mitListarPorHora.getX(), 0);
+        informePorHora.show();
+        desktopMain.moveToFront(informePorHora);
+    }//GEN-LAST:event_mitListarPorHoraActionPerformed
 
-    private void mnuLista2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista2ActionPerformed
-        informes2.setLocation(mnuLista2.getX(), 0);
-        informes2.show();
-        desktopMain.moveToFront(informes2);
+    private void mitListarPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitListarPasajesActionPerformed
+        informePasajes.setLocation(mitListarPasajes.getX(), 0);
+        informePasajes.show();
+        desktopMain.moveToFront(informePasajes);
 
-    }//GEN-LAST:event_mnuLista2ActionPerformed
+    }//GEN-LAST:event_mitListarPasajesActionPerformed
 
-    private void mnuLista3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista3ActionPerformed
-        informes3.setLocation(mnuLista3.getX(), 0);
-        informes3.show();
-        desktopMain.moveToFront(informes3);
-    }//GEN-LAST:event_mnuLista3ActionPerformed
+    private void mitChoferColectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitChoferColectivoActionPerformed
+        informeChoferes.setLocation(mitChoferColectivo.getX(), 0);
+        informeChoferes.show();
+        desktopMain.moveToFront(informeChoferes);
+    }//GEN-LAST:event_mitChoferColectivoActionPerformed
 
-    private void mnuLista4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista4ActionPerformed
-        informes4.setLocation(mnuLista4.getX(), 0);
-        informes4.show();
-        desktopMain.moveToFront(informes4);
-    }//GEN-LAST:event_mnuLista4ActionPerformed
+    private void mitConsultaAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitConsultaAsientosActionPerformed
+        informeAsientosDisp.setLocation(mitConsultaAsientos.getX(), 0);
+        informeAsientosDisp.show();
+        desktopMain.moveToFront(informeAsientosDisp);
+    }//GEN-LAST:event_mitConsultaAsientosActionPerformed
 
-    private void mnuLista5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista5ActionPerformed
-        informes5.setLocation(mnuLista5.getX(), 0);
-        informes5.show();
-        desktopMain.moveToFront(informes5);
-    }//GEN-LAST:event_mnuLista5ActionPerformed
+    private void mitListaColectivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitListaColectivosActionPerformed
+        informeDestinos.setLocation(mitListaColectivos.getX(), 0);
+        informeDestinos.show();
+        desktopMain.moveToFront(informeDestinos);
+    }//GEN-LAST:event_mitListaColectivosActionPerformed
 
-    private void mnuLista6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLista6ActionPerformed
-        informes6.setLocation(mnuLista6.getX(), 0);
-        informes6.show();
-        desktopMain.moveToFront(informes6);
-    }//GEN-LAST:event_mnuLista6ActionPerformed
+    private void mitAsientosPorRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAsientosPorRutaActionPerformed
+        informeAsientosRuta.setLocation(mitAsientosPorRuta.getX(), 0);
+        informeAsientosRuta.show();
+        desktopMain.moveToFront(informeAsientosRuta);
+    }//GEN-LAST:event_mitAsientosPorRutaActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new VistaMain().setVisible(true));
@@ -333,11 +328,16 @@ public class VistaMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dtpEscritorio;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JMenuItem mitAsientos;
+    private javax.swing.JMenuItem mitAsientosPorRuta;
+    private javax.swing.JMenuItem mitChoferColectivo;
     private javax.swing.JMenuItem mitColectivo;
+    private javax.swing.JMenuItem mitConsultaAsientos;
+    private javax.swing.JMenuItem mitListaColectivos;
+    private javax.swing.JMenuItem mitListarPasajes;
+    private javax.swing.JMenuItem mitListarPorHora;
     private javax.swing.JMenuItem mitPasajero;
     private javax.swing.JMenuItem mitPasajes;
     private javax.swing.JMenuItem mitRuta;
@@ -346,12 +346,7 @@ public class VistaMain extends javax.swing.JFrame {
     private javax.swing.JMenu mnuArchivo;
     private javax.swing.JMenu mnuAsiento;
     private javax.swing.JMenu mnuColectivo;
-    private javax.swing.JMenuItem mnuLista1;
-    private javax.swing.JMenuItem mnuLista2;
-    private javax.swing.JMenuItem mnuLista3;
-    private javax.swing.JMenuItem mnuLista4;
-    private javax.swing.JMenuItem mnuLista5;
-    private javax.swing.JMenuItem mnuLista6;
+    private javax.swing.JMenu mnuInformes;
     private javax.swing.JMenu mnuPasajero;
     private javax.swing.JMenu mnuPasajes;
     private javax.swing.JMenu mnuRuta;

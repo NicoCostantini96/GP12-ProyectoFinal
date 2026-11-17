@@ -31,9 +31,9 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     
     public VistaPasajeModificar() {
         initComponents();
-        dateFVenta.addPropertyChangeListener("date", evt -> {
-            if (dateFVenta.getDate() != null) {
-                fVenta = dateFVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dchFVenta.addPropertyChangeListener("date", evt -> {
+            if (dchFVenta.getDate() != null) {
+                fVenta = dchFVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 cmbRutaUpdate();
             }
         });
@@ -70,7 +70,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             txtPrecio.setText(String.valueOf(pasaje.getPrecio()));
         }
         
-        dateFVenta.setDate(java.sql.Date.valueOf(fVenta));
+        dchFVenta.setDate(java.sql.Date.valueOf(fVenta));
         txtHVenta.setText(hVenta.format(DateTimeFormatter.ofPattern(hVenta.getSecond() > 0 ? "HH:mm:ss" : "HH:mm")));
         
         lblMsjFVenta.setText("");
@@ -143,7 +143,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         pnlCorreo = new javax.swing.JPanel();
         pnlCorreoInput = new javax.swing.JPanel();
         lblCorreo = new javax.swing.JLabel();
-        dateFVenta = new com.toedter.calendar.JDateChooser();
+        dchFVenta = new com.toedter.calendar.JDateChooser();
         lblMsjFVenta = new javax.swing.JLabel();
         pnlTelefono = new javax.swing.JPanel();
         pnlTelefonoInput = new javax.swing.JPanel();
@@ -318,12 +318,12 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(dchFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlCorreoInputLayout.setVerticalGroup(
             pnlCorreoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(lblCorreo)
-            .addComponent(dateFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(dchFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         lblMsjFVenta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -519,7 +519,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             lblMsjPrecio.getText().length() < 1
         ) {
             int id = (pasaje != null) ? pasaje.getId_pasaje() : 0;
-            LocalDate fVenta = dateFVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate fVenta = dchFVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             double precio = Double.parseDouble(txtPrecio.getText());
             
             int asiento = Integer.parseInt(cmbAsiento.getSelectedItem().toString());
@@ -603,7 +603,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cmbAsiento;
     private javax.swing.JComboBox<String> cmbPasajero;
     private javax.swing.JComboBox<String> cmbRuta;
-    private com.toedter.calendar.JDateChooser dateFVenta;
+    private com.toedter.calendar.JDateChooser dchFVenta;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblDni;

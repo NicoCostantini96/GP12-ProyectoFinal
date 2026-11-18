@@ -147,6 +147,7 @@ public class VistaInformePasajes extends javax.swing.JInternalFrame {
         tblInformePasajes = new javax.swing.JTable();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Flecha Flash S.A.: Informes");
 
         pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar pasajes por pasajero", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N

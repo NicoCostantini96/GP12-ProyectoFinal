@@ -131,6 +131,7 @@ public class VistaInformeChoferes extends javax.swing.JInternalFrame {
         tblInformeChoferes = new javax.swing.JTable();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Flecha Flash S.A.: Informes");
 
         pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar choferes por fecha y hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N

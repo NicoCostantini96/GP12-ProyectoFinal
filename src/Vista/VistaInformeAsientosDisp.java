@@ -157,6 +157,7 @@ public class VistaInformeAsientosDisp extends javax.swing.JInternalFrame {
         tblInformeAsientos = new javax.swing.JTable();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Flecha Flash S.A.: Informes");
         setToolTipText("");
 

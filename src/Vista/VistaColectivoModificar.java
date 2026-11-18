@@ -3,7 +3,6 @@ package Vista;
 import Modelo.Colectivo;
 import static Vista.TestMain.colectivoData;
 import static Vista.VistaMain.vistaColectivo;
-import static Vista.VistaMain.vistaMain;
 import java.util.ArrayList;
 
 public class VistaColectivoModificar extends javax.swing.JInternalFrame {
@@ -83,6 +82,7 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Colectivos");
 
         pnlTitulo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

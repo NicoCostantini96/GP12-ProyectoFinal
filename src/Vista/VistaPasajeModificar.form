@@ -4,6 +4,7 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="defaultCloseOperation" type="int" value="1"/>
+    <Property name="title" type="java.lang.String" value="Flecha Flash S.A.: Pasajes"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -34,13 +35,13 @@
                   <Group type="102" attributes="0">
                       <EmptySpace pref="17" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="pnlNombre" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlDni" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlAsiento" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlPasajero" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="pnlTitulo" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="pnlApellido" alignment="1" max="32767" attributes="0"/>
-                              <Component id="pnlTelefono" alignment="1" max="32767" attributes="0"/>
-                              <Component id="pnlCorreo" alignment="1" max="32767" attributes="0"/>
+                              <Component id="pnlRuta" alignment="1" max="32767" attributes="0"/>
+                              <Component id="pnlHoraPrecio" alignment="1" max="32767" attributes="0"/>
+                              <Component id="pnlFecha" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -55,15 +56,15 @@
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="pnlTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="pnlDni" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlPasajero" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="pnlNombre" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlAsiento" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="pnlApellido" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlRuta" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="pnlCorreo" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlFecha" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="pnlTelefono" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlHoraPrecio" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -117,26 +118,26 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlDni">
+    <Container class="javax.swing.JPanel" name="pnlPasajero">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDniInput" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlPasajeroInput" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlDniInput" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlPasajeroInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlDniInput">
+        <Container class="javax.swing.JPanel" name="pnlPasajeroInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -150,7 +151,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblDni" pref="181" max="32767" attributes="0"/>
+                      <Component id="lblPasajero" pref="181" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cmbPasajero" min="-2" pref="246" max="-2" attributes="0"/>
                   </Group>
@@ -159,20 +160,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="lblDni" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPasajero" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmbPasajero" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblDni">
+            <Component class="javax.swing.JLabel" name="lblPasajero">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="PSAJERO:"/>
+                <Property name="text" type="java.lang.String" value="PASAJERO:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cmbPasajero">
@@ -197,26 +198,26 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlNombre">
+    <Container class="javax.swing.JPanel" name="pnlAsiento">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlNombreInput" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlAsientoInput" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlNombreInput" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlAsientoInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlNombreInput">
+        <Container class="javax.swing.JPanel" name="pnlAsientoInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -230,7 +231,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblNombre" pref="181" max="32767" attributes="0"/>
+                      <Component id="lblAsiento" pref="181" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cmbAsiento" min="-2" pref="246" max="-2" attributes="0"/>
                   </Group>
@@ -239,14 +240,14 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAsiento" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmbAsiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblNombre">
+            <Component class="javax.swing.JLabel" name="lblAsiento">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -274,26 +275,26 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlApellido">
+    <Container class="javax.swing.JPanel" name="pnlRuta">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlApellidoInput" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlRutaInput" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlApellidoInput" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlRutaInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlApellidoInput">
+        <Container class="javax.swing.JPanel" name="pnlRutaInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -308,7 +309,7 @@
                   <Component id="cmbRuta" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblApellido" max="32767" attributes="0"/>
+                      <Component id="lblRuta" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -316,7 +317,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="lblApellido" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRuta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="cmbRuta" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -324,7 +325,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblApellido">
+            <Component class="javax.swing.JLabel" name="lblRuta">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -355,7 +356,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlCorreo">
+    <Container class="javax.swing.JPanel" name="pnlFecha">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -365,14 +366,14 @@
                   <Component id="lblMsjFVenta" min="-2" pref="244" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
-              <Component id="pnlCorreoInput" alignment="1" max="32767" attributes="0"/>
+              <Component id="pnlFechaInput" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlCorreoInput" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlFechaInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="lblMsjFVenta" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -381,7 +382,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlCorreoInput">
+        <Container class="javax.swing.JPanel" name="pnlFechaInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -395,7 +396,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblCorreo" max="32767" attributes="0"/>
+                      <Component id="lblFecha" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="dchFVenta" min="-2" pref="246" max="-2" attributes="0"/>
                   </Group>
@@ -403,13 +404,13 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblCorreo" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
                   <Component id="dchFVenta" min="-2" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblCorreo">
+            <Component class="javax.swing.JLabel" name="lblFecha">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -435,13 +436,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlTelefono">
+    <Container class="javax.swing.JPanel" name="pnlHoraPrecio">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlTelefonoInput" alignment="0" max="32767" attributes="0"/>
-              <Component id="pnlTelefonoInput1" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlHoraInput" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlPrecioInput" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -456,11 +457,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="pnlTelefonoInput" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlHoraInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="lblMsjHVenta" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="pnlTelefonoInput1" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlPrecioInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="lblMsjPrecio" min="-2" pref="12" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -469,7 +470,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlTelefonoInput">
+        <Container class="javax.swing.JPanel" name="pnlHoraInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -541,7 +542,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="pnlTelefonoInput1">
+        <Container class="javax.swing.JPanel" name="pnlPrecioInput">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -555,7 +556,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblTelefono1" max="32767" attributes="0"/>
+                      <Component id="lblPrecio" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="txtPrecio" min="-2" pref="247" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -566,7 +567,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTelefono1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -580,7 +581,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPrecioKeyReleased"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblTelefono1">
+            <Component class="javax.swing.JLabel" name="lblPrecio">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>

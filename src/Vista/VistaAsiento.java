@@ -1,18 +1,10 @@
 package Vista;
 
 import Modelo.Asiento;
-import Modelo.Colectivo;
-import Modelo.Pasajero;
 import Modelo.RutaViaje;
 import static Vista.TestMain.asientoData;
-import static Vista.TestMain.colectivoData;
-import static Vista.TestMain.pasajeroData;
-import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.vistaAsientoM;
-import static Vista.VistaMain.vistaColectivoM;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasaje;
-import static Vista.VistaMain.vistaPasajeroM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -143,6 +135,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Asientos");
 
         tblAsiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

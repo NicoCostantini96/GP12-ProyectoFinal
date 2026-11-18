@@ -105,19 +105,16 @@ public class VistaInformePorHora extends javax.swing.JInternalFrame {
         tblInformePorHora = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Flecha Flash S.A.: Informes");
 
-        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar viajes por hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Noto Sans", 0, 24))); // NOI18N
+        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar viajes por hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N
 
-        lblHoraSalida.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblHoraSalida.setText("Hora de salida:");
 
-        cmbSalida.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         cmbSalida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lblHoraLlegada.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblHoraLlegada.setText("Hora de llegada:");
 
-        cmbLlegada.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         cmbLlegada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         tblInformePorHora.setModel(new javax.swing.table.DefaultTableModel(
@@ -144,7 +141,7 @@ public class VistaInformePorHora extends javax.swing.JInternalFrame {
                         .addComponent(lblHoraSalida)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(lblHoraLlegada)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))

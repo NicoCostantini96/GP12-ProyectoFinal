@@ -2,17 +2,13 @@ package Vista;
 
 import Modelo.Asiento;
 import Modelo.Pasaje;
-import Modelo.Pasajero;
-import Modelo.RutaViaje;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.asientoData;
 import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.pasajeData;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaAsiento;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasajeM;
-import static Vista.VistaMain.vistaPasajeroM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -152,6 +148,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Pasajes");
 
         tblPasaje.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

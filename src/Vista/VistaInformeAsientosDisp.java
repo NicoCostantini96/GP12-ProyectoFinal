@@ -157,19 +157,16 @@ public class VistaInformeAsientosDisp extends javax.swing.JInternalFrame {
         tblInformeAsientos = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Flecha Flash S.A.: Informes");
+        setToolTipText("");
 
-        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar asientos por fecha y hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Noto Sans", 0, 24))); // NOI18N
+        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar asientos por fecha y hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N
         pnlContenedor.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
 
-        lblChofer.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblChofer.setText("Seleccione una fecha:");
 
-        lblHorario.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblHorario.setText("Seleccione un horario:");
 
-        cmbHora.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
-
-        tblInformeAsientos.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         tblInformeAsientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

@@ -1,12 +1,9 @@
 package Vista;
 
 import Modelo.Colectivo;
-import Modelo.Pasajero;
 import Modelo.RutaViaje;
 import static Vista.TestMain.colectivoData;
-import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.viajeData;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaViaje;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -185,6 +182,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Rutas");
 
         pnlTitulo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

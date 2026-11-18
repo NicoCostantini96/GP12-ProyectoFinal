@@ -1,13 +1,10 @@
 package Vista;
 
 import Modelo.Asiento;
-import Modelo.Colectivo;
 import Modelo.RutaViaje;
 import static Vista.TestMain.asientoData;
-import static Vista.TestMain.colectivoData;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaAsiento;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasaje;
 import java.util.ArrayList;
 
@@ -90,6 +87,7 @@ public class VistaAsientoModificar extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Asientos");
 
         pnlTitulo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

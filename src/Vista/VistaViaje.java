@@ -4,7 +4,6 @@ import Modelo.RutaViaje;
 import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaAsiento;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaViajeM;
 import java.util.ArrayList;
@@ -131,6 +130,8 @@ public class VistaViaje extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setResizable(true);
+        setTitle("Flecha Flash S.A.: Rutas");
 
         tblRuta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

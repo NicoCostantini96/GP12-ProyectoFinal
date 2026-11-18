@@ -3,7 +3,6 @@ package Vista;
 import Modelo.Pasajero;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.desktopMain;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaPasajeroM;
 import java.util.ArrayList;
@@ -127,6 +126,7 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Pasajeros");
 
         tblPasajero.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

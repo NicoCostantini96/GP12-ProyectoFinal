@@ -64,6 +64,10 @@ public class VistaMain extends javax.swing.JFrame {
 
         img();
         configurarListenersDeRedimensionamiento();
+        try {
+            java.awt.Image logo = java.awt.Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IMG/logo.png"));
+            this.setIconImage(logo);
+        } catch (Exception e) {}
     }
 
     public void img() {
@@ -123,6 +127,7 @@ public class VistaMain extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Flecha Flash S.A.");
         setMinimumSize(new java.awt.Dimension(56, 36));
 
         dtpEscritorio.setMaximumSize(new java.awt.Dimension(600, 600));

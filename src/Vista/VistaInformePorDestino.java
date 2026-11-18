@@ -123,17 +123,14 @@ public class VistaInformePorDestino extends javax.swing.JInternalFrame {
         tblInformeViajes = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Flecha Flash S.A.: Informes");
 
-        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar viajes por destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Noto Sans", 0, 24))); // NOI18N
+        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar viajes por destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N
         pnlContenedor.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
 
-        lblFecha.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblFecha.setText("Seleccione una fecha:");
 
-        lblDestino.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblDestino.setText("Seleccione un destino:");
-
-        cmbDestino.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
 
         tblInformeViajes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

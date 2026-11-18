@@ -1,15 +1,11 @@
 package Vista;
 
 import Modelo.Colectivo;
-import Modelo.Pasajero;
 import static Vista.TestMain.colectivoData;
-import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaColectivoM;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasaje;
-import static Vista.VistaMain.vistaPasajeroM;
 import static Vista.VistaMain.vistaViaje;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -131,6 +127,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Colectivos");
 
         tblColectivo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

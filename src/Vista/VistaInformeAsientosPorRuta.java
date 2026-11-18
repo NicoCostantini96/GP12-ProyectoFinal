@@ -117,13 +117,12 @@ public class VistaInformeAsientosPorRuta extends javax.swing.JInternalFrame {
         tblInformeAsientos = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Flecha Flash S.A.: Informes");
+        setToolTipText("");
 
-        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar asientos por ruta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Noto Sans", 0, 24))); // NOI18N
+        pnlContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar asientos por ruta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24))); // NOI18N
 
-        lblRuta.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
         lblRuta.setText("Seleccione una ruta:");
-
-        cmbRuta.setFont(new java.awt.Font("Noto Sans", 0, 12)); // NOI18N
 
         tblInformeAsientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

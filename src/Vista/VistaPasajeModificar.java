@@ -8,7 +8,6 @@ import static Vista.TestMain.asientoData;
 import static Vista.TestMain.pasajeData;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.viajeData;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaAsiento;
 import java.time.LocalDate;
@@ -16,7 +15,6 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class VistaPasajeModificar extends javax.swing.JInternalFrame {
 
@@ -128,37 +126,38 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
 
         pnlTitulo = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        pnlDni = new javax.swing.JPanel();
-        pnlDniInput = new javax.swing.JPanel();
-        lblDni = new javax.swing.JLabel();
+        pnlPasajero = new javax.swing.JPanel();
+        pnlPasajeroInput = new javax.swing.JPanel();
+        lblPasajero = new javax.swing.JLabel();
         cmbPasajero = new javax.swing.JComboBox<>();
-        pnlNombre = new javax.swing.JPanel();
-        pnlNombreInput = new javax.swing.JPanel();
-        lblNombre = new javax.swing.JLabel();
+        pnlAsiento = new javax.swing.JPanel();
+        pnlAsientoInput = new javax.swing.JPanel();
+        lblAsiento = new javax.swing.JLabel();
         cmbAsiento = new javax.swing.JComboBox<>();
-        pnlApellido = new javax.swing.JPanel();
-        pnlApellidoInput = new javax.swing.JPanel();
-        lblApellido = new javax.swing.JLabel();
+        pnlRuta = new javax.swing.JPanel();
+        pnlRutaInput = new javax.swing.JPanel();
+        lblRuta = new javax.swing.JLabel();
         cmbRuta = new javax.swing.JComboBox<>();
-        pnlCorreo = new javax.swing.JPanel();
-        pnlCorreoInput = new javax.swing.JPanel();
-        lblCorreo = new javax.swing.JLabel();
+        pnlFecha = new javax.swing.JPanel();
+        pnlFechaInput = new javax.swing.JPanel();
+        lblFecha = new javax.swing.JLabel();
         dchFVenta = new com.toedter.calendar.JDateChooser();
         lblMsjFVenta = new javax.swing.JLabel();
-        pnlTelefono = new javax.swing.JPanel();
-        pnlTelefonoInput = new javax.swing.JPanel();
+        pnlHoraPrecio = new javax.swing.JPanel();
+        pnlHoraInput = new javax.swing.JPanel();
         txtHVenta = new javax.swing.JTextField();
         lblTelefono = new javax.swing.JLabel();
         lblMsjHVenta = new javax.swing.JLabel();
         lblMsjPrecio = new javax.swing.JLabel();
-        pnlTelefonoInput1 = new javax.swing.JPanel();
+        pnlPrecioInput = new javax.swing.JPanel();
         txtPrecio = new javax.swing.JTextField();
-        lblTelefono1 = new javax.swing.JLabel();
+        lblPrecio = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Pasajes");
 
         pnlTitulo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -184,145 +183,145 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        pnlDniInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlPasajeroInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblDni.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblDni.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDni.setText("PSAJERO:");
+        lblPasajero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPasajero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPasajero.setText("PASAJERO:");
 
         cmbPasajero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbPasajero.addActionListener(this::cmbPasajeroActionPerformed);
 
-        javax.swing.GroupLayout pnlDniInputLayout = new javax.swing.GroupLayout(pnlDniInput);
-        pnlDniInput.setLayout(pnlDniInputLayout);
-        pnlDniInputLayout.setHorizontalGroup(
-            pnlDniInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDniInputLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlPasajeroInputLayout = new javax.swing.GroupLayout(pnlPasajeroInput);
+        pnlPasajeroInput.setLayout(pnlPasajeroInputLayout);
+        pnlPasajeroInputLayout.setHorizontalGroup(
+            pnlPasajeroInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPasajeroInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblDni, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(lblPasajero, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pnlDniInputLayout.setVerticalGroup(
-            pnlDniInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDniInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblDni)
+        pnlPasajeroInputLayout.setVerticalGroup(
+            pnlPasajeroInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPasajeroInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblPasajero)
                 .addComponent(cmbPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout pnlDniLayout = new javax.swing.GroupLayout(pnlDni);
-        pnlDni.setLayout(pnlDniLayout);
-        pnlDniLayout.setHorizontalGroup(
-            pnlDniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlDniInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlPasajeroLayout = new javax.swing.GroupLayout(pnlPasajero);
+        pnlPasajero.setLayout(pnlPasajeroLayout);
+        pnlPasajeroLayout.setHorizontalGroup(
+            pnlPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlPasajeroInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        pnlDniLayout.setVerticalGroup(
-            pnlDniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDniLayout.createSequentialGroup()
+        pnlPasajeroLayout.setVerticalGroup(
+            pnlPasajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPasajeroLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pnlDniInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlPasajeroInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
-        pnlNombreInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlAsientoInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNombre.setText("ASIENTO:");
+        lblAsiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAsiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAsiento.setText("ASIENTO:");
 
         cmbAsiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        javax.swing.GroupLayout pnlNombreInputLayout = new javax.swing.GroupLayout(pnlNombreInput);
-        pnlNombreInput.setLayout(pnlNombreInputLayout);
-        pnlNombreInputLayout.setHorizontalGroup(
-            pnlNombreInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNombreInputLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlAsientoInputLayout = new javax.swing.GroupLayout(pnlAsientoInput);
+        pnlAsientoInput.setLayout(pnlAsientoInputLayout);
+        pnlAsientoInputLayout.setHorizontalGroup(
+            pnlAsientoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAsientoInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(lblAsiento, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pnlNombreInputLayout.setVerticalGroup(
-            pnlNombreInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNombreInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblNombre)
+        pnlAsientoInputLayout.setVerticalGroup(
+            pnlAsientoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAsientoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblAsiento)
                 .addComponent(cmbAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout pnlNombreLayout = new javax.swing.GroupLayout(pnlNombre);
-        pnlNombre.setLayout(pnlNombreLayout);
-        pnlNombreLayout.setHorizontalGroup(
-            pnlNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlNombreInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlAsientoLayout = new javax.swing.GroupLayout(pnlAsiento);
+        pnlAsiento.setLayout(pnlAsientoLayout);
+        pnlAsientoLayout.setHorizontalGroup(
+            pnlAsientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlAsientoInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        pnlNombreLayout.setVerticalGroup(
-            pnlNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNombreLayout.createSequentialGroup()
+        pnlAsientoLayout.setVerticalGroup(
+            pnlAsientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAsientoLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pnlNombreInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlAsientoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
-        pnlApellidoInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlRutaInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblApellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblApellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblApellido.setText("RUTA:");
+        lblRuta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblRuta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRuta.setText("RUTA:");
 
         cmbRuta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbRuta.addActionListener(this::cmbRutaActionPerformed);
 
-        javax.swing.GroupLayout pnlApellidoInputLayout = new javax.swing.GroupLayout(pnlApellidoInput);
-        pnlApellidoInput.setLayout(pnlApellidoInputLayout);
-        pnlApellidoInputLayout.setHorizontalGroup(
-            pnlApellidoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlRutaInputLayout = new javax.swing.GroupLayout(pnlRutaInput);
+        pnlRutaInput.setLayout(pnlRutaInputLayout);
+        pnlRutaInputLayout.setHorizontalGroup(
+            pnlRutaInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(cmbRuta, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnlApellidoInputLayout.createSequentialGroup()
+            .addGroup(pnlRutaInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
-        pnlApellidoInputLayout.setVerticalGroup(
-            pnlApellidoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlApellidoInputLayout.createSequentialGroup()
-                .addComponent(lblApellido)
+        pnlRutaInputLayout.setVerticalGroup(
+            pnlRutaInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRutaInputLayout.createSequentialGroup()
+                .addComponent(lblRuta)
                 .addGap(5, 5, 5)
                 .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout pnlApellidoLayout = new javax.swing.GroupLayout(pnlApellido);
-        pnlApellido.setLayout(pnlApellidoLayout);
-        pnlApellidoLayout.setHorizontalGroup(
-            pnlApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlApellidoInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlRutaLayout = new javax.swing.GroupLayout(pnlRuta);
+        pnlRuta.setLayout(pnlRutaLayout);
+        pnlRutaLayout.setHorizontalGroup(
+            pnlRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlRutaInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        pnlApellidoLayout.setVerticalGroup(
-            pnlApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlApellidoLayout.createSequentialGroup()
+        pnlRutaLayout.setVerticalGroup(
+            pnlRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRutaLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pnlApellidoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlRutaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
-        pnlCorreoInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlFechaInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCorreo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCorreo.setText("FECHA VENTA:");
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFecha.setText("FECHA VENTA:");
 
-        javax.swing.GroupLayout pnlCorreoInputLayout = new javax.swing.GroupLayout(pnlCorreoInput);
-        pnlCorreoInput.setLayout(pnlCorreoInputLayout);
-        pnlCorreoInputLayout.setHorizontalGroup(
-            pnlCorreoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCorreoInputLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFechaInputLayout = new javax.swing.GroupLayout(pnlFechaInput);
+        pnlFechaInput.setLayout(pnlFechaInputLayout);
+        pnlFechaInputLayout.setHorizontalGroup(
+            pnlFechaInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFechaInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dchFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pnlCorreoInputLayout.setVerticalGroup(
-            pnlCorreoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(lblCorreo)
+        pnlFechaInputLayout.setVerticalGroup(
+            pnlFechaInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(lblFecha)
             .addComponent(dchFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -330,27 +329,27 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         lblMsjFVenta.setForeground(new java.awt.Color(230, 0, 0));
         lblMsjFVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout pnlCorreoLayout = new javax.swing.GroupLayout(pnlCorreo);
-        pnlCorreo.setLayout(pnlCorreoLayout);
-        pnlCorreoLayout.setHorizontalGroup(
-            pnlCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCorreoLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFechaLayout = new javax.swing.GroupLayout(pnlFecha);
+        pnlFecha.setLayout(pnlFechaLayout);
+        pnlFechaLayout.setHorizontalGroup(
+            pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFechaLayout.createSequentialGroup()
                 .addContainerGap(195, Short.MAX_VALUE)
                 .addComponent(lblMsjFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
-            .addComponent(pnlCorreoInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFechaInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        pnlCorreoLayout.setVerticalGroup(
-            pnlCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCorreoLayout.createSequentialGroup()
+        pnlFechaLayout.setVerticalGroup(
+            pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFechaLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pnlCorreoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlFechaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(lblMsjFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
 
-        pnlTelefonoInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlHoraInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         txtHVenta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHVenta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -363,20 +362,20 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTelefono.setText("HORA VENTA:");
 
-        javax.swing.GroupLayout pnlTelefonoInputLayout = new javax.swing.GroupLayout(pnlTelefonoInput);
-        pnlTelefonoInput.setLayout(pnlTelefonoInputLayout);
-        pnlTelefonoInputLayout.setHorizontalGroup(
-            pnlTelefonoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTelefonoInputLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlHoraInputLayout = new javax.swing.GroupLayout(pnlHoraInput);
+        pnlHoraInput.setLayout(pnlHoraInputLayout);
+        pnlHoraInputLayout.setHorizontalGroup(
+            pnlHoraInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHoraInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(lblTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(txtHVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
-        pnlTelefonoInputLayout.setVerticalGroup(
-            pnlTelefonoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTelefonoInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlHoraInputLayout.setVerticalGroup(
+            pnlHoraInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHoraInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txtHVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblTelefono))
         );
@@ -389,7 +388,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         lblMsjPrecio.setForeground(new java.awt.Color(230, 0, 0));
         lblMsjPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        pnlTelefonoInput1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlPrecioInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         txtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -398,50 +397,50 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             }
         });
 
-        lblTelefono1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblTelefono1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTelefono1.setText("PRECIO:");
+        lblPrecio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio.setText("PRECIO:");
 
-        javax.swing.GroupLayout pnlTelefonoInput1Layout = new javax.swing.GroupLayout(pnlTelefonoInput1);
-        pnlTelefonoInput1.setLayout(pnlTelefonoInput1Layout);
-        pnlTelefonoInput1Layout.setHorizontalGroup(
-            pnlTelefonoInput1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTelefonoInput1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlPrecioInputLayout = new javax.swing.GroupLayout(pnlPrecioInput);
+        pnlPrecioInput.setLayout(pnlPrecioInputLayout);
+        pnlPrecioInputLayout.setHorizontalGroup(
+            pnlPrecioInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrecioInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblTelefono1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
-        pnlTelefonoInput1Layout.setVerticalGroup(
-            pnlTelefonoInput1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTelefonoInput1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlPrecioInputLayout.setVerticalGroup(
+            pnlPrecioInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPrecioInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblTelefono1))
+                .addComponent(lblPrecio))
         );
 
-        javax.swing.GroupLayout pnlTelefonoLayout = new javax.swing.GroupLayout(pnlTelefono);
-        pnlTelefono.setLayout(pnlTelefonoLayout);
-        pnlTelefonoLayout.setHorizontalGroup(
-            pnlTelefonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlTelefonoInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlTelefonoInput1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTelefonoLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlHoraPrecioLayout = new javax.swing.GroupLayout(pnlHoraPrecio);
+        pnlHoraPrecio.setLayout(pnlHoraPrecioLayout);
+        pnlHoraPrecioLayout.setHorizontalGroup(
+            pnlHoraPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHoraInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPrecioInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHoraPrecioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlTelefonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlHoraPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMsjHVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMsjPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
-        pnlTelefonoLayout.setVerticalGroup(
-            pnlTelefonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTelefonoLayout.createSequentialGroup()
+        pnlHoraPrecioLayout.setVerticalGroup(
+            pnlHoraPrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHoraPrecioLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pnlTelefonoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlHoraInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(lblMsjHVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(pnlTelefonoInput1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlPrecioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(lblMsjPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
@@ -467,13 +466,13 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(17, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(pnlApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pnlTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pnlCorreo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(pnlRuta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnlHoraPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnlFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -482,15 +481,15 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 .addGap(0, 0, 0)
                 .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(pnlDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlHoraPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -604,27 +603,27 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cmbPasajero;
     private javax.swing.JComboBox<String> cmbRuta;
     private com.toedter.calendar.JDateChooser dchFVenta;
-    private javax.swing.JLabel lblApellido;
-    private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblDni;
+    private javax.swing.JLabel lblAsiento;
+    private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblMsjFVenta;
     private javax.swing.JLabel lblMsjHVenta;
     private javax.swing.JLabel lblMsjPrecio;
-    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPasajero;
+    private javax.swing.JLabel lblPrecio;
+    private javax.swing.JLabel lblRuta;
     private javax.swing.JLabel lblTelefono;
-    private javax.swing.JLabel lblTelefono1;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JPanel pnlApellido;
-    private javax.swing.JPanel pnlApellidoInput;
-    private javax.swing.JPanel pnlCorreo;
-    private javax.swing.JPanel pnlCorreoInput;
-    private javax.swing.JPanel pnlDni;
-    private javax.swing.JPanel pnlDniInput;
-    private javax.swing.JPanel pnlNombre;
-    private javax.swing.JPanel pnlNombreInput;
-    private javax.swing.JPanel pnlTelefono;
-    private javax.swing.JPanel pnlTelefonoInput;
-    private javax.swing.JPanel pnlTelefonoInput1;
+    private javax.swing.JPanel pnlAsiento;
+    private javax.swing.JPanel pnlAsientoInput;
+    private javax.swing.JPanel pnlFecha;
+    private javax.swing.JPanel pnlFechaInput;
+    private javax.swing.JPanel pnlHoraInput;
+    private javax.swing.JPanel pnlHoraPrecio;
+    private javax.swing.JPanel pnlPasajero;
+    private javax.swing.JPanel pnlPasajeroInput;
+    private javax.swing.JPanel pnlPrecioInput;
+    private javax.swing.JPanel pnlRuta;
+    private javax.swing.JPanel pnlRutaInput;
     private javax.swing.JPanel pnlTitulo;
     private javax.swing.JTextField txtHVenta;
     private javax.swing.JTextField txtPrecio;

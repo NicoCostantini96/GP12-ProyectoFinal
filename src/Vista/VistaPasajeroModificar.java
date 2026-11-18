@@ -2,7 +2,6 @@ package Vista;
 
 import Modelo.Pasajero;
 import static Vista.TestMain.pasajeroData;
-import static Vista.VistaMain.vistaMain;
 import static Vista.VistaMain.vistaPasajero;
 import java.util.ArrayList;
 
@@ -83,6 +82,7 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setTitle("Flecha Flash S.A.: Pasajeros");
 
         pnlTitulo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

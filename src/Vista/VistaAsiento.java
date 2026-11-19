@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Asiento;
 import Modelo.RutaViaje;
 import static Vista.TestMain.asientoData;
+import static Vista.VistaMain.informeAsientosDisp;
 import static Vista.VistaMain.vistaAsientoM;
 import static Vista.VistaMain.vistaPasaje;
 import java.util.ArrayList;
@@ -118,6 +119,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         }
 
         updateIndex();
+        if (informeAsientosDisp != null) {informeAsientosDisp.actualizarTabla();}
     }
 
     public ArrayList<Asiento> getTableList() {

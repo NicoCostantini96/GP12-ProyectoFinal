@@ -5,6 +5,8 @@ import Modelo.Pasaje;
 import static Vista.TestMain.pasajeroData;
 import static Vista.VistaMain.asientoData;
 import static Vista.VistaMain.desktopMain;
+import static Vista.VistaMain.informeAsientosRuta;
+import static Vista.VistaMain.informePasajes;
 import static Vista.VistaMain.pasajeData;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaAsiento;
@@ -131,6 +133,8 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
 
         if (vistaPasajeM != null) {vistaPasajeM.delHideWindow();}
         updateIndex();
+        if (informePasajes != null) {informePasajes.actualizarTabla();}
+        if (informeAsientosRuta != null) {informeAsientosRuta.actualizarTabla();}
     }
 
     public ArrayList<Pasaje> getTableList() {

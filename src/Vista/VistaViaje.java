@@ -2,6 +2,8 @@ package Vista;
 
 import Modelo.RutaViaje;
 import static Vista.VistaMain.desktopMain;
+import static Vista.VistaMain.informeDestinos;
+import static Vista.VistaMain.informePorHora;
 import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaPasaje;
@@ -113,7 +115,9 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         }
 
         if (vistaViajeM != null) {vistaViajeM.delHideWindow();}
-        updateIndex();
+        updateIndex(); 
+        if (informePorHora != null) {informePorHora.updateAll();}
+        if (informeDestinos != null) {informeDestinos.actualizarTabla();}
     }
 
     @SuppressWarnings("unchecked")

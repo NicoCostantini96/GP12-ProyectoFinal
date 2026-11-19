@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Colectivo;
 import static Vista.TestMain.colectivoData;
 import static Vista.VistaMain.desktopMain;
+import static Vista.VistaMain.informeChoferes;
 import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaColectivoM;
 import static Vista.VistaMain.vistaPasaje;
@@ -110,6 +111,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
 
         if (vistaColectivoM != null) {vistaColectivoM.delHideWindow();}
         updateIndex();
+        if (informeChoferes != null) {informeChoferes.actualizarTabla();}
     }
 
     public ArrayList<Colectivo> getTableList() {

@@ -74,6 +74,8 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         dchFVenta.setDate(java.sql.Date.valueOf(fVenta));
         txtHVenta.setText(hVenta.format(DateTimeFormatter.ofPattern(hVenta.getSecond() > 0 ? "HH:mm:ss" : "HH:mm")));
         
+        lblMsjAsiento.setText("");
+        lblMsjRuta.setText("");
         lblMsjFVenta.setText("");
         lblMsjHVenta.setText("");
         lblMsjPrecio.setText("");
@@ -103,6 +105,8 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             if (estate == 1) {ruta = viajeData.getList().getFirst();}
         }else{
             ruta = null;
+            lblMsjRuta.setText("No hay ninguna ruta!!");
+            lblMsjAsiento.setText("No hay ningún asiento!!");
         }
         cmbAsientoUpdate();
     }
@@ -119,7 +123,9 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 cmbAsiento.addItem(String.valueOf(i+1));
                 if (me) {asientoIndex = cmbAsiento.getItemCount() - 1;}
             }
-            if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
+            if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}else{
+                lblMsjAsiento.setText("No hay ningún asiento!!");
+            }
         }
     }
 
@@ -177,10 +183,12 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         pnlAsientoInput = new javax.swing.JPanel();
         lblAsiento = new javax.swing.JLabel();
         cmbAsiento = new javax.swing.JComboBox<>();
+        lblMsjAsiento = new javax.swing.JLabel();
         pnlRuta = new javax.swing.JPanel();
         pnlRutaInput = new javax.swing.JPanel();
         lblRuta = new javax.swing.JLabel();
         cmbRuta = new javax.swing.JComboBox<>();
+        lblMsjRuta = new javax.swing.JLabel();
         pnlFecha = new javax.swing.JPanel();
         pnlFechaInput = new javax.swing.JPanel();
         lblFecha = new javax.swing.JLabel();
@@ -291,18 +299,27 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 .addComponent(cmbAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        lblMsjAsiento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblMsjAsiento.setForeground(new java.awt.Color(230, 0, 0));
+        lblMsjAsiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout pnlAsientoLayout = new javax.swing.GroupLayout(pnlAsiento);
         pnlAsiento.setLayout(pnlAsientoLayout);
         pnlAsientoLayout.setHorizontalGroup(
             pnlAsientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlAsientoInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlAsientoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblMsjAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlAsientoLayout.setVerticalGroup(
             pnlAsientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAsientoLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(pnlAsientoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(5, 5, 5)
+                .addComponent(lblMsjAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
 
         pnlRutaInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -332,18 +349,27 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 .addComponent(cmbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        lblMsjRuta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblMsjRuta.setForeground(new java.awt.Color(230, 0, 0));
+        lblMsjRuta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout pnlRutaLayout = new javax.swing.GroupLayout(pnlRuta);
         pnlRuta.setLayout(pnlRutaLayout);
         pnlRutaLayout.setHorizontalGroup(
             pnlRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlRutaInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlRutaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblMsjRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlRutaLayout.setVerticalGroup(
             pnlRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRutaLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(pnlRutaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(5, 5, 5)
+                .addComponent(lblMsjRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
 
         pnlFechaInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -377,7 +403,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         pnlFechaLayout.setHorizontalGroup(
             pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFechaLayout.createSequentialGroup()
-                .addContainerGap(195, Short.MAX_VALUE)
+                .addContainerGap(206, Short.MAX_VALUE)
                 .addComponent(lblMsjFVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
             .addComponent(pnlFechaInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -507,7 +533,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(17, Short.MAX_VALUE)
+                        .addContainerGap(7, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(pnlAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -527,7 +553,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 .addComponent(pnlPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnlAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnlFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,6 +582,8 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
         }
         
         if (
+            lblMsjAsiento.getText().length() < 1 &&
+            lblMsjRuta.getText().length() < 1 &&
             lblMsjFVenta.getText().length() < 1 &&
             lblMsjHVenta.getText().length() < 1 &&
             lblMsjPrecio.getText().length() < 1
@@ -631,6 +659,8 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             txtPrecio.setText(String.valueOf(ruta.getPrecio()));
             cmbAsientoUpdate();
         }
+        lblMsjRuta.setText("");
+        lblMsjAsiento.setText("");
     }//GEN-LAST:event_cmbRutaActionPerformed
 
     private void cmbPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPasajeroActionPerformed
@@ -648,9 +678,11 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser dchFVenta;
     private javax.swing.JLabel lblAsiento;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblMsjAsiento;
     private javax.swing.JLabel lblMsjFVenta;
     private javax.swing.JLabel lblMsjHVenta;
     private javax.swing.JLabel lblMsjPrecio;
+    private javax.swing.JLabel lblMsjRuta;
     private javax.swing.JLabel lblPasajero;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblRuta;

@@ -5,7 +5,6 @@ import Persistencia.ColectivoData;
 import Persistencia.PasajeData;
 import Persistencia.PasajeroData;
 import Persistencia.RutaViajeData;
-import static Vista.VistaPasaje2.vistaVenta;
 import javax.swing.JDesktopPane;
 import javax.swing.*;
 import java.awt.*;
@@ -54,7 +53,6 @@ public class VistaMain extends javax.swing.JFrame {
         desktopMain.add(vistaViajeM);
         desktopMain.add(vistaPasaje);
         desktopMain.add(vistaPasajeM);
-        desktopMain.add(vistaVenta);
         desktopMain.add(informePorHora);
         desktopMain.add(informePasajes);
         desktopMain.add(informeChoferes);

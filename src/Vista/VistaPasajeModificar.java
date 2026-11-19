@@ -48,7 +48,10 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                 cmbPasajeroIndex = cmbPasajero.getItemCount() - 1;
             }
         }
-        if (cmbPasajero.getItemCount() > 0) {cmbPasajero.setSelectedIndex(cmbPasajeroIndex);}
+        if (cmbPasajero.getItemCount() > 0) {
+            cmbPasajero.setSelectedIndex(cmbPasajeroIndex);
+            pasajero = pasajeroData.getList().get(cmbPasajeroIndex);
+        }
         
         if (estate == 1) {
             fVenta = LocalDate.now();

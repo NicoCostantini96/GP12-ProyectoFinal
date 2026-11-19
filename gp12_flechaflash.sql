@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2026 a las 23:10:27
+-- Tiempo de generación: 19-11-2026 a las 22:49:25
 -- Versión del servidor: 10.11.16-MariaDB
 -- Versión de PHP: 8.5.12
 
@@ -302,6 +302,12 @@ ALTER TABLE `pasajes`
   ADD CONSTRAINT `pasajes_ibfk_1` FOREIGN KEY (`id_pasajero`) REFERENCES `pasajeros` (`id_pasajero`) ON DELETE CASCADE,
   ADD CONSTRAINT `pasajes_ibfk_2` FOREIGN KEY (`id_ruta`) REFERENCES `rutas` (`id_ruta`) ON DELETE CASCADE,
   ADD CONSTRAINT `pasajes_ibfk_3` FOREIGN KEY (`id_lugar`) REFERENCES `lugares` (`id_lugar`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `rutas`
+--
+ALTER TABLE `rutas`
+  ADD CONSTRAINT `rutas_ibfk_1` FOREIGN KEY (`id_colectivo`) REFERENCES `colectivos` (`id_colectivo`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -138,7 +138,7 @@ public class VistaMain extends javax.swing.JFrame {
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dtpEscritorioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE))
+                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE))
         );
         dtpEscritorioLayout.setVerticalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

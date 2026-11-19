@@ -98,7 +98,6 @@ public class VistaMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
         dtpEscritorio = new javax.swing.JDesktopPane();
         lblBackground = new javax.swing.JLabel();
         mnbNavegador = new javax.swing.JMenuBar();
@@ -122,8 +121,6 @@ public class VistaMain extends javax.swing.JFrame {
         mitListaColectivos = new javax.swing.JMenuItem();
         mitAsientosPorRuta = new javax.swing.JMenuItem();
 
-        jMenu1.setText("jMenu1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flecha Flash S.A.");
         setMinimumSize(new java.awt.Dimension(56, 36));
@@ -139,16 +136,15 @@ public class VistaMain extends javax.swing.JFrame {
         dtpEscritorio.setLayout(dtpEscritorioLayout);
         dtpEscritorioLayout.setHorizontalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dtpEscritorioLayout.createSequentialGroup()
+            .addGroup(dtpEscritorioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE))
         );
         dtpEscritorioLayout.setVerticalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dtpEscritorioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,81 +253,78 @@ public class VistaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mitSalirActionPerformed
 
     private void mitPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitPasajeroActionPerformed
-        vistaPasajero.setLocation(mnuPasajero.getX(), 0);
+        vistaPasajero.setLocation(mnuPasajero.getX(), 5);
         vistaPasajero.show();
         desktopMain.moveToFront(vistaPasajero);
     }//GEN-LAST:event_mitPasajeroActionPerformed
 
     private void mitPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitPasajesActionPerformed
-        vistaPasaje.setLocation(mnuPasajes.getX(), 0);
+        vistaPasaje.setLocation(mnuPasajes.getX(), 5);
         vistaPasaje.show();
         desktopMain.moveToFront(vistaPasaje);
     }//GEN-LAST:event_mitPasajesActionPerformed
 
     private void mitColectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitColectivoActionPerformed
-        vistaColectivo.setLocation(mnuColectivo.getX(), 0);
+        vistaColectivo.setLocation(mnuColectivo.getX(), 5);
         vistaColectivo.show();
         desktopMain.moveToFront(vistaColectivo);
     }//GEN-LAST:event_mitColectivoActionPerformed
 
     private void mitRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRutaActionPerformed
-        vistaViaje.setLocation(mnuRuta.getX(), 0);
+        vistaViaje.setLocation(mnuRuta.getX(), 5);
         vistaViaje.show();
         desktopMain.moveToFront(vistaViaje);
     }//GEN-LAST:event_mitRutaActionPerformed
 
     private void mitAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAsientosActionPerformed
-        vistaAsiento.setLocation(mnuAsiento.getX(), 0);
+        vistaAsiento.setLocation(mnuAsiento.getX(), 5);
         vistaAsiento.show();
         desktopMain.moveToFront(vistaAsiento);
     }//GEN-LAST:event_mitAsientosActionPerformed
 
     private void mitListarPorHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitListarPorHoraActionPerformed
-        informePorHora.setLocation(mitListarPorHora.getX(), 0);
+        informePorHora.setLocation(mitListarPorHora.getX(), 5);
         informePorHora.show();
         desktopMain.moveToFront(informePorHora);
     }//GEN-LAST:event_mitListarPorHoraActionPerformed
 
     private void mitListarPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitListarPasajesActionPerformed
-        informePasajes.setLocation(mitListarPasajes.getX(), 0);
+        informePasajes.setLocation(mitListarPasajes.getX(), 5);
         informePasajes.show();
         desktopMain.moveToFront(informePasajes);
 
     }//GEN-LAST:event_mitListarPasajesActionPerformed
 
     private void mitChoferColectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitChoferColectivoActionPerformed
-        informeChoferes.setLocation(mitChoferColectivo.getX(), 0);
+        informeChoferes.setLocation(mitChoferColectivo.getX(), 5);
         informeChoferes.show();
         desktopMain.moveToFront(informeChoferes);
     }//GEN-LAST:event_mitChoferColectivoActionPerformed
 
     private void mitConsultaAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitConsultaAsientosActionPerformed
-        informeAsientosDisp.setLocation(mitConsultaAsientos.getX(), 0);
+        informeAsientosDisp.setLocation(mitConsultaAsientos.getX(), 5);
         informeAsientosDisp.show();
         desktopMain.moveToFront(informeAsientosDisp);
     }//GEN-LAST:event_mitConsultaAsientosActionPerformed
 
     private void mitListaColectivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitListaColectivosActionPerformed
-        informeDestinos.setLocation(mitListaColectivos.getX(), 0);
+        informeDestinos.setLocation(mitListaColectivos.getX(), 5);
         informeDestinos.show();
         desktopMain.moveToFront(informeDestinos);
     }//GEN-LAST:event_mitListaColectivosActionPerformed
 
     private void mitAsientosPorRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAsientosPorRutaActionPerformed
-        informeAsientosRuta.setLocation(mitAsientosPorRuta.getX(), 0);
+        informeAsientosRuta.setLocation(mitAsientosPorRuta.getX(), 5);
         informeAsientosRuta.show();
         desktopMain.moveToFront(informeAsientosRuta);
     }//GEN-LAST:event_mitAsientosPorRutaActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new VistaMain().setVisible(true));
-
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dtpEscritorio;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JMenuItem mitAsientos;
     private javax.swing.JMenuItem mitAsientosPorRuta;

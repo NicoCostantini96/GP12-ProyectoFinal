@@ -10,16 +10,16 @@ import static Vista.VistaMain.viajeData;
 import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaPasajeM;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaPasaje extends javax.swing.JInternalFrame {
 
-    javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
     private DefaultTableModel table;
-    
-    public ArrayList<Pasaje> tableList = new ArrayList<>();
+    private ArrayList<Pasaje> tableList = new ArrayList<>();
     private ArrayList<int[]> elementsList = new ArrayList<>();
-    public int tableIndex = -1;
+    private int tableIndex = -1;
     
     public VistaPasaje() {
         initComponents();
@@ -133,6 +133,30 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         updateIndex();
     }
 
+    public ArrayList<Pasaje> getTableList() {
+        return tableList;
+    }
+
+    public void setTableList(ArrayList<Pasaje> tableList) {
+        this.tableList = tableList;
+    }
+
+    public ArrayList<int[]> getElementsList() {
+        return elementsList;
+    }
+
+    public void setElementsList(ArrayList<int[]> elementsList) {
+        this.elementsList = elementsList;
+    }
+
+    public int getTableIndex() {
+        return tableIndex;
+    }
+
+    public void setTableIndex(int tableIndex) {
+        this.tableIndex = tableIndex;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -172,6 +196,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(this::btnModificarActionPerformed);
 
+        btnEliminar.setForeground(new java.awt.Color(255, 51, 51));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -228,12 +253,12 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         vistaPasajeM.setLocation(
             this.getX() + ((this.getWidth() - vistaPasajeM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaPasajeM.getHeight()) / 2)
+            this.getY()
         );
-        vistaPasajeM.pasaje = pasajeData.getById(elementsList.get(tableIndex)[0]);
-        vistaPasajeM.pasajero = pasajeroData.getById(elementsList.get(tableIndex)[1]);
-        vistaPasajeM.ruta = viajeData.getById(elementsList.get(tableIndex)[2]);
-        vistaPasajeM.lugar = asientoData.getById(elementsList.get(tableIndex)[3]);
+        vistaPasajeM.setPasaje(pasajeData.getById(elementsList.get(tableIndex)[0]));
+        vistaPasajeM.setPasajero(pasajeroData.getById(elementsList.get(tableIndex)[1]));
+        vistaPasajeM.setRuta(viajeData.getById(elementsList.get(tableIndex)[2]));
+        vistaPasajeM.setLugar(asientoData.getById(elementsList.get(tableIndex)[3]));
         vistaPasajeM.start(2);
         vistaPasajeM.show();
         desktopMain.moveToFront(vistaPasajeM);
@@ -242,7 +267,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         vistaPasajeM.setLocation(
             this.getX() + ((this.getWidth() - vistaPasajeM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaPasajeM.getHeight()) / 2)
+            this.getY()
         );
         vistaPasajeM.start(1);
         vistaPasajeM.show();

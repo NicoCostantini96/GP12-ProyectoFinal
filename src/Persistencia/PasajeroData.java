@@ -1,4 +1,5 @@
 package Persistencia;
+
 import Modelo.Pasajero;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,10 +30,10 @@ public class PasajeroData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Pasajero registrado con exito!!\n"+cReset);
+                System.out.println(cGreen+"El pasajero se ha registrado con exito.\n"+cReset);
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: Datos del pasajero incompatibles!!\n");
+            System.err.println("ERROR: Los datos del pasajero son incompatibles.\n");
         }
     }
      
@@ -45,11 +46,11 @@ public class PasajeroData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Se ha eliminado el pasajero correctamente!!\n"+cReset);
+                System.out.println(cGreen+"Se ha eliminado el pasajero correctamente.\n"+cReset);
             }else
-                System.err.println("ERROR: No se ha encontrado el pasajero!!\n");
+                System.err.println("ERROR: No se ha encontrado el pasajero indicado.\n");
         }catch(SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el pasajero!!\n" + e);
+            System.err.println("ERROR: No se ha encontrado el pasajero indicado.\n" + e);
         }
     }
     
@@ -67,10 +68,10 @@ public class PasajeroData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Pasajero editado con exito!!\n"+cReset);
+                System.out.println(cGreen+"El pasajero se ha editado con exito.\n"+cReset);
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: Datos del pasajero incompatibles!!\n");
+            System.err.println("ERROR: Los datos del pasajero son incompatibles.\n");
             System.out.println(e);
         }
     }
@@ -96,7 +97,7 @@ public class PasajeroData {
                 );
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el pasajero!! "+e+"\n");
+            System.err.println("ERROR: No se ha encontrado el pasajero solicitado. "+e+"\n");
         }
         return obj;
     }

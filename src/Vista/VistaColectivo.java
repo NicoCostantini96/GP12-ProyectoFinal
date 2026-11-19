@@ -8,15 +8,15 @@ import static Vista.VistaMain.vistaColectivoM;
 import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaViaje;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaColectivo extends javax.swing.JInternalFrame {
 
-    javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
     private DefaultTableModel table;
-    
-    public ArrayList<Colectivo> tableList = new ArrayList<>();
-    public int tableIndex = -1;
+    private ArrayList<Colectivo> tableList = new ArrayList<>();
+    private int tableIndex = -1;
     
     public VistaColectivo() {
         initComponents();
@@ -112,6 +112,22 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
         updateIndex();
     }
 
+    public ArrayList<Colectivo> getTableList() {
+        return tableList;
+    }
+
+    public void setTableList(ArrayList<Colectivo> tableList) {
+        this.tableList = tableList;
+    }
+
+    public int getTableIndex() {
+        return tableIndex;
+    }
+
+    public void setTableIndex(int tableIndex) {
+        this.tableIndex = tableIndex;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -151,6 +167,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(this::btnModificarActionPerformed);
 
+        btnEliminar.setForeground(new java.awt.Color(255, 51, 51));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -207,9 +224,9 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         vistaColectivoM.setLocation(
             this.getX() + ((this.getWidth() - vistaColectivoM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaColectivoM.getHeight()) / 2)
+            this.getY()
         );
-        vistaColectivoM.colectivo = tableList.get(tableIndex);
+        vistaColectivoM.setColectivo(tableList.get(tableIndex));
         vistaColectivoM.start(2);
         vistaColectivoM.show();
         desktopMain.moveToFront(vistaColectivoM);
@@ -218,7 +235,7 @@ public class VistaColectivo extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         vistaColectivoM.setLocation(
             this.getX() + ((this.getWidth() - vistaColectivoM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaColectivoM.getHeight()) / 2)
+            this.getY()
         );
         vistaColectivoM.start(1);
         vistaColectivoM.show();

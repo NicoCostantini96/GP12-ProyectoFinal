@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
 
-    public Pasajero pasajero = null;
-    public int estate = 0;
+    private Pasajero pasajero = null;
+    private int estate = 0;
     
     public VistaPasajeroModificar() {
         initComponents();
@@ -44,6 +44,22 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         if (p == null) {
             this.hide();
         }
+    }
+
+    public Pasajero getPasajero() {
+        return pasajero;
+    }
+
+    public void setPasajero(Pasajero pasajero) {
+        this.pasajero = pasajero;
+    }
+
+    public int getEstate() {
+        return estate;
+    }
+
+    public void setEstate(int estate) {
+        this.estate = estate;
     }
     
     @SuppressWarnings("unchecked")
@@ -443,19 +459,19 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         
         if (txtDni.getText().length() < 1) {
-            lblMsjDni.setText("Ingrese un dni!!");
+            lblMsjDni.setText("Ingrese un dni.");
         }
         if (txtNombre.getText().length() < 1) {
-            lblMsjNombre.setText("Ingrese un nombre!!");
+            lblMsjNombre.setText("Ingrese un nombre.");
         }
         if (txtApellido.getText().length() < 1) {
-            lblMsjApellido.setText("Ingrese un apellido!!");
+            lblMsjApellido.setText("Ingrese un apellido.");
         }
         if (txtCorreo.getText().length() < 1) {
-            lblMsjCorreo.setText("Ingrese un correo!!");
+            lblMsjCorreo.setText("Ingrese un correo.");
         }
         if (txtTelefono.getText().length() < 1) {
-            lblMsjTelefono.setText("Ingrese un teléfono!!");
+            lblMsjTelefono.setText("Ingrese un teléfono.");
         }
         
         if (
@@ -476,7 +492,7 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 pasajeroData.insert(p);
-                vistaPasajero.tableIndex = vistaPasajero.tableList.size();
+                vistaPasajero.setTableIndex(vistaPasajero.getTableList().size());
             } else {
                 pasajeroData.update(p);
                 int index = -1;
@@ -484,7 +500,7 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
                     index++;
                     if (pl.getId_pasajero() == id) {break;}
                 }
-                vistaPasajero.tableIndex = index;
+                vistaPasajero.setTableIndex(index);
             }
             vistaPasajero.updateAll();
             this.hide();
@@ -496,14 +512,14 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblMsjDni.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("\\d+")) {
-                lblMsjDni.setText("Solo se permiten números!!");
+                lblMsjDni.setText("Solo se admiten números.");
             }else if (txt.length() != 8) {
-                lblMsjDni.setText("Tienen que ser 8 caracteres!!");
+                lblMsjDni.setText("Deben ser 8 dígitos.");
             }else {
                 ArrayList<Pasajero> pList = pasajeroData.SQL("SELECT * FROM pasajeros WHERE dni = "+txt+";");
                 System.out.println(pList);
                 if (!pList.isEmpty() && (pList.getFirst().getId_pasajero() != pasajero.getId_pasajero() || estate==1)) {
-                    lblMsjDni.setText("Ese dni ya está en uso!!!!");
+                    lblMsjDni.setText("Ese dni ya está en uso.");
                 }
             }
         }
@@ -514,9 +530,9 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblMsjNombre.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+")) {
-                lblMsjNombre.setText("Solo se permiten letras!!");
+                lblMsjNombre.setText("Solo se admiten letras.");
             }else if (txt.length() > 33) {
-                lblMsjNombre.setText("Solo se permiten 33 caracteres!!");
+                lblMsjNombre.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtNombreKeyReleased
@@ -526,9 +542,9 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblMsjApellido.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+")) {
-                lblMsjApellido.setText("Solo se permiten letras!!");
+                lblMsjApellido.setText("Solo se admiten letras.");
             }else if (txt.length() > 33) {
-                lblMsjApellido.setText("Solo se permiten 33 caracteres!!");
+                lblMsjApellido.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtApellidoKeyReleased
@@ -538,9 +554,9 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblMsjCorreo.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("^[\\w.+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
-                lblMsjCorreo.setText("Ingrese un correo válido!!");
+                lblMsjCorreo.setText("Ingrese un correo válido.");
             }else if (txt.length() > 33) {
-                lblMsjCorreo.setText("Solo se permiten 33 caracteres!!");
+                lblMsjCorreo.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtCorreoKeyReleased
@@ -550,9 +566,9 @@ public class VistaPasajeroModificar extends javax.swing.JInternalFrame {
         lblMsjTelefono.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("\\d+")) {
-                lblMsjTelefono.setText("Solo se permiten números!!");
+                lblMsjTelefono.setText("Solo se admiten números!!");
             }else if (txt.length() != 10) {
-                lblMsjTelefono.setText("Tienen que ser 10 caracteres!!");
+                lblMsjTelefono.setText("Deben ser 10 dígitos.");
             }
         }
     }//GEN-LAST:event_txtTelefonoKeyReleased

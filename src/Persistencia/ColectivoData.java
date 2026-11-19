@@ -1,4 +1,3 @@
-
 package Persistencia;
 
 import Modelo.Colectivo;
@@ -7,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 
 public class ColectivoData {
     private final Connection con;
@@ -32,10 +30,10 @@ public class ColectivoData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Colectivo registrado con exito!!\n"+cReset);
+                System.out.println(cGreen+"El colectivo se ha registrado con exito.\n"+cReset);
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: Datos del colectivo incompatibles!!\n");
+            System.err.println("ERROR: Los datos del colectivo son incompatibles.\n");
         }
     }
      
@@ -48,11 +46,11 @@ public class ColectivoData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Se ha eliminado el colectivo correctamente!!\n"+cReset);
+                System.out.println(cGreen+"Se ha eliminado el colectivo correctamente.\n"+cReset);
             }else
-                System.err.println("ERROR: No se ha encontrado el colectivo!!\n");
+                System.err.println("ERROR: No se ha encontrado el colectivo solicitado.\n");
         }catch(SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el colectivo!!\n");
+            System.err.println("ERROR: No se ha encontrado el colectivo solicitado.\n");
             System.out.println(e);
         }
     }
@@ -71,10 +69,10 @@ public class ColectivoData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Colectivo editado con exito!!\n"+cReset);
+                System.out.println(cGreen+"El colectivo se ha editado con exito.\n"+cReset);
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: Datos del colectivo incompatibles!!\n");
+            System.err.println("ERROR: Los datos del colectivo son incompatibles.\n");
         }
     }
     
@@ -99,7 +97,7 @@ public class ColectivoData {
                 );
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el colectivo!! "+e+"\n");
+            System.err.println("ERROR: No se ha encontrado el colectivo solicitado. "+e+"\n");
         }
         return obj;
     }

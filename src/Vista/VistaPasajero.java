@@ -6,15 +6,15 @@ import static Vista.VistaMain.desktopMain;
 import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaPasajeroM;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaPasajero extends javax.swing.JInternalFrame {
 
-    javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
     private DefaultTableModel table;
-    
-    public ArrayList<Pasajero> tableList = new ArrayList<>();
-    public int tableIndex = -1;
+    private ArrayList<Pasajero> tableList = new ArrayList<>();
+    private int tableIndex = -1;
     
     public VistaPasajero() {
         initComponents();
@@ -111,6 +111,22 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
         updateIndex();
     }
 
+    public ArrayList<Pasajero> getTableList() {
+        return tableList;
+    }
+
+    public void setTableList(ArrayList<Pasajero> tableList) {
+        this.tableList = tableList;
+    }
+
+    public int getTableIndex() {
+        return tableIndex;
+    }
+
+    public void setTableIndex(int tableIndex) {
+        this.tableIndex = tableIndex;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -150,6 +166,7 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(this::btnModificarActionPerformed);
 
+        btnEliminar.setForeground(new java.awt.Color(255, 51, 51));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -206,9 +223,9 @@ public class VistaPasajero extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         vistaPasajeroM.setLocation(
             this.getX() + ((this.getWidth() - vistaPasajeroM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaPasajeroM.getHeight()) / 2)
+            this.getY()
         );
-        vistaPasajeroM.pasajero = tableList.get(tableIndex);
+        vistaPasajeroM.setPasajero(tableList.get(tableIndex));
         vistaPasajeroM.start(2);
         vistaPasajeroM.show();
         desktopMain.moveToFront(vistaPasajeroM);

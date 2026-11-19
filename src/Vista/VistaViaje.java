@@ -7,15 +7,16 @@ import static Vista.VistaMain.vistaAsiento;
 import static Vista.VistaMain.vistaPasaje;
 import static Vista.VistaMain.vistaViajeM;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaViaje extends javax.swing.JInternalFrame {
 
-    javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
     private DefaultTableModel table;
-    
-    public ArrayList<RutaViaje> tableList = new ArrayList<>();
-    public int tableIndex = -1;
+    private List<RutaViaje> tableList = new ArrayList<>();
+    private int tableIndex = -1;
     
     public VistaViaje() {
         initComponents();
@@ -155,6 +156,7 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(this::btnModificarActionPerformed);
 
+        btnEliminar.setForeground(new java.awt.Color(255, 0, 0));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -211,9 +213,9 @@ public class VistaViaje extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         vistaViajeM.setLocation(
             this.getX() + ((this.getWidth() - vistaViajeM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaViajeM.getHeight()) / 2)
+            this.getY()
         );
-        vistaViajeM.ruta = tableList.get(tableIndex);
+        vistaViajeM.setRuta(tableList.get(tableIndex));
         vistaViajeM.start(2);
         vistaViajeM.show();
         desktopMain.moveToFront(vistaViajeM);
@@ -222,7 +224,7 @@ public class VistaViaje extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         vistaViajeM.setLocation(
             this.getX() + ((this.getWidth() - vistaViajeM.getWidth()) / 2),
-            this.getY() + ((this.getHeight() - vistaViajeM.getHeight()) / 2)
+            this.getY()
         );
         vistaViajeM.start(1);
         vistaViajeM.show();
@@ -253,6 +255,22 @@ public class VistaViaje extends javax.swing.JInternalFrame {
         viajeData.update(r);
         updateAll();
     }//GEN-LAST:event_btnBajaActionPerformed
+
+    public List<RutaViaje> getTableList() {
+        return tableList;
+    }
+
+    public void setTableList(List<RutaViaje> tableList) {
+        this.tableList = tableList;
+    }
+
+    public int getTableIndex() {
+        return tableIndex;
+    }
+
+    public void setTableIndex(int tableIndex) {
+        this.tableIndex = tableIndex;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

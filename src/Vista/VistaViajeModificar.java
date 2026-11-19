@@ -15,10 +15,10 @@ import java.util.ArrayList;
 
 public class VistaViajeModificar extends javax.swing.JInternalFrame {
 
-    public ArrayList<Colectivo> cmbList = new ArrayList<>();
-    public int cmbIndex = 0;
-    public RutaViaje ruta = null;
-    public int estate = 0;
+    private ArrayList<Colectivo> cmbList = new ArrayList<>();
+    private int cmbIndex = 0;
+    private RutaViaje ruta = null;
+    private int estate = 0;
     private LocalTime hsalida = LocalTime.of(0, 0, 0);
     private LocalTime hllegada = LocalTime.of(0, 0, 0);
     private LocalDate fechaViaje;
@@ -66,7 +66,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             dateFViaje.setDate(java.sql.Date.valueOf(ruta.getFecha_viaje()));
         }
-        lblOrigen.setText("");
+        lblMsjOrigen.setText("");
         lblDestino.setText("");
         lblHoras.setText("");
         lblHoras.setText("");
@@ -119,7 +119,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
             if (errors >= 2) {
                 error = "inválidos";
             }
-            lblHoras.setText(lblHoras.getText() + " " + error + "!!");
+            lblHoras.setText(lblHoras.getText() + " " + error + ".");
         }
     }
 
@@ -132,11 +132,11 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
             fechaViaje = dateFViaje.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             
             if (fechaViaje.isBefore(LocalDate.now())) {
-                lblFViaje.setText("La fecha no puede ser anterior a hoy!!");
+                lblFViaje.setText("La fecha no puede ser anterior a hoy.");
             }
 
         } catch (DateTimeParseException e) {
-            lblFViaje.setText("Ingrese una fecha válida (dd/MM/yyyy)!!");
+            lblFViaje.setText("Ingrese una fecha válida (dd/MM/yyyy).");
         }
     }
 
@@ -147,11 +147,11 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         pnlTitulo = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        pnlDni2 = new javax.swing.JPanel();
+        pnlOrigen = new javax.swing.JPanel();
+        pnlOrigenInput = new javax.swing.JPanel();
         txtOrigen = new javax.swing.JTextField();
-        lblDni2 = new javax.swing.JLabel();
         lblOrigen = new javax.swing.JLabel();
+        lblMsjOrigen = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         pnlDni4 = new javax.swing.JPanel();
         txtDestino = new javax.swing.JTextField();
@@ -211,7 +211,9 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
-        pnlDni2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlOrigen.setPreferredSize(new java.awt.Dimension(445, 50));
+
+        pnlOrigenInput.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         txtOrigen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtOrigen.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -220,51 +222,53 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
             }
         });
 
-        lblDni2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblDni2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDni2.setText("ORIGEN:");
+        lblOrigen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblOrigen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOrigen.setText("ORIGEN:");
 
-        javax.swing.GroupLayout pnlDni2Layout = new javax.swing.GroupLayout(pnlDni2);
-        pnlDni2.setLayout(pnlDni2Layout);
-        pnlDni2Layout.setHorizontalGroup(
-            pnlDni2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDni2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlOrigenInputLayout = new javax.swing.GroupLayout(pnlOrigenInput);
+        pnlOrigenInput.setLayout(pnlOrigenInputLayout);
+        pnlOrigenInputLayout.setHorizontalGroup(
+            pnlOrigenInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrigenInputLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblDni2, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(lblOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(txtOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
-        pnlDni2Layout.setVerticalGroup(
-            pnlDni2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDni2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlOrigenInputLayout.setVerticalGroup(
+            pnlOrigenInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOrigenInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txtOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblDni2))
+                .addComponent(lblOrigen))
         );
 
-        lblOrigen.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblOrigen.setForeground(new java.awt.Color(230, 0, 0));
-        lblOrigen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMsjOrigen.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblMsjOrigen.setForeground(new java.awt.Color(230, 0, 0));
+        lblMsjOrigen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlDni2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlOrigenLayout = new javax.swing.GroupLayout(pnlOrigen);
+        pnlOrigen.setLayout(pnlOrigenLayout);
+        pnlOrigenLayout.setHorizontalGroup(
+            pnlOrigenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlOrigenInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrigenLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblMsjOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pnlOrigenLayout.setVerticalGroup(
+            pnlOrigenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOrigenLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pnlDni2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlOrigenInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(lblOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblMsjOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
+
+        jPanel5.setPreferredSize(new java.awt.Dimension(445, 50));
 
         pnlDni4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -321,6 +325,8 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5))
         );
 
+        jPanel6.setPreferredSize(new java.awt.Dimension(445, 101));
+
         pnlDni5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         txtHSalida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -339,7 +345,6 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         lblDni6.setText("HORA LLEGADA:");
 
         txtHLlegada.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtHLlegada.addActionListener(this::txtHLlegadaActionPerformed);
         txtHLlegada.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtHLlegadaKeyReleased(evt);
@@ -430,6 +435,8 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5))
         );
 
+        jPanel8.setPreferredSize(new java.awt.Dimension(445, 50));
+
         pnlDni7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblDni7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -479,6 +486,8 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
                 .addComponent(lblColectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
+
+        jPanel9.setPreferredSize(new java.awt.Dimension(445, 50));
 
         pnlDni8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -552,11 +561,11 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
                 .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlOrigen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -565,7 +574,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
                 .addGap(0, 0, 0)
                 .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -592,29 +601,29 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         fVerify();
 
         if (txtOrigen.getText().length() < 1) {
-            lblOrigen.setText("Ingrese un origen!!");
+            lblMsjOrigen.setText("Ingrese un origen.");
         }
         if (txtDestino.getText().length() < 1) {
-            lblDestino.setText("Ingrese un destino!!");
+            lblDestino.setText("Ingrese un destino.");
         }
         int her = 0;
         if (txtHSalida.getText().length() < 1) {
-            lblHoras.setText("ingrese una hora de salida!!");
+            lblHoras.setText("ingrese una hora de salida.");
             her++;
         }
         if (txtHLlegada.getText().length() < 1) {
-            lblHoras.setText("Ingrese una hora de llegada!!");
+            lblHoras.setText("Ingrese una hora de llegada.");
             her++;
         }
 
         if (her >= 2) {
-            lblHoras.setText("Ingrese una hora de salida y de llegada!!");
+            lblHoras.setText("Ingrese una hora de salida y de llegada.");
         }
         if (txtPrecio.getText().length() < 1) {
-            lblPrecio.setText("Ingrese un precio!!");
+            lblPrecio.setText("Ingrese un precio.");
         }
 
-        if (lblOrigen.getText().length() < 1
+        if (lblMsjOrigen.getText().length() < 1
                 && lblDestino.getText().length() < 1
                 && lblHoras.getText().length() < 1
                 && lblFViaje.getText().length() < 1
@@ -628,7 +637,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
 
             if (estate == 1) {
                 viajeData.insert(r);
-                vistaViaje.tableIndex = vistaViaje.tableList.size();
+                vistaViaje.setTableIndex(vistaViaje.getTableList().size());
             } else {
                 viajeData.update(r);
                 int index = -1;
@@ -636,19 +645,27 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
                     index++;
                     if (rl.getId_ruta() == id) {break;}
                 }
-                vistaViaje.tableIndex = index;
+                vistaViaje.setTableIndex(index);
             }
             vistaViaje.updateAll();
             this.hide();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
+    public RutaViaje getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(RutaViaje ruta) {
+        this.ruta = ruta;
+    }
+
     private void txtOrigenKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrigenKeyReleased
         String txt = txtOrigen.getText();
-        lblOrigen.setText("");
+        lblMsjOrigen.setText("");
         if (txt.length() > 0) {
             if (txt.length() > 33) {
-                lblOrigen.setText("Solo se permiten 33 caracteres!!");
+                lblMsjOrigen.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtOrigenKeyReleased
@@ -658,7 +675,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         lblDestino.setText("");
         if (txt.length() > 0) {
             if (txt.length() > 33) {
-                lblDestino.setText("Solo se permiten 33 caracteres!!");
+                lblDestino.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtDestinoKeyReleased
@@ -674,7 +691,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
             try {
                 double precio = Double.parseDouble(txt);
             } catch (Exception e) {
-                lblPrecio.setText("Ingrese un precio válido!!");
+                lblPrecio.setText("Debe Ingresar un precio válido.");
             }
         }
     }//GEN-LAST:event_txtPrecioKeyReleased
@@ -690,24 +707,17 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cmbColectivoActionPerformed
 
-    private void txtHLlegadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHLlegadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHLlegadaActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> cmbColectivo;
     private com.toedter.calendar.JDateChooser dateFViaje;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblColectivo;
     private javax.swing.JLabel lblDestino;
-    private javax.swing.JLabel lblDni2;
     private javax.swing.JLabel lblDni4;
     private javax.swing.JLabel lblDni5;
     private javax.swing.JLabel lblDni6;
@@ -716,15 +726,17 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblDni9;
     private javax.swing.JLabel lblFViaje;
     private javax.swing.JLabel lblHoras;
+    private javax.swing.JLabel lblMsjOrigen;
     private javax.swing.JLabel lblOrigen;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JPanel pnlDni2;
     private javax.swing.JPanel pnlDni4;
     private javax.swing.JPanel pnlDni5;
     private javax.swing.JPanel pnlDni7;
     private javax.swing.JPanel pnlDni8;
     private javax.swing.JPanel pnlDni9;
+    private javax.swing.JPanel pnlOrigen;
+    private javax.swing.JPanel pnlOrigenInput;
     private javax.swing.JPanel pnlTitulo;
     private javax.swing.JTextField txtDestino;
     private javax.swing.JTextField txtHLlegada;

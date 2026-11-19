@@ -1,7 +1,6 @@
 package Persistencia;
 
 import Modelo.Asiento;
-import Modelo.Pasajero;
 import static Vista.VistaMain.viajeData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,10 +35,10 @@ public class AsientoData {
                 if (rs.next()) {
                     obj.setId_lugar(rs.getInt(1));
                 }
-                System.out.println(cGreen + "Asiento registrado con exito!!\n" + cReset);
+                System.out.println(cGreen + "El asiento se ha registrado con exito.\n" + cReset);
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: Datos del Asiento incompatibles!!\n");
+            System.err.println("ERROR: Los datos del asiento son incompatibles.\n");
             System.out.println(e);
         }
     }
@@ -53,12 +52,12 @@ public class AsientoData {
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println(cGreen + "Se ha eliminado el lugar correctamente!!\n" + cReset);
+                System.out.println(cGreen + "Se ha eliminado el asiento correctamente.\n" + cReset);
             } else {
-                System.err.println("ERROR: No se ha encontrado el lugar!!\n");
+                System.err.println("ERROR: No se ha encontrado el asiento solicitado.\n");
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el lugar!!\n");
+            System.err.println("ERROR: No se ha encontrado el asiento solicitado.\n");
         }
     }
 
@@ -73,10 +72,10 @@ public class AsientoData {
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println(cGreen + "Lugar editado con exito!!\n" + cReset);
+                System.out.println(cGreen + "Se ha editado el asiento con exito.\n" + cReset);
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: Datos del lugar incompatibles!!\n");
+            System.err.println("ERROR: Los datos del asiento son incompatibles.\n");
             System.out.println(e);
         }
     }
@@ -99,7 +98,7 @@ public class AsientoData {
                 );
             }
         } catch (SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el Asiento!! " + e + "\n");
+            System.err.println("ERROR: No se ha encontrado el asiento solicitado. " + e + "\n");
         }
         return obj;
     }

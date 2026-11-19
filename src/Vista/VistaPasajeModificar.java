@@ -18,14 +18,14 @@ import java.util.ArrayList;
 
 public class VistaPasajeModificar extends javax.swing.JInternalFrame {
 
-    public Pasaje pasaje = null;
-    public Pasajero pasajero = null;
-    public RutaViaje ruta = null;
-    public Asiento lugar = null;
+    private Pasaje pasaje = null;
+    private Pasajero pasajero = null;
+    private RutaViaje ruta = null;
+    private Asiento lugar = null;
     private boolean initChanges = false;
     private LocalTime hVenta = LocalTime.of(0,0,0);
     private LocalDate fVenta = LocalDate.now();
-    public int estate = 0;
+    private int estate = 0;
     
     public VistaPasajeModificar() {
         initComponents();
@@ -118,6 +118,46 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             }
             if (cmbAsiento.getItemCount() > 0) {cmbAsiento.setSelectedIndex(asientoIndex);}
         }
+    }
+
+    public Pasaje getPasaje() {
+        return pasaje;
+    }
+
+    public void setPasaje(Pasaje pasaje) {
+        this.pasaje = pasaje;
+    }
+
+    public Pasajero getPasajero() {
+        return pasajero;
+    }
+
+    public void setPasajero(Pasajero pasajero) {
+        this.pasajero = pasajero;
+    }
+
+    public RutaViaje getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(RutaViaje ruta) {
+        this.ruta = ruta;
+    }
+
+    public Asiento getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(Asiento lugar) {
+        this.lugar = lugar;
+    }
+
+    public int getEstate() {
+        return estate;
+    }
+
+    public void setEstate(int estate) {
+        this.estate = estate;
     }
     
     @SuppressWarnings("unchecked")
@@ -538,7 +578,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 pasajeData.insert(p);
-                vistaPasaje.tableIndex = vistaPasaje.tableList.size();
+                vistaPasaje.setTableIndex(vistaPasaje.getTableList().size());
             } else {
                 pasajeData.update(p);
                 int index = -1;
@@ -546,7 +586,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
                     index++;
                     if (pl.getId_pasaje() == id) {break;}
                 }
-                vistaPasaje.tableIndex = index;
+                vistaPasaje.setTableIndex(index);
             }
             vistaPasaje.updateAll();
             this.hide();

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class VistaColectivoModificar extends javax.swing.JInternalFrame {
 
-    public Colectivo colectivo = null;
-    public int estate = 0;
+    private Colectivo colectivo = null;
+    private int estate = 0;
     
     public VistaColectivoModificar() {
         initComponents();
@@ -44,6 +44,22 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         if (c == null) {
             this.hide();
         }
+    }
+
+    public Colectivo getColectivo() {
+        return colectivo;
+    }
+
+    public void setColectivo(Colectivo colectivo) {
+        this.colectivo = colectivo;
+    }
+
+    public int getEstate() {
+        return estate;
+    }
+
+    public void setEstate(int estate) {
+        this.estate = estate;
     }
     
     @SuppressWarnings("unchecked")
@@ -443,19 +459,19 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         
         if (txtMatricula.getText().length() < 1) {
-            lblMsjMatricula.setText("Ingrese una matrícula!!");
+            lblMsjMatricula.setText("Ingrese una matrícula.");
         }
         if (txtMarca.getText().length() < 1) {
-            lblMsjMarca.setText("Ingrese una marca!!");
+            lblMsjMarca.setText("Ingrese una marca.");
         }
         if (txtModelo.getText().length() < 1) {
-            lblMsjModelo.setText("Ingrese un modelo!!");
+            lblMsjModelo.setText("Ingrese un modelo.");
         }
         if (txtCapacidad.getText().length() < 1) {
-            lblMsjCapacidad.setText("Ingrese la capacidad!!");
+            lblMsjCapacidad.setText("Ingrese la capacidad.");
         }
         if (txtChofer.getText().length() < 1) {
-            lblMsjChofer.setText("Ingrese un chofer!!");
+            lblMsjChofer.setText("Ingrese un chofer.");
         }
         
         if (
@@ -476,7 +492,7 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
             
             if (estate == 1) {
                 colectivoData.insert(c);
-                vistaColectivo.tableIndex = vistaColectivo.tableList.size();
+                vistaColectivo.setTableIndex(vistaColectivo.getTableList().size());
             } else {
                 colectivoData.update(c);
                 int index = -1;
@@ -484,7 +500,7 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
                     index++;
                     if (cl.getId_colectivo() == id) {break;}
                 }
-                vistaColectivo.tableIndex = index;
+                vistaColectivo.setTableIndex(index);
             }
             vistaColectivo.updateAll();
             this.hide();
@@ -496,14 +512,14 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         lblMsjMatricula.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9 ]+")) {
-                lblMsjModelo.setText("No se permiten símbolos!!");
+                lblMsjModelo.setText("No se admiten símbolos.");
             }else if (txt.length() != 7) {
-                lblMsjMatricula.setText("Tienen que ser 7 caracteres!!!!");
+                lblMsjMatricula.setText("Deben ser 7 carácteres.");
             }else {
                 ArrayList<Colectivo> cList = colectivoData.SQL("SELECT * FROM colectivos WHERE matricula = '"+txt+"';");
                 System.out.println(cList);
                 if (!cList.isEmpty() && (cList.getFirst().getId_colectivo() != colectivo.getId_colectivo() || estate==1)) {
-                    lblMsjMatricula.setText("Esa matricula ya está en uso!!!!");
+                    lblMsjMatricula.setText("Esa matrícula ya está en uso.");
                 }
             }
         }
@@ -514,7 +530,7 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         lblMsjMarca.setText("");
         if (txt.length() > 0) {
             if (txt.length() > 33) {
-                lblMsjMarca.setText("Solo se permiten 33 caracteres!!");
+                lblMsjMarca.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtMarcaKeyReleased
@@ -524,7 +540,7 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         lblMsjModelo.setText("");
         if (txt.length() > 0) {
             if (txt.length() > 33) {
-                lblMsjModelo.setText("Solo se permiten 33 caracteres!!");
+                lblMsjModelo.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtModeloKeyReleased
@@ -534,9 +550,9 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         lblMsjCapacidad.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("\\d+")) {
-                lblMsjCapacidad.setText("Solo se permiten números!!");
+                lblMsjCapacidad.setText("Solo se admiten dígitos.");
             } else if (Integer.parseInt(txt) > 100) {
-                lblMsjCapacidad.setText("Solo se permiten máximo 100 asientos!!");
+                lblMsjCapacidad.setText("Solo se permiten hasta 100 asientos.");
             }
         }
     }//GEN-LAST:event_txtCapacidadKeyReleased
@@ -546,9 +562,9 @@ public class VistaColectivoModificar extends javax.swing.JInternalFrame {
         lblMsjChofer.setText("");
         if (txt.length() > 0) {
             if (!txt.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+")) {
-                lblMsjChofer.setText("Solo se permiten letras!!");
+                lblMsjChofer.setText("Solo se admiten carácteres.");
             }else if (txt.length() > 33) {
-                lblMsjChofer.setText("Solo se permiten 33 caracteres!!");
+                lblMsjChofer.setText("Solo se permiten hasta 33 carácteres.");
             }
         }
     }//GEN-LAST:event_txtChoferKeyReleased

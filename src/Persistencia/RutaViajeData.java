@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.time.LocalDate;
 
 public class RutaViajeData {
 
@@ -37,7 +36,7 @@ public class RutaViajeData {
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println(cGreen + "Se registró la ruta con éxito.\n" + cReset);
+                System.out.println(cGreen + "La ruta se ha registrado con exito.\n" + cReset);
             }
         } catch (SQLException e) {
             System.err.println("ERROR: Los datos de la ruta son incompatibles.\n" + e);
@@ -53,7 +52,7 @@ public class RutaViajeData {
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println(cGreen + "Se eliminó la ruta exitosamente.\n" + cReset);
+                System.out.println(cGreen + "Se ha eliminado la ruta correctamente.\n" + cReset);
             } else {
                 System.err.println("ERROR: No se ha encontrado la ruta indicada.\n");
             }
@@ -78,7 +77,7 @@ public class RutaViajeData {
 
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                System.out.println(cGreen + "Se ha editado la ruta con éxito.\n" + cReset);
+                System.out.println(cGreen + "Se ha editado la ruta con exito.\n" + cReset);
             }
         } catch (SQLException e) {
             System.err.println("ERROR: Los datos de la ruta son incompatibles.\n" + e);

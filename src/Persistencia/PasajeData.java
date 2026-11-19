@@ -1,4 +1,5 @@
 package Persistencia;
+
 import Modelo.Pasaje;
 import static Vista.TestMain.asientoData;
 import static Vista.TestMain.pasajeroData;
@@ -33,10 +34,10 @@ public class PasajeData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Pasaje registrado con exito!!\n"+cReset);
+                System.out.println(cGreen+"El pasaje se ha registrado con exito.\n"+cReset);
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: Datos del pasaje incompatibles!!\n");
+            System.err.println("ERROR: Los datos del pasaje incompatibles.\n");
         }
     }
      
@@ -49,11 +50,11 @@ public class PasajeData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Se ha eliminado el pasaje correctamente!!\n"+cReset);
+                System.out.println(cGreen+"Se ha eliminado el pasaje correctamente.\n"+cReset);
             }else
-                System.err.println("ERROR: No se ha encontrado el pasaje!!\n");
+                System.err.println("ERROR: No se ha encontrado el pasaje solicitado.\n");
         }catch(SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el pasaje!!\n");
+            System.err.println("ERROR: No se ha encontrado el pasaje solicitado.\n");
         }
     }
     
@@ -72,10 +73,10 @@ public class PasajeData {
             
             int filas = ps.executeUpdate();
             if (filas>0) {
-                System.out.println(cGreen+"Pasaje editado con exito!!\n"+cReset);
+                System.out.println(cGreen+"El pasaje se ha editado con exito.\n"+cReset);
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: Datos del pasaje incompatibles!!\n");
+            System.err.println("ERROR: Los datos del pasaje son incompatibles.\n");
             System.err.println(e);
         }
     }
@@ -102,7 +103,7 @@ public class PasajeData {
                 );
             }
         }catch(SQLException e) {
-            System.err.println("ERROR: No se ha encontrado el pasaje!! "+e+"\n");
+            System.err.println("ERROR: No se ha encontrado el pasaje solicitado. "+e+"\n");
         }
         return obj;
     }

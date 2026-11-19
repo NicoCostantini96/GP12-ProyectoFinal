@@ -6,16 +6,16 @@ import static Vista.TestMain.asientoData;
 import static Vista.VistaMain.vistaAsientoM;
 import static Vista.VistaMain.vistaPasaje;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaAsiento extends javax.swing.JInternalFrame {
 
-    javax.swing.table.DefaultTableCellRenderer renderer = new javax.swing.table.DefaultTableCellRenderer();
+    private DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
     private DefaultTableModel table;
-    
-    public ArrayList<Asiento> tableList = new ArrayList<>();
-    public ArrayList<RutaViaje> rutaList = new ArrayList<>();
-    public int tableIndex = -1;
+    private ArrayList<Asiento> tableList = new ArrayList<>();
+    private ArrayList<RutaViaje> rutaList = new ArrayList<>();
+    private int tableIndex = -1;
     
     public VistaAsiento() {
         initComponents();
@@ -47,7 +47,6 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
 
             tblAsiento.setRowSelectionInterval(tableIndex, tableIndex);
 
-            //btnModificar.setEnabled(true);
             btnEliminar.setEnabled(true);
 
             if (tableList.get(tableIndex).getEstado()) {
@@ -62,7 +61,6 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
             tableIndex = -1;
             tblAsiento.clearSelection();
 
-            //btnModificar.setEnabled(false);
             btnEliminar.setEnabled(false);
             btnAlta.setEnabled(false);
             btnBaja.setEnabled(false);
@@ -122,6 +120,30 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         updateIndex();
     }
 
+    public ArrayList<Asiento> getTableList() {
+        return tableList;
+    }
+
+    public void setTableList(ArrayList<Asiento> tableList) {
+        this.tableList = tableList;
+    }
+
+    public ArrayList<RutaViaje> getRutaList() {
+        return rutaList;
+    }
+
+    public void setRutaList(ArrayList<RutaViaje> rutaList) {
+        this.rutaList = rutaList;
+    }
+
+    public int getTableIndex() {
+        return tableIndex;
+    }
+
+    public void setTableIndex(int tableIndex) {
+        this.tableIndex = tableIndex;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -153,6 +175,7 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitulo.setText("Lista de Asientos:");
 
+        btnEliminar.setForeground(new java.awt.Color(255, 51, 51));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -220,16 +243,6 @@ public class VistaAsiento extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    /* ELIMINAR
-        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "Esta acción eliminará permanentemente al colectivo de la base de datos\n¿Desea continuar?", "Advertencia: borrado permanente", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
-        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
-            int id = tableList.get(tableIndex).getId_lugar();
-            if ((tableIndex+1) == tableList.size()) {tableIndex--;}
-            asientoData.remove(id);
-            updateAll(); vistaPasaje.updateAll();
-        }
-    */
-    
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
         Asiento a = tableList.get(tableIndex);
         a.setEstado(true);

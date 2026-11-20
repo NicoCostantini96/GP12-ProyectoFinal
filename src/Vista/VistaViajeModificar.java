@@ -68,6 +68,7 @@ public class VistaViajeModificar extends javax.swing.JInternalFrame {
         }
         lblMsjOrigen.setText("");
         lblDestino.setText("");
+        lblFViaje.setText("");
         lblHoras.setText("");
         lblHoras.setText("");
         lblPrecio.setText("");

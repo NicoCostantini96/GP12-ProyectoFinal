@@ -23,6 +23,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     private RutaViaje ruta = null;
     private Asiento lugar = null;
     private boolean initChanges = false;
+    private ArrayList<RutaViaje> rutas = new ArrayList();
     private LocalTime hVenta = LocalTime.of(0,0,0);
     private LocalDate fVenta = LocalDate.now();
     private int estate = 0;
@@ -92,9 +93,11 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
     
     private void cmbRutaUpdate() {
         var cmbRutaIndex = 0; cmbRuta.removeAllItems();
+        rutas.clear();
         for (RutaViaje r : viajeData.getList()) {
                 if (r.getFecha_viaje().isAfter(fVenta) || (r.getFecha_viaje().isEqual(fVenta) && r.getHora_salida().isAfter(hVenta))) {
                 cmbRuta.addItem(r.getColectivo().getMatricula() + " - (" + r.getOrigen() + " - " + r.getDestino() + ") - (" +r.getFecha_viaje()+ ") - (" + r.getHora_salida()+" - "+r.getHora_llegada()+")");
+                rutas.add(r);
                 if (estate == 2 && ruta.getId_ruta() == r.getId_ruta()) {
                     cmbRutaIndex = cmbRuta.getItemCount() - 1;
                 }
@@ -655,7 +658,7 @@ public class VistaPasajeModificar extends javax.swing.JInternalFrame {
 
     private void cmbRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRutaActionPerformed
         if (initChanges && cmbRuta.getSelectedIndex() >= 0) {
-            ruta = viajeData.getList().get(cmbRuta.getSelectedIndex());
+            ruta = rutas.get(cmbRuta.getSelectedIndex());
             txtPrecio.setText(String.valueOf(ruta.getPrecio()));
             cmbAsientoUpdate();
         }
